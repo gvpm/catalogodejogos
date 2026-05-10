@@ -263,6 +263,16 @@
             }
         }
 
+        .games-count {
+            margin-top: 28px;
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, .6);
+
+            font-size: .95rem;
+        }
+
         @media (max-width:500px) {
 
             body {
@@ -286,6 +296,7 @@
 
     <div class="games-container" id="gamesContainer"></div>
 
+    <div class="games-count" id="gamesCount"></div>
     <div class="modal" id="gameModal">
 
         <div class="modal-content">
@@ -312,6 +323,8 @@
     <script>
 
         const container = document.getElementById('gamesContainer');
+        const gamesCount =
+            document.getElementById('gamesCount');
 
         const modal = document.getElementById('gameModal');
 
@@ -401,6 +414,8 @@
                 ...favoriteGames,
                 ...normalGames
             ];
+            gamesCount.innerText =
+                `${orderedGames.length} Jogos`;
 
             orderedGames.forEach(game => {
 
