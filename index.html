@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Catálogo de Jogos</title>
 
@@ -21,12 +21,6 @@
             padding: 20px;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
         .games-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -34,10 +28,14 @@
         }
 
         .game-card {
+            position: relative;
+
             background: #1e1e1e;
             border-radius: 16px;
             overflow: hidden;
-            transition: 0.2s ease;
+
+            transition: .2s ease;
+
             cursor: pointer;
         }
 
@@ -57,28 +55,92 @@
             text-align: center;
         }
 
-        .game-number {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-bottom: 6px;
-        }
-
         .game-title {
             font-size: 1rem;
             font-weight: bold;
             line-height: 1.3;
         }
 
-        /* MODAL */
+        .favorite-button {
+            position: absolute;
+
+            top: 10px;
+            right: 10px;
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, .65);
+
+            color: white;
+
+            font-size: 1.2rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            backdrop-filter: blur(4px);
+
+            transition: .2s ease;
+        }
+
+        .favorite-button.active {
+            color: #ff4d6d;
+        }
+
+        .modal-favorite-button {
+            position: absolute;
+
+            top: 14px;
+            right: 14px;
+
+            width: 46px;
+            height: 46px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, .72);
+
+            color: white;
+
+            font-size: 1.4rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 30;
+
+            backdrop-filter: blur(6px);
+
+            transition: .2s ease;
+        }
+
+        .modal-favorite-button.active {
+            color: #ff4d6d;
+        }
+
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.92);
+
+            background: rgba(0, 0, 0, .92);
 
             opacity: 0;
             pointer-events: none;
 
-            transition: 0.2s ease;
+            transition: .2s ease;
 
             z-index: 999;
 
@@ -92,41 +154,9 @@
             pointer-events: all;
         }
 
-        .close-button {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-
-            width: 42px;
-            height: 42px;
-
-            border: none;
-            border-radius: 50%;
-
-            background: rgba(0, 0, 0, 0.7);
-
-            color: white;
-
-            font-size: 1.4rem;
-
-            cursor: pointer;
-
-            z-index: 20;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            backdrop-filter: blur(5px);
-
-            transition: 0.2s ease;
-        }
-
-        .close-button:hover {
-            background: rgba(0, 0, 0, 0.95);
-        }
-
         .modal-content {
+            position: relative;
+
             max-width: 700px;
             width: 100%;
 
@@ -138,40 +168,82 @@
 
             overflow: hidden;
 
-            animation: zoom 0.2s ease;
+            animation: zoom .2s ease;
+        }
 
+        .close-button {
+            position: absolute;
+
+            top: 14px;
+            left: 14px;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, .7);
+
+            color: white;
+
+            font-size: 1.4rem;
+
+            cursor: pointer;
+
+            z-index: 30;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            backdrop-filter: blur(5px);
+
+            transition: .2s ease;
+        }
+
+        .close-button:hover {
+            background: rgba(0, 0, 0, .95);
         }
 
         .modal-image {
             width: 100%;
             max-height: 75vh;
-            object-fit: contain;
-            border-radius: 18px;
-            background: #222;
-        }
 
-        .modal-title {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            object-fit: contain;
+
+            background: #222;
         }
 
         .modal-body {
             padding: 20px;
         }
 
+        .modal-title {
+            text-align: center;
+
+            margin-top: 10px;
+
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
         .modal-rules {
             margin-top: 20px;
+
             line-height: 1.7;
+
             color: #ddd;
+
             white-space: pre-line;
+
             text-align: left;
         }
 
         .modal-rules h3 {
             margin-top: 18px;
             margin-bottom: 8px;
+
             color: white;
         }
 
@@ -181,7 +253,7 @@
 
         @keyframes zoom {
             from {
-                transform: scale(0.92);
+                transform: scale(.92);
                 opacity: 0;
             }
 
@@ -191,7 +263,8 @@
             }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width:500px) {
+
             body {
                 padding: 14px;
             }
@@ -202,877 +275,26 @@
             }
 
             .game-title {
-                font-size: 0.92rem;
+                font-size: .92rem;
             }
+
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Catálogo de Jogos</h1>
-
-    <div class="games-container">
-
-        <!-- EXEMPLO -->
-        <!-- DUPLIQUE ESSE BLOCO PARA TODOS -->
-
-        <div class="game-card">
-            <img src="images/1.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#1</div>
-                <div class="game-title">Agent Avenue</div>
-            </div>
-        </div>
-
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Bandido é um jogo cooperativo onde todos os jogadores trabalham juntos para impedir a fuga de um prisioneiro.
-
-Vocês vencem se conseguirem bloquear todas as saídas do túnel antes que o baralho acabe.
-
-<h3>Preparação</h3>
-- Coloquem a carta inicial com o prisioneiro no centro da mesa.
-- Escolham o lado fácil ou difícil da carta inicial:
-  - fácil = menos saídas;
-  - difícil = mais saídas.
-- Embaralhem todas as cartas formando uma pilha de compra.
-- Cada jogador recebe 3 cartas.
-
-<h3>Como jogar</h3>
-O jogador mais jovem começa.
-
-Na sua vez:
-- jogue 1 carta conectando corretamente aos túneis já existentes;
-- os caminhos devem continuar perfeitamente;
-- não é permitido deixar conexões quebradas.
-
-Depois de jogar:
-- compre 1 nova carta.
-
-<h3>Sem jogada possível</h3>
-Se nenhuma das suas cartas puder ser jogada:
-- coloque toda sua mão embaixo da pilha;
-- compre 3 novas cartas.
-
-<h3>Comunicação</h3>
-Os jogadores podem conversar e planejar juntos.
-
-Porém:
-- não podem mostrar as cartas da mão;
-- nem revelar exatamente quais cartas possuem.
-
-<h3>Cuidado</h3>
-Algumas cartas podem acabar ajudando a fuga sem perceber.
-
-É importante:
-- fechar saídas;
-- evitar expandir túneis desnecessariamente;
-- e não criar caminhos impossíveis de bloquear depois.
-
-<h3>Fim do jogo</h3>
-
-<strong>Vitória:</strong>
-Vocês vencem imediatamente se todos os túneis forem bloqueados.
-
-<strong>Derrota:</strong>
-Se o baralho acabar e ainda existir ao menos uma saída aberta, o prisioneiro escapa e todos perdem.
-">
-            <img src="images/2.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#2</div>
-                <div class="game-title">Bandido</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/3.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#3</div>
-                <div class="game-title">Cabo</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/4.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#4</div>
-                <div class="game-title">Cards vs Gravity</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/5.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#5</div>
-                <div class="game-title">Cheating Moth</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/6.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#6</div>
-                <div class="game-title">Confusing Lands</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/7.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#7</div>
-                <div class="game-title">Coup</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/8.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#8</div>
-                <div class="game-title">Deep Sea Adventure</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/9.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#9</div>
-                <div class="game-title">Dixit</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/10.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#10</div>
-                <div class="game-title">Dobble</div>
-            </div>
-        </div>
-
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Acertar exatamente quantas vazas você irá vencer em cada rodada.
-
-<h3>Preparação</h3>
-- Embaralhe todas as cartas.
-- Distribua igualmente entre os jogadores.
-- Cada jogador recebe também os marcadores de aposta.
-
-<h3>Aposta Inicial</h3>
-Antes da rodada começar:
-- cada jogador escolhe secretamente quantas vazas acredita que irá vencer;
-- todos revelam simultaneamente.
-
-A aposta é extremamente importante:
-acertar exatamente gera muitos pontos.
-
-<h3>Como funciona uma vaza</h3>
-O primeiro jogador joga qualquer carta.
-
-Os próximos jogadores devem:
-- seguir o mesmo naipe se possível;
-- caso não tenham, podem jogar qualquer carta.
-
-A maior carta do naipe da rodada vence.
-
-Quem vence a vaza:
-- coleta as cartas;
-- inicia a próxima rodada.
-
-<h3>Cartas Doppelgänger</h3>
-As cartas pretas especiais funcionam como Doppelgängers.
-
-Elas:
-- assumem o naipe da rodada;
-- possuem força variável;
-- podem alterar completamente o resultado da vaza.
-
-Essas cartas criam situações imprevisíveis e blefes estratégicos.
-
-<h3>Aniquilação</h3>
-Algumas combinações de cartas iguais podem causar anulação:
-- cartas podem se destruir;
-- a hierarquia da rodada muda;
-- e o vencedor da vaza pode mudar inesperadamente.
-
-<h3>Fim da rodada</h3>
-Depois que todas as cartas forem jogadas:
-- conte quantas vazas cada jogador venceu.
-
-<h3>Pontuação</h3>
-- Acertar exatamente a aposta concede muitos pontos.
-- Errar reduz bastante a pontuação.
-- Quanto maior a aposta correta, maior a recompensa.
-
-<h3>Vitória</h3>
-Após o número definido de rodadas:
-- vence quem possuir mais pontos.
-">
-
-            <img src="images/11.jpg" class="game-image">
-
-            <div class="game-info">
-                <div class="game-number">#11</div>
-                <div class="game-title">Doppelgänger Tricks</div>
-            </div>
-
-        </div>
-
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Ser o primeiro jogador a vencer 2 rodadas ficando sem cartas.
-
-<h3>Preparação</h3>
-- Embaralhe todas as cartas.
-- Cada jogador recebe 7 cartas.
-- O restante forma o monte de compra.
-
-<h3>Como jogar</h3>
-Na sua vez:
-- jogue uma ou mais cartas viradas para baixo;
-- anuncie qual combinação está jogando.
-
-Você pode:
-- falar a verdade;
-- ou blefar completamente.
-
-As combinações normalmente seguem:
-- números iguais;
-- sequências;
-- ou quantidades específicas dependendo da rodada.
-
-<h3>Blefe</h3>
-O coração do jogo é enganar os outros jogadores.
-
-Como as cartas ficam viradas para baixo:
-- ninguém sabe se você realmente jogou o que anunciou.
-
-Isso gera:
-- mentira;
-- dedução;
-- leitura social;
-- pressão psicológica.
-
-<h3>DÚVIDAÊ!!</h3>
-A qualquer momento outro jogador pode desafiar a jogada dizendo:
-
-<strong>DÚVIDAÊ!!</strong>
-
-As cartas então são reveladas.
-
-<h3>Se era mentira</h3>
-O jogador que blefou:
-- pega as cartas da mesa;
-- recebe a penalidade;
-- e normalmente perde vantagem na rodada.
-
-<h3>Se era verdade</h3>
-Quem desafiou incorretamente:
-- pega as cartas;
-- recebe a penalidade.
-
-<h3>Cartas especiais</h3>
-
-<strong>+1 e +2</strong>
-- aumentam a quantidade de cartas compradas;
-- podem acumular penalidades.
-
-<strong>Reversão</strong>
-- muda a direção da rodada.
-
-<strong>Bloqueio</strong>
-- impede ações específicas dependendo da situação.
-
-<h3>Estratégia</h3>
-Vencer exige:
-- memória;
-- controle emocional;
-- leitura dos adversários;
-- blefe convincente;
-- e saber exatamente quando desafiar.
-
-<h3>Fim da rodada</h3>
-A rodada termina quando:
-- um jogador fica sem cartas.
-
-<h3>Vitória</h3>
-O primeiro jogador que vencer 2 rodadas vence a partida.
-">
-
-            <img src="images/12.jpg" class="game-image">
-
-            <div class="game-info">
-                <div class="game-number">#12</div>
-                <div class="game-title">DúvidaÊ!</div>
-            </div>
-
-        </div>
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Trabalhem juntos para ajudar o pato aventureiro a chegar ao topo da Cordilheira Pataquada.
-
-Para avançar pelo tabuleiro, os jogadores devem adivinhar palavras corretamente dentro do tempo. Caso todas as vidas sejam perdidas antes do final do percurso, todos perdem.
-
-<h3>Componentes</h3>
-- 90 Cartas de Palavras
-- 75 Cartas de Verdade ou Desafio
-- 5 Cartas de Vida
-- 1 Mini pato
-- 1 Tabuleiro
-- 1 Livreto de regras
-
-Também é necessário:
-- 1 temporizador (recomendado celular)
-
-<h3>Preparação</h3>
-1. Abra a gaveta e deixe o tabuleiro visível.
-2. Posicione os montes de Cartas de Palavra à esquerda do tabuleiro.
-3. Posicione os montes de Verdade ou Desafio à direita.
-4. Organize os níveis:
-- fase 1 (verde) embaixo;
-- fase 2 (amarelo) no centro;
-- fase 3 (vermelho) no topo.
-5. Coloque as 5 Cartas de Vida abaixo do tabuleiro com o lado do coração para cima.
-6. Posicione o mini pato na primeira casa.
-7. Distribua 1 carta de Verdade ou Desafio da fase 1 para cada jogador.
-8. Escolham rota normal ou rápida.
-9. A última pessoa que viu um pato começa.
-
-<h3>Objetivo da rodada</h3>
-No turno de um jogador:
-1. ele pode ativar um poderzinho (opcional);
-2. depois deve tentar fazer os outros jogadores adivinharem uma palavra.
-
-Se a palavra for acertada dentro do tempo:
-- o pato avança;
-- o jogador compra uma nova carta de Verdade ou Desafio.
-
-Se falharem:
-- perde-se uma vida.
-
-<h3>Como adivinhar palavras</h3>
-O jogador da vez compra uma carta de Palavra da fase correspondente à posição atual do pato.
-
-A carta possui:
-- 1 palavra principal;
-- palavras proibidas;
-- possíveis derivações proibidas.
-
-Os outros jogadores devem tentar adivinhar a palavra principal.
-
-<h3>Regras da dica</h3>
-Você NÃO pode:
-- falar palavras proibidas;
-- usar derivados muito próximos;
-- usar mímica;
-- fazer sons;
-- apontar letras;
-- falar partes da palavra.
-
-Pode:
-- falar livremente;
-- dar exemplos;
-- usar analogias;
-- construir frases.
-
-<h3>Tempo</h3>
-Cada fase possui tempo diferente:
-- fase 1: 10 segundos;
-- fase 2: 15 segundos;
-- fase 3: 20 segundos.
-
-Alguns poderzinhos podem aumentar esse tempo.
-
-<h3>Poderzinhos</h3>
-As cartas de Verdade ou Desafio possuem:
-- uma condição;
-- uma ação.
-
-Você só pode ativar o poderzinho se cumprir sua condição.
-
-Exemplos:
-- cumprimentar alguém;
-- abraçar alguém;
-- jogar em dupla;
-- realizar um desafio coletivo.
-
-Os efeitos podem:
-- permitir mímica;
-- remover censura;
-- aumentar tempo;
-- recuperar vidas.
-
-<h3>Tipos de Verdade ou Desafio</h3>
-
-<strong>Individual</strong>
-Apenas o jogador realiza a ação.
-
-<strong>Dupla</strong>
-O jogador escolhe outra pessoa para participar.
-
-<strong>Convidado</strong>
-Dois jogadores escolhem uma terceira pessoa.
-
-<strong>Coletivo</strong>
-Todos participam juntos.
-
-<h3>Cartas de Vida</h3>
-O grupo possui 5 vidas.
-
-Sempre que falharem:
-- vire uma Carta de Vida.
-
-Quando restar apenas uma vida:
-- ela pode ser virada e reutilizada;
-- caso acertem a próxima palavra, recuperam a vida;
-- caso errem novamente, o jogo termina.
-
-<h3>Tabuleiro</h3>
-
-<strong>Rota normal</strong>
-Experiência completa com duração média de 1 hora.
-
-<strong>Versão rápida</strong>
-Usa atalhos azuis do tabuleiro.
-Duração média de 20 minutos.
-
-<h3>Símbolos do tabuleiro</h3>
-
-⏱ 10s → tempo inicial da fase 1
-
-⏱ 15s → tempo inicial da fase 2
-
-⏱ 20s → tempo inicial da fase 3
-
-➕ carta → cada jogador compra mais uma carta de Verdade ou Desafio
-
-🔄 descarte → descarte uma carta de Verdade ou Desafio e compre outra
-
-⭐ estrela preta → o próximo poderzinho ativado fica permanente até o fim do jogo
-
-⭐ estrela azul → igual à estrela preta, porém válida apenas na versão rápida
-
-➡️ pegadas azuis → atalhos da versão rápida
-
-<h3>Fim de jogo</h3>
-O jogo termina quando:
-- o pato chega ao final do tabuleiro;
-- OU todas as vidas acabam.
-
-Resultados possíveis:
-- chegaram ao topo com todas as vidas;
-- chegaram ao topo com vidas incompletas;
-- perderam antes do final.
-
-<h3>Vitória</h3>
-Empathos é totalmente cooperativo.
-
-Todos vencem juntos se o pato alcançar o final do percurso antes das vidas acabarem.
-">
-            <img src="images/13.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#13</div>
-                <div class="game-title">Empathos</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/14.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#14</div>
-                <div class="game-title">Entre Linhas</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/15.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#15</div>
-                <div class="game-title">Exploding Kittens</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/16.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#16</div>
-                <div class="game-title">Ghost Blitz</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/17.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#17</div>
-                <div class="game-title">Good Face Bad Face</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/18.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#18</div>
-                <div class="game-title">Kariba</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/19.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#19</div>
-                <div class="game-title">Nana</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/20.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#20</div>
-                <div class="game-title">No Thanks!</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/21.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#21</div>
-                <div class="game-title">Odin</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/22.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#22</div>
-                <div class="game-title">Panda Panda</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/23.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#23</div>
-                <div class="game-title">Poop</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/24.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#24</div>
-                <div class="game-title">Saboteur</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/25.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#25</div>
-                <div class="game-title">Scout</div>
-            </div>
-        </div>
-
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Acumular pontos ao longo das rodadas utilizando combinações de cartas, efeitos especiais e apostas estratégicas.
-
-O jogo termina quando alguém alcança:
-- 40 pontos em 2 jogadores;
-- 35 pontos em 3 jogadores;
-- 30 pontos em 4 jogadores.
-
-Também é possível vencer instantaneamente reunindo as 4 sereias.
-
-<h3>Preparação</h3>
-- Embaralhe todas as cartas.
-- Forme um monte de compra.
-- Revele 2 cartas ao lado do monte formando duas pilhas de descarte.
-- Escolha aleatoriamente quem começa.
-
-<h3>Turno</h3>
-Na sua vez você deve adicionar 1 carta à mão de uma destas formas:
-
-<strong>Opção 1:</strong>
-- compre as 2 primeiras cartas do baralho;
-- fique com 1;
-- descarte a outra em uma das pilhas.
-
-<strong>Opção 2:</strong>
-- pegue a carta do topo de uma das pilhas de descarte.
-
-Não é permitido olhar as pilhas de descarte.
-
-<h3>Cartas Duo</h3>
-Algumas cartas formam pares especiais.
-
-Quando você possui as duas:
-- pode baixar o par na mesa;
-- ativar seu efeito imediatamente;
-- e ainda pontuar por ele.
-
-<h3>Efeitos dos pares</h3>
-
-<strong>Caranguejos</strong>
-- olhe uma pilha de descarte;
-- escolha qualquer carta dela.
-
-<strong>Barcos</strong>
-- jogue outro turno imediatamente.
-
-<strong>Peixes</strong>
-- compre a carta do topo do baralho.
-
-<strong>Nadador + Tubarão</strong>
-- roube aleatoriamente uma carta de outro jogador.
-
-<h3>Encerrando a rodada</h3>
-Se você possuir 7 pontos ou mais entre:
-- cartas na mão;
-- e cartas baixadas,
-
-pode encerrar a rodada.
-
-Então escolha:
-
-<strong>STOP</strong>
-- todos revelam as mãos;
-- todos pontuam normalmente.
-
-<strong>LAST CHANCE</strong>
-Você aposta que terminará com a maior pontuação.
-
-Os outros jogadores:
-- recebem um último turno;
-- revelam as mãos depois.
-
-<h3>Resultado da aposta</h3>
-
-<strong>Se você vencer ou empatar:</strong>
-- ganha os pontos normais;
-- mais bônus de cor.
-
-<strong>Se perder:</strong>
-- recebe apenas o bônus de cor;
-- os outros pontuam normalmente.
-
-<h3>Sereias</h3>
-As sereias dão pontos baseados na cor que você mais possui.
-
-Se alguém baixar as 4 sereias:
-- vence instantaneamente a partida.
-
-<h3>Coleções</h3>
-Algumas cartas aumentam de valor conforme quantidade acumulada:
-- conchas;
-- polvos;
-- pinguins;
-- marinheiros.
-
-Quanto mais cartas iguais, mais pontos.
-
-<h3>Multiplicadores</h3>
-Existem cartas que multiplicam pontuação:
-- Farol = bônus para barcos;
-- Cardume = bônus para peixes;
-- Colônia = bônus para pinguins;
-- Capitão = bônus para marinheiros.
-
-<h3>Fim da rodada</h3>
-Após pontuar:
-- embaralhe todas as cartas;
-- monte novo baralho;
-- e comece nova rodada.
-
-<h3>Vitória</h3>
-A partida termina quando:
-- alguém alcança a pontuação alvo;
-- ou reúne as 4 sereias.
-
-Vence quem possuir mais pontos.
-">
-            <img src="images/26.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#26</div>
-                <div class="game-title">Sea Salt & Paper</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/27.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#27</div>
-                <div class="game-title">Slapburger</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/28.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#28</div>
-                <div class="game-title">Sushi Go!</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/29.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#29</div>
-                <div class="game-title">That's Not a Hat</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/30.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#30</div>
-                <div class="game-title">The Mind</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/31.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#31</div>
-                <div class="game-title">Trio</div>
-            </div>
-        </div>
-
-        <div class="game-card" data-rules="
-<h3>Objetivo</h3>
-Colete conjuntos de frutas para marcar pontos e terminar a partida com a maior pontuação.
-
-Use as cartas de Tucano de forma estratégica para:
-- proteger sua coleção;
-- roubar frutas dos adversários;
-- ou atrapalhar os outros jogadores.
-
-<h3>Preparação</h3>
-- Separe as 12 cartas de Tucano.
-- Embaralhe todas as cartas de frutas.
-- Divida em 2 montes.
-- Misture as cartas de Tucano em apenas um dos montes.
-- Coloque o outro monte por cima formando o baralho principal.
-
-Monte então 3 colunas de cartas:
-- coluna 1 com 1 carta;
-- coluna 2 com 2 cartas;
-- coluna 3 com 1 carta.
-
-Deixe todas viradas para cima e com os valores visíveis.
-
-<h3>Como jogar</h3>
-O último jogador que comeu fruta começa.
-
-Na sua vez:
-- escolha uma coluna;
-- pegue TODAS as cartas dela;
-- coloque as cartas abertas na sua área.
-
-É recomendado organizar frutas iguais juntas.
-
-<h3>Reabastecendo as colunas</h3>
-Após pegar uma coluna:
-- revele 1 nova carta em cada coluna;
-- começando pela coluna mais próxima do baralho;
-- sempre na mesma ordem.
-
-<h3>Cartas de Tucano</h3>
-As cartas de Tucano possuem efeitos imediatos.
-
-Após usar:
-- descarte a carta.
-
-Se pegar mais de um Tucano ao mesmo tempo:
-- escolha a ordem dos efeitos.
-
-<h3>Efeitos dos Tucanos</h3>
-
-<strong>Presente</strong>
-Dê uma de suas cartas abertas para outro jogador.
-Ele não pode recusar.
-
-<strong>Roubo</strong>
-Pegue uma carta aberta de outro jogador.
-
-<strong>Proteção</strong>
-Vire todas as suas frutas para baixo formando um único monte protegido.
-
-Depois disso:
-- ninguém pode roubar;
-- você não pode olhar;
-- e também não pode entregar essas cartas.
-
-<h3>Pontuação das frutas</h3>
-Cada fruta possui uma tabela própria de pontos.
-
-Algumas frutas:
-- valem muito se coletadas em conjunto;
-- mas dão pontos negativos se tiver poucas.
-
-Exemplo:
-1 carta pode valer -2 pontos,
-mas 4 cartas iguais podem valer 16 ou 20 pontos.
-
-<h3>Frutas de maioria</h3>
-Algumas frutas funcionam diferente.
-
-Quem possuir MAIS cartas daquela fruta:
-- ganha pontos por carta.
-
-Quem não possuir maioria:
-- perde pontos por carta.
-
-Em caso de empate:
-- todos os empatados perdem pontos.
-
-<h3>Carta Coringa</h3>
-Existe 1 carta arco-íris no jogo.
-
-No final:
-- ela pode ser adicionada a qualquer conjunto de fruta;
-- contando como uma fruta extra daquele tipo.
-
-Ela não pode ultrapassar o limite máximo do conjunto.
-
-<h3>Fim da partida</h3>
-A partida termina quando restar apenas 1 coluna na mesa.
-
-A última coluna é descartada.
-
-Quando o baralho acabar:
-- os jogadores continuam pegando colunas;
-- mas não reabastecem mais.
-
-O último jogador normalmente terá apenas 2 opções de coluna.
-
-<h3>Vitória</h3>
-Todos somam os pontos das frutas coletadas.
-
-Quem tiver mais pontos vence a partida.
-">
-            <img src="images/32.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#32</div>
-                <div class="game-title">Tucano</div>
-            </div>
-        </div>
-
-        <div class="game-card">
-            <img src="images/33.jpg" class="game-image">
-            <div class="game-info">
-                <div class="game-number">#33</div>
-                <div class="game-title">Werewolves of Miller's Hollow</div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- MODAL -->
+    <div class="games-container" id="gamesContainer"></div>
 
     <div class="modal" id="gameModal">
 
         <div class="modal-content">
+
             <button class="close-button" id="closeButton">✕</button>
+
+            <button class="modal-favorite-button" id="modalFavoriteButton">
+                ♥
+            </button>
             <img id="modalImage" class="modal-image">
 
             <div class="modal-body">
@@ -1089,48 +311,182 @@ Quem tiver mais pontos vence a partida.
 
     <script>
 
-        const cards = document.querySelectorAll('.game-card');
+        const container = document.getElementById('gamesContainer');
 
         const modal = document.getElementById('gameModal');
 
         const modalImage = document.getElementById('modalImage');
         const modalTitle = document.getElementById('modalTitle');
         const modalRules = document.getElementById('modalRules');
-        const closeButton = document.getElementById('closeButton');
 
-        cards.forEach(card => {
+        const modalFavoriteButton =
+            document.getElementById('modalFavoriteButton');
+        let allGames = [];
 
-            card.addEventListener('click', () => {
+        function getFavorites() {
 
-                const image = card.querySelector('img').src;
-                const title = card.querySelector('.game-title').innerText;
-                const rules = card.dataset.rules || "";
+            return JSON.parse(
+                localStorage.getItem('favoriteGames') || '[]'
+            );
 
-                modalImage.src = image;
-                modalTitle.innerText = title;
-                modalRules.innerHTML = rules;
+        }
 
-                modal.classList.add('active');
+        function saveFavorites(favorites) {
 
-                document.body.classList.add('modal-open');
+            localStorage.setItem(
+                'favoriteGames',
+                JSON.stringify(favorites)
+            );
 
-                history.pushState({ modal: true }, "");
+        }
 
-            });
+        function toggleFavorite(gameTitle) {
 
-        });
+            let favorites = getFavorites();
 
-        modal.addEventListener('click', (e) => {
+            const index = favorites.indexOf(gameTitle);
 
-            if (e.target === modal) {
+            if (index >= 0) {
 
-                modal.classList.remove('active');
+                favorites.splice(index, 1);
 
-                document.body.classList.remove('modal-open');
+            } else {
+
+                favorites.push(gameTitle);
 
             }
 
-        });
+            saveFavorites(favorites);
+
+            renderGames();
+
+        }
+
+        function renderGames() {
+
+            container.innerHTML = '';
+
+            const favorites = getFavorites();
+
+            const favoriteGames = [];
+            const normalGames = [];
+
+            allGames.forEach(game => {
+
+                if (favorites.includes(game.title)) {
+
+                    favoriteGames.push(game);
+
+                } else {
+
+                    normalGames.push(game);
+
+                }
+
+            });
+
+            favoriteGames.sort((a, b) =>
+                favorites.indexOf(a.title) - favorites.indexOf(b.title)
+            );
+
+            normalGames.sort((a, b) =>
+                a.title.localeCompare(
+                    b.title,
+                    'pt-BR',
+                    { sensitivity: 'base' }
+                )
+            );
+
+            const orderedGames = [
+                ...favoriteGames,
+                ...normalGames
+            ];
+
+            orderedGames.forEach(game => {
+
+                const isFavorite =
+                    favorites.includes(game.title);
+
+                const card = document.createElement('div');
+
+                card.className = 'game-card';
+
+                card.innerHTML = `
+
+                    <button class="favorite-button ${isFavorite ? 'active' : ''}">
+                        ♥
+                    </button>
+
+                    <img src="images/${game.image}" class="game-image">
+
+                    <div class="game-info">
+
+                        <div class="game-title">${game.title}</div>
+
+                    </div>
+                `;
+
+                const favoriteButton =
+                    card.querySelector('.favorite-button');
+
+                favoriteButton.addEventListener('click', (e) => {
+
+                    e.stopPropagation();
+
+                    toggleFavorite(game.title);
+
+                });
+
+                card.addEventListener('click', () => {
+
+                    modalImage.src = `images/${game.image}`;
+
+                    modalTitle.innerText = game.title;
+
+                    modalRules.innerHTML = game.rules ?? "";
+
+                    const favorites = getFavorites();
+
+                    modalFavoriteButton.classList.toggle(
+                        'active',
+                        favorites.includes(game.title)
+                    );
+
+                    modalFavoriteButton.onclick = (e) => {
+
+                        e.stopPropagation();
+
+                        toggleFavorite(game.title);
+
+                        modalFavoriteButton.classList.toggle(
+                            'active'
+                        );
+
+                    };
+
+                    modal.classList.add('active');
+
+                    document.body.classList.add('modal-open');
+
+                    history.pushState({ modal: true }, "");
+
+                });
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+        fetch('jogos.json')
+            .then(response => response.json())
+            .then(games => {
+
+                allGames = games;
+
+                renderGames();
+
+            });
 
         function closeModal() {
 
@@ -1140,9 +496,15 @@ Quem tiver mais pontos vence a partida.
 
         }
 
-        closeButton.addEventListener('click', () => {
+        closeButton.addEventListener('click', closeModal);
 
-            closeModal();
+        modal.addEventListener('click', (e) => {
+
+            if (e.target === modal) {
+
+                closeModal();
+
+            }
 
         });
 
@@ -1155,7 +517,9 @@ Quem tiver mais pontos vence a partida.
             }
 
         });
+
     </script>
+
 </body>
 
 </html>

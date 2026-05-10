@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "title": "Agent Avenue",
+    "image": "agent_avenue.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Bandido",
+    "image": "bandido.jpg",
+    "rules": "<h3>Objetivo</h3>\nBandido é um jogo cooperativo onde todos os jogadores trabalham juntos para impedir a fuga de um prisioneiro.\n\nVocês vencem se conseguirem bloquear todas as saídas do túnel antes que o baralho acabe.\n\n<h3>Preparação</h3>\n- Coloquem a carta inicial com o prisioneiro no centro da mesa.\n- Escolham o lado fácil ou difícil da carta inicial:\n  - fácil = menos saídas;\n  - difícil = mais saídas.\n- Embaralhem todas as cartas formando uma pilha de compra.\n- Cada jogador recebe 3 cartas.\n\n<h3>Como jogar</h3>\nO jogador mais jovem começa.\n\nNa sua vez:\n- jogue 1 carta conectando corretamente aos túneis já existentes;\n- os caminhos devem continuar perfeitamente;\n- não é permitido deixar conexões quebradas.\n\nDepois de jogar:\n- compre 1 nova carta.\n\n<h3>Sem jogada possível</h3>\nSe nenhuma das suas cartas puder ser jogada:\n- coloque toda sua mão embaixo da pilha;\n- compre 3 novas cartas.\n\n<h3>Comunicação</h3>\nOs jogadores podem conversar e planejar juntos.\n\nPorém:\n- não podem mostrar as cartas da mão;\n- nem revelar exatamente quais cartas possuem.\n\n<h3>Cuidado</h3>\nAlgumas cartas podem acabar ajudando a fuga sem perceber.\n\nÉ importante:\n- fechar saídas;\n- evitar expandir túneis desnecessariamente;\n- e não criar caminhos impossíveis de bloquear depois.\n\n<h3>Fim do jogo</h3>\n\n<strong>Vitória:</strong>\nVocês vencem imediatamente se todos os túneis forem bloqueados.\n\n<strong>Derrota:</strong>\nSe o baralho acabar e ainda existir ao menos uma saída aberta, o prisioneiro escapa e todos perdem."
+  },
+  {
+    "id": 3,
+    "title": "Cabo",
+    "image": "cabo.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Cards vs Gravity",
+    "image": "cards_vs_gravity.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Cheating Moth",
+    "image": "cheating_moth.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Confusing Lands",
+    "image": "confusing_lands.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Coup",
+    "image": "coup.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Deep Sea Adventure",
+    "image": "deep_sea_adventure.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Dixit",
+    "image": "dixit.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Dobble",
+    "image": "dobble.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Doppelgänger Tricks",
+    "image": "doppelganger_tricks.jpg",
+    "rules": "<h3>Objetivo</h3>\nAcertar exatamente quantas vazas você irá vencer em cada rodada.\n\n<h3>Preparação</h3>\n- Embaralhe todas as cartas.\n- Distribua igualmente entre os jogadores.\n- Cada jogador recebe também os marcadores de aposta.\n\n<h3>Aposta Inicial</h3>\nAntes da rodada começar:\n- cada jogador escolhe secretamente quantas vazas acredita que irá vencer;\n- todos revelam simultaneamente.\n\nA aposta é extremamente importante:\nacertar exatamente gera muitos pontos.\n\n<h3>Como funciona uma vaza</h3>\nO primeiro jogador joga qualquer carta.\n\nOs próximos jogadores devem:\n- seguir o mesmo naipe se possível;\n- caso não tenham, podem jogar qualquer carta.\n\nA maior carta do naipe da rodada vence.\n\nQuem vence a vaza:\n- coleta as cartas;\n- inicia a próxima rodada.\n\n<h3>Cartas Doppelgänger</h3>\nAs cartas pretas especiais funcionam como Doppelgängers.\n\nElas:\n- assumem o naipe da rodada;\n- possuem força variável;\n- podem alterar completamente o resultado da vaza.\n\nEssas cartas criam situações imprevisíveis e blefes estratégicos.\n\n<h3>Aniquilação</h3>\nAlgumas combinações de cartas iguais podem causar anulação:\n- cartas podem se destruir;\n- a hierarquia da rodada muda;\n- e o vencedor da vaza pode mudar inesperadamente.\n\n<h3>Fim da rodada</h3>\nDepois que todas as cartas forem jogadas:\n- conte quantas vazas cada jogador venceu.\n\n<h3>Pontuação</h3>\n- Acertar exatamente a aposta concede muitos pontos.\n- Errar reduz bastante a pontuação.\n- Quanto maior a aposta correta, maior a recompensa.\n\n<h3>Vitória</h3>\nApós o número definido de rodadas:\n- vence quem possuir mais pontos."
+  },
+  {
+    "id": 12,
+    "title": "DúvidaÊ!",
+    "image": "duvidae.jpg",
+    "rules": "<h3>Objetivo</h3>\nSer o primeiro jogador a vencer 2 rodadas ficando sem cartas.\n\n<h3>Preparação</h3>\n- Embaralhe todas as cartas.\n- Cada jogador recebe 7 cartas.\n- O restante forma o monte de compra.\n\n<h3>Como jogar</h3>\nNa sua vez:\n- jogue uma ou mais cartas viradas para baixo;\n- anuncie qual combinação está jogando.\n\nVocê pode:\n- falar a verdade;\n- ou blefar completamente.\n\nAs combinações normalmente seguem:\n- números iguais;\n- sequências;\n- ou quantidades específicas dependendo da rodada.\n\n<h3>Blefe</h3>\nO coração do jogo é enganar os outros jogadores.\n\nComo as cartas ficam viradas para baixo:\n- ninguém sabe se você realmente jogou o que anunciou.\n\nIsso gera:\n- mentira;\n- dedução;\n- leitura social;\n- pressão psicológica.\n\n<h3>DÚVIDAÊ!!</h3>\nA qualquer momento outro jogador pode desafiar a jogada dizendo:\n\n<strong>DÚVIDAÊ!!</strong>\n\nAs cartas então são reveladas.\n\n<h3>Se era mentira</h3>\nO jogador que blefou:\n- pega as cartas da mesa;\n- recebe a penalidade;\n- e normalmente perde vantagem na rodada.\n\n<h3>Se era verdade</h3>\nQuem desafiou incorretamente:\n- pega as cartas;\n- recebe a penalidade.\n\n<h3>Cartas especiais</h3>\n\n<strong>+1 e +2</strong>\n- aumentam a quantidade de cartas compradas;\n- podem acumular penalidades.\n\n<strong>Reversão</strong>\n- muda a direção da rodada.\n\n<strong>Bloqueio</strong>\n- impede ações específicas dependendo da situação.\n\n<h3>Estratégia</h3>\nVencer exige:\n- memória;\n- controle emocional;\n- leitura dos adversários;\n- blefe convincente;\n- e saber exatamente quando desafiar.\n\n<h3>Fim da rodada</h3>\nA rodada termina quando:\n- um jogador fica sem cartas.\n\n<h3>Vitória</h3>\nO primeiro jogador que vencer 2 rodadas vence a partida."
+  },
+  {
+    "id": 13,
+    "title": "Empathos",
+    "image": "empathos.jpg",
+    "rules": "<h3>Objetivo</h3>\nTrabalhem juntos para ajudar o pato aventureiro a chegar ao topo da Cordilheira Pataquada.\n\nPara avançar pelo tabuleiro, os jogadores devem adivinhar palavras corretamente dentro do tempo. Caso todas as vidas sejam perdidas antes do final do percurso, todos perdem.\n\n<h3>Componentes</h3>\n- 90 Cartas de Palavras\n- 75 Cartas de Verdade ou Desafio\n- 5 Cartas de Vida\n- 1 Mini pato\n- 1 Tabuleiro\n- 1 Livreto de regras\n\nTambém é necessário:\n- 1 temporizador (recomendado celular)\n\n<h3>Preparação</h3>\n1. Abra a gaveta e deixe o tabuleiro visível.\n2. Posicione os montes de Cartas de Palavra à esquerda do tabuleiro.\n3. Posicione os montes de Verdade ou Desafio à direita.\n4. Organize os níveis:\n- fase 1 (verde) embaixo;\n- fase 2 (amarelo) no centro;\n- fase 3 (vermelho) no topo.\n5. Coloque as 5 Cartas de Vida abaixo do tabuleiro com o lado do coração para cima.\n6. Posicione o mini pato na primeira casa.\n7. Distribua 1 carta de Verdade ou Desafio da fase 1 para cada jogador.\n8. Escolham rota normal ou rápida.\n9. A última pessoa que viu um pato começa.\n\n<h3>Objetivo da rodada</h3>\nNo turno de um jogador:\n1. ele pode ativar um poderzinho (opcional);\n2. depois deve tentar fazer os outros jogadores adivinharem uma palavra.\n\nSe a palavra for acertada dentro do tempo:\n- o pato avança;\n- o jogador compra uma nova carta de Verdade ou Desafio.\n\nSe falharem:\n- perde-se uma vida.\n\n<h3>Como adivinhar palavras</h3>\nO jogador da vez compra uma carta de Palavra da fase correspondente à posição atual do pato.\n\nA carta possui:\n- 1 palavra principal;\n- palavras proibidas;\n- possíveis derivações proibidas.\n\nOs outros jogadores devem tentar adivinhar a palavra principal.\n\n<h3>Regras da dica</h3>\nVocê NÃO pode:\n- falar palavras proibidas;\n- usar derivados muito próximos;\n- usar mímica;\n- fazer sons;\n- apontar letras;\n- falar partes da palavra.\n\nPode:\n- falar livremente;\n- dar exemplos;\n- usar analogias;\n- construir frases.\n\n<h3>Tempo</h3>\nCada fase possui tempo diferente:\n- fase 1: 10 segundos;\n- fase 2: 15 segundos;\n- fase 3: 20 segundos.\n\nAlguns poderzinhos podem aumentar esse tempo.\n\n<h3>Poderzinhos</h3>\nAs cartas de Verdade ou Desafio possuem:\n- uma condição;\n- uma ação.\n\nVocê só pode ativar o poderzinho se cumprir sua condição.\n\nExemplos:\n- cumprimentar alguém;\n- abraçar alguém;\n- jogar em dupla;\n- realizar um desafio coletivo.\n\nOs efeitos podem:\n- permitir mímica;\n- remover censura;\n- aumentar tempo;\n- recuperar vidas.\n\n<h3>Tipos de Verdade ou Desafio</h3>\n\n<strong>Individual</strong>\nApenas o jogador realiza a ação.\n\n<strong>Dupla</strong>\nO jogador escolhe outra pessoa para participar.\n\n<strong>Convidado</strong>\nDois jogadores escolhem uma terceira pessoa.\n\n<strong>Coletivo</strong>\nTodos participam juntos.\n\n<h3>Cartas de Vida</h3>\nO grupo possui 5 vidas.\n\nSempre que falharem:\n- vire uma Carta de Vida.\n\nQuando restar apenas uma vida:\n- ela pode ser virada e reutilizada;\n- caso acertem a próxima palavra, recuperam a vida;\n- caso errem novamente, o jogo termina.\n\n<h3>Vitória</h3>\nEmpathos é totalmente cooperativo.\n\nTodos vencem juntos se o pato alcançar o final do percurso antes das vidas acabarem."
+  },
+  {
+    "id": 14,
+    "title": "Entre Linhas",
+    "image": "entre_linhas.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Exploding Kittens",
+    "image": "exploding_kittens.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Ghost Blitz",
+    "image": "ghost_blitz.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Good Face Bad Face",
+    "image": "good_face_bad_face.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Kariba",
+    "image": "kariba.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Nana",
+    "image": "nana.jpg"
+  },
+  {
+    "id": 20,
+    "title": "No Thanks!",
+    "image": "no_thanks.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Odin",
+    "image": "odin.jpg"
+  },
+  {
+    "id": 22,
+    "title": "Panda Panda",
+    "image": "panda_panda.jpg"
+  },
+  {
+    "id": 23,
+    "title": "Poop",
+    "image": "poop.jpg"
+  },
+  {
+    "id": 24,
+    "title": "Saboteur",
+    "image": "saboteur.jpg"
+  },
+  {
+    "id": 25,
+    "title": "Scout",
+    "image": "scout.jpg"
+  },
+  {
+    "id": 26,
+    "title": "Sea Salt & Paper",
+    "image": "sea_salt_and_paper.jpg",
+    "rules": "<h3>Objetivo</h3>\nAcumular pontos ao longo das rodadas utilizando combinações de cartas, efeitos especiais e apostas estratégicas.\n\nO jogo termina quando alguém alcança:\n- 40 pontos em 2 jogadores;\n- 35 pontos em 3 jogadores;\n- 30 pontos em 4 jogadores.\n\nTambém é possível vencer instantaneamente reunindo as 4 sereias.\n\n<h3>Preparação</h3>\n- Embaralhe todas as cartas.\n- Forme um monte de compra.\n- Revele 2 cartas ao lado do monte formando duas pilhas de descarte.\n- Escolha aleatoriamente quem começa.\n\n<h3>Turno</h3>\nNa sua vez você deve adicionar 1 carta à mão de uma destas formas:\n\n<strong>Opção 1:</strong>\n- compre as 2 primeiras cartas do baralho;\n- fique com 1;\n- descarte a outra em uma das pilhas.\n\n<strong>Opção 2:</strong>\n- pegue a carta do topo de uma das pilhas de descarte.\n\nNão é permitido olhar as pilhas de descarte.\n\n<h3>Cartas Duo</h3>\nAlgumas cartas formam pares especiais.\n\nQuando você possui as duas:\n- pode baixar o par na mesa;\n- ativar seu efeito imediatamente;\n- e ainda pontuar por ele.\n\n<h3>Sereias</h3>\nAs sereias dão pontos baseados na cor que você mais possui.\n\nSe alguém baixar as 4 sereias:\n- vence instantaneamente a partida.\n\n<h3>Vitória</h3>\nA partida termina quando:\n- alguém alcança a pontuação alvo;\n- ou reúne as 4 sereias.\n\nVence quem possuir mais pontos."
+  },
+  {
+    "id": 27,
+    "title": "Slapburger",
+    "image": "slapburger.jpg"
+  },
+  {
+    "id": 28,
+    "title": "Sushi Go!",
+    "image": "sushi_go.jpg"
+  },
+  {
+    "id": 29,
+    "title": "That's Not a Hat",
+    "image": "thats_not_a_hat.jpg"
+  },
+  {
+    "id": 30,
+    "title": "The Mind",
+    "image": "the_mind.jpg"
+  },
+  {
+    "id": 31,
+    "title": "Trio",
+    "image": "trio.jpg"
+  },
+  {
+    "id": 32,
+    "title": "Tucano",
+    "image": "tucano.jpg",
+    "rules": "<h3>Objetivo</h3>\nColete conjuntos de frutas para marcar pontos e terminar a partida com a maior pontuação.\n\nUse as cartas de Tucano de forma estratégica para:\n- proteger sua coleção;\n- roubar frutas dos adversários;\n- ou atrapalhar os outros jogadores.\n\n<h3>Preparação</h3>\n- Separe as 12 cartas de Tucano.\n- Embaralhe todas as cartas de frutas.\n- Divida em 2 montes.\n- Misture as cartas de Tucano em apenas um dos montes.\n- Coloque o outro monte por cima formando o baralho principal.\n\nMonte então 3 colunas de cartas:\n- coluna 1 com 1 carta;\n- coluna 2 com 2 cartas;\n- coluna 3 com 1 carta.\n\n<h3>Como jogar</h3>\nNa sua vez:\n- escolha uma coluna;\n- pegue TODAS as cartas dela;\n- coloque as cartas abertas na sua área.\n\n<h3>Cartas de Tucano</h3>\nAs cartas de Tucano possuem efeitos imediatos.\n\nApós usar:\n- descarte a carta.\n\n<h3>Efeitos dos Tucanos</h3>\n\n<strong>Presente</strong>\nDê uma de suas cartas abertas para outro jogador.\n\n<strong>Roubo</strong>\nPegue uma carta aberta de outro jogador.\n\n<strong>Proteção</strong>\nVire todas as suas frutas para baixo formando um único monte protegido.\n\n<h3>Pontuação das frutas</h3>\nCada fruta possui uma tabela própria de pontos.\n\nAlgumas frutas:\n- valem muito se coletadas em conjunto;\n- mas dão pontos negativos se tiver poucas.\n\n<h3>Carta Coringa</h3>\nExiste 1 carta arco-íris no jogo.\n\nNo final:\n- ela pode ser adicionada a qualquer conjunto de fruta.\n\n<h3>Vitória</h3>\nTodos somam os pontos das frutas coletadas.\n\nQuem tiver mais pontos vence a partida."
+  },
+  {
+    "id": 33,
+    "title": "Werewolves of Miller's Hollow",
+    "image": "werewolves_of_millers_hollow.jpg"
+  },
+  {
+    "id": 34,
+    "title": "Dutch Blitz",
+    "image": "dutch_blitz.jpg"
+  }
+]
