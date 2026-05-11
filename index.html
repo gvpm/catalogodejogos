@@ -745,31 +745,52 @@
 
         }
 
-        fetch('jogos.json')
+        fetch('./jogos.json')
             .then(response => response.json())
             .then(games => {
 
                 allGames = games;
-                const validGames = games.filter(g =>
-                    g.minPlayers > 0 &&
-                    g.maxPlayers > 0
-                );
+                const validGames = games.filter(g => {
 
-                globalMinPlayers =
-                    Math.min(...validGames.map(g => g.minPlayers));
+                    return (
+                        Number.isFinite(Number(g.minPlayers)) &&
+                        Number.isFinite(Number(g.maxPlayers)) &&
+                        Number(g.minPlayers) > 0 &&
+                        Number(g.maxPlayers) > 0
+                    );
 
-                globalMaxPlayers =
-                    Math.max(...validGames.map(g => g.maxPlayers));
+                });
+
+                if (validGames.length > 0) {
+
+                    globalMinPlayers = Math.min(
+                        ...validGames.map(g =>
+                            Number(g.minPlayers)
+                        )
+                    );
+
+                    globalMaxPlayers = Math.max(
+                        ...validGames.map(g =>
+                            Number(g.maxPlayers)
+                        )
+                    );
+
+                } else {
+
+                    globalMinPlayers = 1;
+                    globalMaxPlayers = 12;
+
+                }
 
                 currentPlayers = null;
+
                 playersRange.min = globalMinPlayers;
                 playersRange.max = globalMaxPlayers;
 
-                playersRange.value = currentPlayers;
+                playersRange.value = globalMinPlayers;
 
                 playersLabel.innerText =
                     '? jogadores';
-
                 renderGames();
 
             });
