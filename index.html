@@ -314,27 +314,7 @@
             box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
         }
 
-        .filters-panel {
-            position: absolute;
 
-            right: 190px;
-            bottom: 74px;
-
-            width: 260px;
-
-            background: #1b1b1b;
-
-            border-radius: 18px;
-
-            padding: 18px;
-
-            opacity: 0;
-            pointer-events: none;
-
-            transform: translateY(10px);
-
-            transition: .2s ease;
-        }
 
         .menu-panel {
             position: absolute;
@@ -398,11 +378,7 @@
             display: block;
         }
 
-        .filters-panel.active {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateY(0);
-        }
+
 
         .filters-title {
             font-size: 1rem;
@@ -449,6 +425,10 @@
 
             padding: 20px;
 
+        }
+
+        .filters-modal {
+            background: rgba(0, 0, 0, .55);
         }
 
         .dice-modal.active {
@@ -714,15 +694,6 @@
                 bottom: 96px !important;
             }
 
-            .filters-panel {
-
-                width: 240px !important;
-
-                right: 0 !important;
-
-                bottom: 180px !important;
-            }
-
             .menu-option {
 
                 padding: 20px !important;
@@ -983,7 +954,59 @@
         </div>
 
     </div>
-    <div class="dice-modal"  id="fingerSelectorModal">
+
+    <div class="dice-modal filters-modal" id="filtersModal">
+        <div class="dice-content" onclick="event.stopPropagation()">
+            <button class="close-button" id="filtersCloseButton">
+                ✕
+            </button>
+
+            <div class="dice-icon">
+                ⛃
+            </div>
+
+            <div class="filters-title" style="
+                text-align:center;
+                font-size:1.3rem;
+                margin-bottom:20px;
+            ">
+                Filtros
+            </div>
+
+            <div style="
+                background:#222;
+                border-radius:18px;
+                padding:20px;
+                margin-bottom:18px;
+            ">
+
+                <div style="
+                    text-align:center;
+                    color:#aaa;
+                    margin-bottom:12px;
+                ">
+                    Jogadores
+                </div>
+
+                <div class="range-values">
+                    <span id="playersLabel"></span>
+                </div>
+
+                <div class="range-group">
+                    <input type="range" id="playersRange">
+                </div>
+
+            </div>
+
+            <!--
+            NOVOS FILTROS FUTUROS
+            podem ser adicionados aqui
+        -->
+
+        </div>
+
+    </div>
+    <div class="dice-modal" id="fingerSelectorModal">
 
         <div class="dice-content">
 
@@ -1044,21 +1067,6 @@
 
         </div>
 
-        <div class="filters-panel" id="filtersPanel">
-
-            <div class="filters-title">
-                Jogadores
-            </div>
-
-            <div class="range-values">
-                <span id="playersLabel"></span>
-            </div>
-
-            <div class="range-group">
-                <input type="range" id="playersRange">
-            </div>
-
-        </div>
 
         <button class="menu-button" id="menuButton">
             ☰
@@ -1100,8 +1108,13 @@
         const menuButton =
             document.getElementById('menuButton');
 
-        const filtersPanel =
-            document.getElementById('filtersPanel');
+        const filtersModal =
+            document.getElementById('filtersModal');
+
+        const filtersCloseButton =
+            document.getElementById(
+                'filtersCloseButton'
+            );
 
         const playersRange =
             document.getElementById('playersRange');
@@ -1501,7 +1514,7 @@
 
             menuPanel.classList.toggle('active');
 
-            filtersPanel.classList.remove('active');
+            filtersModal.classList.remove('active');
 
         });
 
@@ -1509,21 +1522,59 @@
 
             e.stopPropagation();
 
-            filtersPanel.classList.toggle('active');
+            filtersModal.classList.add('active');
+
+            document.body.classList.add(
+                'modal-open'
+            );
 
         });
 
-        playersRange.addEventListener('input', () => {
+        function closeFiltersModal() {
 
-            currentPlayers =
-                Number(playersRange.value);
+            filtersModal.classList.remove(
+                'active'
+            );
 
-            playersLabel.innerText =
-                `${currentPlayers} jogadores`;
+            document.body.classList.remove(
+                'modal-open'
+            );
 
-            renderGames();
+        }
 
-        });
+        filtersCloseButton.addEventListener(
+            'click',
+            closeFiltersModal
+        );
+
+        filtersModal.addEventListener(
+            'click',
+            (e) => {
+
+                if (e.target === filtersModal) {
+
+                    closeFiltersModal();
+
+                }
+
+            }
+        );
+        playersRange.addEventListener(
+            'input',
+            (e) => {
+
+                e.stopPropagation();
+
+                currentPlayers =
+                    Number(playersRange.value);
+
+                playersLabel.innerText =
+                    `${currentPlayers} jogadores`;
+
+                renderGames();
+
+            }
+        );
 
         let activeTouches = new Map();
 
@@ -1939,7 +1990,7 @@
 
                 menuPanel.classList.remove('active');
 
-                filtersPanel.classList.remove('active');
+                filtersModal.classList.remove('active');
 
             }
 
