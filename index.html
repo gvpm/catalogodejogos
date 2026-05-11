@@ -1608,6 +1608,27 @@
                     randomId;
                 fingerSelectionLocked = true;
 
+                clearTimeout(resultTimeout);
+
+                resultTimeout = setTimeout(() => {
+
+                    cooldownStarted = false;
+
+                    fingerSelectionLocked = false;
+
+                    selectedFingerId = null;
+
+                    activeTouches.clear();
+
+                    fingerArea.innerHTML = '';
+
+                    fingerStatus.innerText =
+                        'Coloque os dedos.';
+
+                    resetFingerSelection();
+
+                }, 3000);
+
                 fingerLoading.classList.remove(
                     'active'
                 );
@@ -1759,10 +1780,7 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                if (
-                    fingerSelectionLocked &&
-                    cooldownStarted
-                ) {
+                if (fingerSelectionLocked) {
                     return;
                 }
 
@@ -1771,41 +1789,6 @@
                     activeTouches.delete(
                         touch.identifier
                     );
-
-                }
-
-                if (selectedFingerId) {
-
-                    cooldownStarted = true;
-
-                    fingerSelectionLocked = true;
-
-                    clearTimeout(resultTimeout);
-
-                    resultTimeout = setTimeout(() => {
-
-                        cooldownStarted = false;
-
-                        fingerSelectionLocked = false;
-
-                        selectedFingerId = null;
-
-                        activeTouches.clear();
-
-                        fingerArea.innerHTML = '';
-
-                        fingerStatus.innerText =
-                            'Coloque os dedos.';
-
-                        resetFingerSelection();
-
-                    }, 3000);
-
-                    return;
-
-                }
-
-                for (const touch of e.changedTouches) {
 
                     removeFingerPoint(
                         touch.identifier
@@ -1817,7 +1800,6 @@
 
             }
         );
-
         fingerSelectorButton.addEventListener(
             'click',
             (e) => {
