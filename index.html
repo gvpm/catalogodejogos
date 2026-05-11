@@ -1501,6 +1501,7 @@
 
         let selectedFingerId = null;
         let resultTimeout = null;
+        let fingerSelectionLocked = false;
 
         function resetFingerSelection() {
 
@@ -1525,6 +1526,9 @@
         }
 
         function updateFingerStatus() {
+            if (fingerSelectionLocked) {
+                return;
+            }
 
             const count =
                 activeTouches.size;
@@ -1592,6 +1596,7 @@
 
                 selectedFingerId =
                     randomId;
+                fingerSelectionLocked = true;
 
                 fingerLoading.classList.remove(
                     'active'
@@ -1745,24 +1750,19 @@
                         touch.identifier
                     );
 
-                    if (!selectedFingerId) {
-
-                        removeFingerPoint(
-                            touch.identifier
-                        );
-
-                    }
-
                 }
 
-                if (
-                    selectedFingerId &&
-                    activeTouches.size === 0
-                ) {
+                if (fingerSelectionLocked) {
 
                     clearTimeout(resultTimeout);
 
                     resultTimeout = setTimeout(() => {
+
+                        fingerSelectionLocked = false;
+
+                        selectedFingerId = null;
+
+                        activeTouches.clear();
 
                         fingerArea.innerHTML = '';
 
@@ -1774,6 +1774,14 @@
                     }, 5000);
 
                     return;
+
+                }
+
+                for (const touch of e.changedTouches) {
+
+                    removeFingerPoint(
+                        touch.identifier
+                    );
 
                 }
 
