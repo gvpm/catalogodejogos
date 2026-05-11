@@ -296,7 +296,9 @@
             border: none;
             border-radius: 50%;
 
-            background: #1f1f1f;
+            background: rgba(31, 31, 31, 0.849);
+
+            backdrop-filter: blur(3px);
 
             color: white;
 
@@ -488,6 +490,10 @@
 
         }
 
+        .timer-finished {
+            color: #ff4d6d;
+        }
+
         .dice-input-wrapper {
 
             display: flex;
@@ -564,6 +570,77 @@
             opacity: .7;
 
             pointer-events: none;
+        }
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .dice-spinner {
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+
+            border: 6px solid rgba(255, 255, 255, .15);
+
+            border-top-color: white;
+
+            margin: 0 auto 18px auto;
+
+            animation: spin .8s linear infinite;
+
+        }
+
+        .timer-inputs {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 18px;
+
+            margin-bottom: 24px;
+
+        }
+
+        .timer-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .timer-label {
+
+            color: #aaa;
+
+            font-size: .95rem;
+
+        }
+
+        .timer-buttons {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
         }
 
         @media (max-width:700px) {
@@ -719,6 +796,73 @@
         </div>
 
     </div>
+    <div class="dice-modal" id="timerModal">
+
+        <div class="dice-content">
+
+            <button class="close-button" id="timerCloseButton">
+                ✕
+            </button>
+
+            <div class="dice-icon">
+                ⏱
+            </div>
+
+            <div class="dice-result" id="timerDisplay">
+
+                01:30
+
+            </div>
+
+            <div class="timer-inputs">
+
+                <div class="timer-group">
+
+                    <div class="timer-label">
+                        Min
+                    </div>
+
+                    <input type="number" id="minutesInput" class="dice-input" min="0" max="59" value="1">
+
+                </div>
+
+                <div class="timer-group">
+
+                    <div class="timer-label">
+                        Seg
+                    </div>
+
+                    <input type="number" id="secondsInput" class="dice-input" min="0" max="59" value="30">
+
+                </div>
+
+            </div>
+
+            <div class="timer-buttons">
+
+                <button class="dice-roll-button" id="startTimerButton">
+
+                    Iniciar
+
+                </button>
+
+                <button class="dice-roll-button" id="pauseTimerButton">
+
+                    Pausar
+
+                </button>
+
+                <button class="dice-roll-button" id="stopTimerButton">
+
+                    Stop
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <div class="floating-menu">
 
@@ -733,6 +877,9 @@
 
             <button class="menu-option" id="diceButton">
                 🎲 Dado
+            </button>
+            <button class="menu-option" id="timerButton">
+                ⏱ Timer
             </button>
 
             <button class="menu-option clear-filters-button" id="clearFiltersButton">
@@ -825,6 +972,36 @@
 
         const catalogButton =
             document.getElementById('catalogButton');
+
+        const timerButton =
+            document.getElementById('timerButton');
+
+        const timerModal =
+            document.getElementById('timerModal');
+
+        const timerCloseButton =
+            document.getElementById('timerCloseButton');
+
+        const timerDisplay =
+            document.getElementById('timerDisplay');
+
+        const minutesInput =
+            document.getElementById('minutesInput');
+
+        const secondsInput =
+            document.getElementById('secondsInput');
+
+        const startTimerButton =
+            document.getElementById('startTimerButton');
+
+        const pauseTimerButton =
+            document.getElementById('pauseTimerButton');
+
+        const stopTimerButton =
+            document.getElementById('stopTimerButton');
+
+        const timerInputs =
+            document.querySelector('.timer-inputs');
         let allGames = [];
 
         let globalMinPlayers = 1;
@@ -1199,7 +1376,6 @@
             }
 
         });
-
         diceRollButton.addEventListener('click', () => {
 
             let max =
@@ -1213,6 +1389,9 @@
 
             }
 
+            diceResult.innerHTML =
+                '<div class="dice-spinner"></div>';
+
             diceRollButton.classList.add(
                 'dice-loading'
             );
@@ -1225,7 +1404,7 @@
                 const result =
                     Math.floor(Math.random() * max) + 1;
 
-                diceResult.innerText =
+                diceResult.innerHTML =
                     result;
 
                 diceRollButton.classList.remove(
@@ -1238,6 +1417,317 @@
             }, 1000);
 
         });
+
+        let timerInterval = null;
+
+        let totalSeconds = 90;
+
+        let timerRunning = false;
+
+        function updateTimerDisplay() {
+
+            const min =
+                String(Math.floor(totalSeconds / 60))
+                    .padStart(2, '0');
+
+            const sec =
+                String(totalSeconds % 60)
+                    .padStart(2, '0');
+
+            timerDisplay.innerText =
+                `${min}:${sec}`;
+
+        }
+
+        function syncInputs() {
+
+            minutesInput.value =
+                Math.floor(totalSeconds / 60);
+
+            secondsInput.value =
+                totalSeconds % 60;
+
+        }
+        function updateTimerButtons() {
+
+            if (timerRunning) {
+
+                startTimerButton.style.display =
+                    'none';
+
+                pauseTimerButton.style.display =
+                    'block';
+
+                stopTimerButton.style.display =
+                    'block';
+
+                pauseTimerButton.innerText =
+                    'Pausar';
+
+                timerInputs.style.display =
+                    'none';
+
+            } else {
+
+                timerInputs.style.display =
+                    'flex';
+
+                if (totalSeconds === (
+                    Number(minutesInput.value) * 60 +
+                    Number(secondsInput.value)
+                )) {
+
+                    startTimerButton.style.display =
+                        'block';
+
+                    pauseTimerButton.style.display =
+                        'none';
+
+                    stopTimerButton.style.display =
+                        'none';
+
+                } else {
+
+                    startTimerButton.style.display =
+                        'none';
+
+                    pauseTimerButton.style.display =
+                        'block';
+
+                    stopTimerButton.style.display =
+                        'block';
+
+                    pauseTimerButton.innerText =
+                        'Reiniciar';
+
+                }
+
+            }
+
+        }
+        function resetTimer() {
+            timerDisplay.classList.remove(
+                'timer-finished'
+            );
+
+            clearInterval(timerInterval);
+
+            timerRunning = false;
+
+            totalSeconds =
+                (
+                    Number(minutesInput.value) * 60
+                ) +
+                Number(secondsInput.value);
+
+            updateTimerDisplay();
+
+            updateTimerButtons();
+
+        }
+
+        timerButton.addEventListener('click', () => {
+
+            timerModal.classList.add('active');
+
+            document.body.classList.add('modal-open');
+
+        });
+
+        function closeTimerModal() {
+
+            timerModal.classList.remove('active');
+
+            document.body.classList.remove('modal-open');
+
+        }
+
+        timerCloseButton.addEventListener(
+            'click',
+            closeTimerModal
+        );
+
+        timerModal.addEventListener('click', (e) => {
+
+            if (e.target === timerModal) {
+
+                closeTimerModal();
+
+            }
+
+        });
+
+        minutesInput.addEventListener('input', () => {
+
+            if (minutesInput.value > 59) {
+                minutesInput.value = 59;
+            }
+
+            if (minutesInput.value < 0) {
+                minutesInput.value = 0;
+            }
+
+            resetTimer();
+
+        });
+
+        secondsInput.addEventListener('input', () => {
+
+            if (secondsInput.value > 59) {
+                secondsInput.value = 59;
+            }
+
+            if (secondsInput.value < 0) {
+                secondsInput.value = 0;
+            }
+
+            resetTimer();
+
+        });
+
+        startTimerButton.addEventListener('click', () => {
+            timerDisplay.classList.remove(
+                'timer-finished'
+            );
+
+            if (timerRunning) {
+                return;
+            }
+            if (totalSeconds <= 0) {
+
+                totalSeconds =
+                    (
+                        Number(minutesInput.value) * 60
+                    ) +
+                    Number(secondsInput.value);
+
+                updateTimerDisplay();
+
+            }
+
+            timerRunning = true;
+
+            updateTimerButtons();
+
+            timerInterval = setInterval(() => {
+
+                if (totalSeconds <= 0) {
+
+                    clearInterval(timerInterval);
+
+                    timerRunning = false;
+
+                    totalSeconds = 0;
+
+                    updateTimerDisplay();
+
+                    timerDisplay.classList.add(
+                        'timer-finished'
+                    );
+
+                    startTimerButton.style.display =
+                        'block';
+
+                    pauseTimerButton.style.display =
+                        'none';
+
+                    stopTimerButton.style.display =
+                        'none';
+
+                    timerInputs.style.display =
+                        'flex';
+
+                    return;
+
+                }
+
+                totalSeconds--;
+
+                updateTimerDisplay();
+
+            }, 1000);
+
+        });
+
+        pauseTimerButton.addEventListener('click', () => {
+
+            if (timerRunning) {
+
+                clearInterval(timerInterval);
+
+                timerRunning = false;
+
+                updateTimerButtons();
+
+            } else {
+
+                timerRunning = true;
+
+                updateTimerButtons();
+
+                timerInterval = setInterval(() => {
+
+                    if (totalSeconds <= 0) {
+
+                        clearInterval(timerInterval);
+
+                        timerRunning = false;
+
+                        totalSeconds = 0;
+
+                        updateTimerDisplay();
+
+                        timerDisplay.classList.add(
+                            'timer-finished'
+                        );
+
+                        startTimerButton.style.display =
+                            'block';
+
+                        pauseTimerButton.style.display =
+                            'none';
+
+                        stopTimerButton.style.display =
+                            'none';
+
+                        timerInputs.style.display =
+                            'flex';
+
+                        return;
+
+                    }
+
+                    totalSeconds--;
+
+                    updateTimerDisplay();
+
+                }, 1000);
+
+            }
+
+        });
+
+        stopTimerButton.addEventListener('click', () => {
+
+            clearInterval(timerInterval);
+
+            timerRunning = false;
+
+            totalSeconds =
+                (
+                    Number(minutesInput.value) * 60
+                ) +
+                Number(secondsInput.value);
+
+            updateTimerDisplay();
+
+            updateTimerButtons();
+
+        });
+
+        updateTimerDisplay();
+
+        updateTimerButtons();
     </script>
 
 
