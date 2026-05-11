@@ -419,73 +419,89 @@
             width: 100%;
         }
 
-        @media (max-width:500px) {
+        @media (max-width:700px) {
 
             body {
-                padding: 14px;
+                padding: 16px;
             }
 
             .games-container {
 
                 grid-template-columns:
-                    repeat(2, 44vw);
+                    repeat(2, 1fr) !important;
+
+                gap: 16px !important;
 
                 justify-content: center;
 
-                gap: 16px;
+            }
 
+            .game-card {
+                width: 100%;
             }
 
             .game-title {
-                font-size: 1.02rem;
+                font-size: 1rem;
+            }
+
+            .game-info {
+                padding: 14px;
             }
 
             .menu-button {
-                width: 72px;
-                height: 72px;
+                width: 74px !important;
+                height: 74px !important;
 
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
 
             .favorite-button {
-                width: 46px;
-                height: 46px;
+                width: 50px !important;
+                height: 50px !important;
 
-                font-size: 1.5rem;
+                font-size: 1.5rem !important;
             }
 
             .modal-favorite-button {
-                width: 56px;
-                height: 56px;
+                width: 60px !important;
+                height: 60px !important;
 
-                font-size: 1.7rem;
+                font-size: 1.8rem !important;
             }
 
             .close-button {
-                width: 56px;
-                height: 56px;
+                width: 60px !important;
+                height: 60px !important;
 
-                font-size: 1.7rem;
+                font-size: 1.8rem !important;
             }
 
             .menu-panel {
-                width: 220px;
+
+                width: 240px !important;
+
+                bottom: 88px !important;
             }
 
             .filters-panel {
-                width: 280px;
 
-                right: 230px;
+                width: 300px !important;
+
+                right: 250px !important;
+
+                bottom: 88px !important;
             }
 
             .menu-option {
-                padding: 18px;
 
-                font-size: 1.05rem;
+                padding: 20px !important;
+
+                font-size: 1.08rem !important;
             }
 
             .range-group input {
-                height: 34px;
+
+                height: 40px !important;
             }
 
         }
