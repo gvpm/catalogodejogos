@@ -23,7 +23,12 @@
 
         .games-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+            grid-template-columns:
+                repeat(3, minmax(0, 220px));
+
+            justify-content: center;
+
             gap: 20px;
         }
 
@@ -273,6 +278,147 @@
             font-size: .95rem;
         }
 
+        .floating-menu {
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 9999;
+        }
+
+        .menu-button {
+            width: 58px;
+            height: 58px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #1f1f1f;
+
+            color: white;
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+        }
+
+        .filters-panel {
+            position: absolute;
+
+            right: 190px;
+            bottom: 74px;
+
+            width: 260px;
+
+            background: #1b1b1b;
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transform: translateY(10px);
+
+            transition: .2s ease;
+        }
+
+        .menu-panel {
+            position: absolute;
+
+            right: 0;
+            bottom: 74px;
+
+            width: 180px;
+
+            background: #1b1b1b;
+
+            border-radius: 18px;
+
+            padding: 12px;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transform: translateY(10px);
+
+            transition: .2s ease;
+        }
+
+        .menu-panel.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .menu-option {
+            width: 100%;
+
+            border: none;
+
+            background: #262626;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-size: 1rem;
+
+            text-align: left;
+        }
+
+        .clear-filters-button {
+            margin-top: 10px;
+
+            background: #5a1d1d;
+
+            color: #ff8d8d;
+
+            display: none;
+        }
+
+        .clear-filters-button.active {
+            display: block;
+        }
+
+        .filters-panel.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .filters-title {
+            font-size: 1rem;
+            font-weight: bold;
+
+            margin-bottom: 14px;
+        }
+
+        .range-values {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 10px;
+
+            color: #aaa;
+        }
+
+        .range-group {
+            position: relative;
+        }
+
+        .range-group input {
+            width: 100%;
+        }
+
         @media (max-width:500px) {
 
             body {
@@ -280,7 +426,11 @@
             }
 
             .games-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, minmax(0, 220px));
+
+                justify-content: center;
+
                 gap: 14px;
             }
 
@@ -320,6 +470,44 @@
 
     </div>
 
+    <div class="floating-menu">
+
+        <div class="menu-panel" id="menuPanel">
+
+            <button class="menu-option" id="filtersButton">
+                ⛃ Filtros
+            </button>
+
+            <button class="menu-option clear-filters-button" id="clearFiltersButton">
+
+                🗑 Limpar filtros
+
+            </button>
+
+        </div>
+
+        <div class="filters-panel" id="filtersPanel">
+
+            <div class="filters-title">
+                Jogadores
+            </div>
+
+            <div class="range-values">
+                <span id="playersLabel"></span>
+            </div>
+
+            <div class="range-group">
+                <input type="range" id="playersRange">
+            </div>
+
+        </div>
+
+        <button class="menu-button" id="menuButton">
+            ☰
+        </button>
+
+    </div>
+
     <script>
 
         const container = document.getElementById('gamesContainer');
@@ -334,7 +522,38 @@
 
         const modalFavoriteButton =
             document.getElementById('modalFavoriteButton');
+
+        const menuButton =
+            document.getElementById('menuButton');
+
+        const filtersPanel =
+            document.getElementById('filtersPanel');
+
+        const playersRange =
+            document.getElementById('playersRange');
+
+        const playersLabel =
+            document.getElementById('playersLabel');
+
+        const closeButton =
+            document.getElementById('closeButton');
+
+        const menuPanel =
+            document.getElementById('menuPanel');
+
+        const filtersButton =
+            document.getElementById('filtersButton');
+
+
+        const clearFiltersButton =
+            document.getElementById('clearFiltersButton');
         let allGames = [];
+
+        let globalMinPlayers = 1;
+        let globalMaxPlayers = 12;
+
+        let currentPlayers = null;
+
 
         function getFavorites() {
 
@@ -374,6 +593,17 @@
             renderGames();
 
         }
+        function updateFiltersUI() {
+
+            const hasFilter =
+                currentPlayers !== null;
+
+            clearFiltersButton.classList.toggle(
+                'active',
+                hasFilter
+            );
+
+        }
 
         function renderGames() {
 
@@ -384,19 +614,39 @@
             const favoriteGames = [];
             const normalGames = [];
 
-            allGames.forEach(game => {
+            allGames
+                .filter(game => {
 
-                if (favorites.includes(game.title)) {
+                    if (
+                        game.minPlayers === 0 &&
+                        game.maxPlayers === 0
+                    ) {
+                        return true;
+                    }
 
-                    favoriteGames.push(game);
+                    if (currentPlayers === null) {
+                        return true;
+                    }
 
-                } else {
+                    return (
+                        currentPlayers >= game.minPlayers &&
+                        currentPlayers <= game.maxPlayers
+                    );
 
-                    normalGames.push(game);
+                })
+                .forEach(game => {
 
-                }
+                    if (favorites.includes(game.title)) {
 
-            });
+                        favoriteGames.push(game);
+
+                    } else {
+
+                        normalGames.push(game);
+
+                    }
+
+                });
 
             favoriteGames.sort((a, b) =>
                 favorites.indexOf(a.title) - favorites.indexOf(b.title)
@@ -490,6 +740,8 @@
                 container.appendChild(card);
 
             });
+            updateFiltersUI();
+
 
         }
 
@@ -498,6 +750,25 @@
             .then(games => {
 
                 allGames = games;
+                const validGames = games.filter(g =>
+                    g.minPlayers > 0 &&
+                    g.maxPlayers > 0
+                );
+
+                globalMinPlayers =
+                    Math.min(...validGames.map(g => g.minPlayers));
+
+                globalMaxPlayers =
+                    Math.max(...validGames.map(g => g.maxPlayers));
+
+                currentPlayers = null;
+                playersRange.min = globalMinPlayers;
+                playersRange.max = globalMaxPlayers;
+
+                playersRange.value = currentPlayers;
+
+                playersLabel.innerText =
+                    '? jogadores';
 
                 renderGames();
 
@@ -533,7 +804,66 @@
 
         });
 
+        menuButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            menuPanel.classList.toggle('active');
+
+            filtersPanel.classList.remove('active');
+
+        });
+
+        filtersButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            filtersPanel.classList.toggle('active');
+
+        });
+
+        playersRange.addEventListener('input', () => {
+
+            currentPlayers =
+                Number(playersRange.value);
+
+            playersLabel.innerText =
+                `${currentPlayers} jogadores`;
+
+            renderGames();
+
+        });
+        document.addEventListener('click', (e) => {
+
+            const clickedInsideMenu =
+                e.target.closest('.floating-menu');
+
+            if (!clickedInsideMenu) {
+
+                menuPanel.classList.remove('active');
+
+                filtersPanel.classList.remove('active');
+
+            }
+
+        });
+
+        clearFiltersButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            currentPlayers = null;
+            playersRange.value = currentPlayers;
+
+            playersLabel.innerText =
+                '? jogadores';
+
+            renderGames();
+
+        });
     </script>
+
+
 
 </body>
 
