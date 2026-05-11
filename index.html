@@ -421,6 +421,151 @@
             width: 100%;
         }
 
+        .dice-modal {
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, .92);
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transition: .2s ease;
+
+            padding: 20px;
+
+        }
+
+        .dice-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .dice-content {
+
+            position: relative;
+
+            width: 100%;
+            max-width: 520px;
+
+            background: #1b1b1b;
+
+            border-radius: 24px;
+
+            padding: 32px 24px;
+
+            animation: zoom .2s ease;
+
+        }
+
+        .dice-icon {
+
+            font-size: 4rem;
+
+            text-align: center;
+
+            margin-bottom: 12px;
+
+        }
+
+        .dice-result {
+
+            text-align: center;
+
+            font-size: 4rem;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+        }
+
+        .dice-input-wrapper {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 24px;
+
+        }
+
+        .dice-label {
+
+            font-size: 2rem;
+
+            font-weight: bold;
+
+            color: #aaa;
+
+        }
+
+        .dice-input {
+
+            width: 120px;
+
+            background: #262626;
+
+            border: none;
+
+            border-radius: 16px;
+
+            padding: 16px;
+
+            text-align: center;
+
+            color: white;
+
+            font-size: 2rem;
+
+            outline: none;
+
+        }
+
+        .dice-roll-button {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 18px;
+
+            background: #2f2f2f;
+
+            color: white;
+
+            padding: 18px;
+
+            font-size: 1.1rem;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+
+        }
+
+        .dice-roll-button:hover {
+            background: #3a3a3a;
+        }
+
+        .dice-loading {
+
+            opacity: .7;
+
+            pointer-events: none;
+        }
+
         @media (max-width:700px) {
 
             body {
@@ -539,13 +684,55 @@
         </div>
 
     </div>
+    <div class="dice-modal" id="diceModal">
+
+        <div class="dice-content">
+
+            <button class="close-button" id="diceCloseButton">
+                ✕
+            </button>
+
+            <div class="dice-icon">
+                🎲
+            </div>
+
+            <div class="dice-result" id="diceResult">
+                ?
+            </div>
+
+            <div class="dice-input-wrapper">
+
+                <div class="dice-label">
+                    D
+                </div>
+
+                <input type="number" min="2" value="6" id="diceInput" class="dice-input">
+
+            </div>
+
+            <button class="dice-roll-button" id="diceRollButton">
+
+                Lançar Dado!
+
+            </button>
+
+        </div>
+
+    </div>
 
     <div class="floating-menu">
 
         <div class="menu-panel" id="menuPanel">
+            <button class="menu-option" id="catalogButton">
+                🏠 Catálogo
+            </button>
 
             <button class="menu-option" id="filtersButton">
                 ⛃ Filtros
+            </button>
+
+            <button class="menu-option" id="diceButton">
+                🎲 Dado
             </button>
 
             <button class="menu-option clear-filters-button" id="clearFiltersButton">
@@ -617,6 +804,27 @@
 
         const clearFiltersButton =
             document.getElementById('clearFiltersButton');
+
+        const diceButton =
+            document.getElementById('diceButton');
+
+        const diceModal =
+            document.getElementById('diceModal');
+
+        const diceCloseButton =
+            document.getElementById('diceCloseButton');
+
+        const diceRollButton =
+            document.getElementById('diceRollButton');
+
+        const diceInput =
+            document.getElementById('diceInput');
+
+        const diceResult =
+            document.getElementById('diceResult');
+
+        const catalogButton =
+            document.getElementById('catalogButton');
         let allGames = [];
 
         let globalMinPlayers = 1;
@@ -950,6 +1158,84 @@
                 '? jogadores';
 
             renderGames();
+
+        });
+
+        catalogButton.addEventListener('click', () => {
+
+            location.reload();
+
+        });
+
+        diceButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            diceModal.classList.add('active');
+
+            document.body.classList.add('modal-open');
+
+        });
+
+        function closeDiceModal() {
+
+            diceModal.classList.remove('active');
+
+            document.body.classList.remove('modal-open');
+
+        }
+
+        diceCloseButton.addEventListener(
+            'click',
+            closeDiceModal
+        );
+
+        diceModal.addEventListener('click', (e) => {
+
+            if (e.target === diceModal) {
+
+                closeDiceModal();
+
+            }
+
+        });
+
+        diceRollButton.addEventListener('click', () => {
+
+            let max =
+                Number(diceInput.value);
+
+            if (!max || max < 2) {
+
+                max = 6;
+
+                diceInput.value = 6;
+
+            }
+
+            diceRollButton.classList.add(
+                'dice-loading'
+            );
+
+            diceRollButton.innerText =
+                'Rolando...';
+
+            setTimeout(() => {
+
+                const result =
+                    Math.floor(Math.random() * max) + 1;
+
+                diceResult.innerText =
+                    result;
+
+                diceRollButton.classList.remove(
+                    'dice-loading'
+                );
+
+                diceRollButton.innerText =
+                    'Lançar Dado!';
+
+            }, 1000);
 
         });
     </script>
