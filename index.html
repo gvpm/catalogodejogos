@@ -22,14 +22,16 @@
         }
 
         .games-container {
+
             display: grid;
 
             grid-template-columns:
-                repeat(3, minmax(0, 220px));
+                repeat(3, 220px);
 
             justify-content: center;
 
             gap: 20px;
+
         }
 
         .game-card {
@@ -428,11 +430,11 @@
             .games-container {
 
                 grid-template-columns:
-                    repeat(2, 1fr) !important;
+                    repeat(2, calc(50vw - 24px)) !important;
 
-                gap: 16px !important;
+                gap: 14px !important;
 
-                justify-content: center;
+                justify-content: center !important;
 
             }
 
@@ -449,29 +451,29 @@
             }
 
             .menu-button {
-                width: 74px !important;
-                height: 74px !important;
+                width: 86px !important;
+                height: 86px !important;
 
                 font-size: 2rem !important;
             }
 
             .favorite-button {
-                width: 50px !important;
-                height: 50px !important;
+                width: 56px !important;
+                height: 56px !important;
 
                 font-size: 1.5rem !important;
             }
 
             .modal-favorite-button {
-                width: 60px !important;
-                height: 60px !important;
+                width: 68px !important;
+                height: 68px !important;
 
                 font-size: 1.8rem !important;
             }
 
             .close-button {
-                width: 60px !important;
-                height: 60px !important;
+                width: 68px !important;
+                height: 68px !important;
 
                 font-size: 1.8rem !important;
             }
