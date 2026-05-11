@@ -761,10 +761,14 @@
             overflow: hidden;
 
             touch-action: none;
-            user-select: none;
-            -webkit-user-select: none;
+
             -webkit-touch-callout: none;
 
+            -webkit-user-select: none;
+            user-select: none;
+
+            -webkit-tap-highlight-color:
+                transparent;
         }
 
         .finger-point {
@@ -1455,6 +1459,13 @@
         });
 
         menuButton.addEventListener('click', (e) => {
+            if (
+                fingerSelectorModal.classList.contains(
+                    'active'
+                )
+            ) {
+                return;
+            }
 
             e.stopPropagation();
 
@@ -1734,9 +1745,35 @@
                         touch.identifier
                     );
 
-                    removeFingerPoint(
-                        touch.identifier
-                    );
+                    if (!selectedFingerId) {
+
+                        removeFingerPoint(
+                            touch.identifier
+                        );
+
+                    }
+
+                }
+
+                if (
+                    selectedFingerId &&
+                    activeTouches.size === 0
+                ) {
+
+                    clearTimeout(resultTimeout);
+
+                    resultTimeout = setTimeout(() => {
+
+                        fingerArea.innerHTML = '';
+
+                        fingerStatus.innerText =
+                            'Coloque os dedos.';
+
+                        resetFingerSelection();
+
+                    }, 5000);
+
+                    return;
 
                 }
 
@@ -1813,6 +1850,13 @@
             }
         );
         document.addEventListener('click', (e) => {
+            if (
+                fingerSelectorModal.classList.contains(
+                    'active'
+                )
+            ) {
+                return;
+            }
 
             const clickedInsideMenu =
                 e.target.closest('.floating-menu');
@@ -2231,6 +2275,14 @@
         updateTimerDisplay();
 
         updateTimerButtons();
+        fingerArea.addEventListener(
+            'contextmenu',
+            (e) => {
+
+                e.preventDefault();
+
+            }
+        );
     </script>
 
 
