@@ -738,7 +738,7 @@
 
             font-size: 1.15rem;
 
-            margin-top: 10px;
+            margin-top: 20px;
 
             color: white;
 
@@ -1745,17 +1745,15 @@
         fingerArea.addEventListener(
             'touchend',
             (e) => {
-                if (fingerSelectionLocked) {
 
-                    e.preventDefault();
-                    e.stopPropagation();
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (fingerSelectionLocked) {
 
                     return;
 
                 }
-
-                e.preventDefault();
-                e.stopPropagation();
 
                 for (const touch of e.changedTouches) {
 
@@ -1765,7 +1763,9 @@
 
                 }
 
-                if (fingerSelectionLocked) {
+                if (selectedFingerId) {
+
+                    fingerSelectionLocked = true;
 
                     clearTimeout(resultTimeout);
 
@@ -1784,7 +1784,7 @@
 
                         resetFingerSelection();
 
-                    }, 5000);
+                    }, 3000);
 
                     return;
 
@@ -1809,6 +1809,22 @@
 
                 e.stopPropagation();
 
+                clearTimeout(resultTimeout);
+                clearTimeout(selectorTimeout);
+
+                fingerSelectionLocked = false;
+
+                selectedFingerId = null;
+
+                activeTouches.clear();
+
+                fingerArea.innerHTML = '';
+
+                resetFingerSelection();
+
+                fingerStatus.innerText =
+                    'Coloque os dedos.';
+
                 fingerSelectorModal.classList.add(
                     'active'
                 );
@@ -1830,13 +1846,12 @@
 
         function closeFingerSelector() {
 
-            fingerSelectorModal.classList.remove(
-                'active'
-            );
+            clearTimeout(resultTimeout);
+            clearTimeout(selectorTimeout);
 
-            document.body.classList.remove(
-                'modal-open'
-            );
+            fingerSelectionLocked = false;
+
+            selectedFingerId = null;
 
             activeTouches.clear();
 
@@ -1846,6 +1861,14 @@
 
             fingerStatus.innerText =
                 'Coloque os dedos.';
+
+            fingerSelectorModal.classList.remove(
+                'active'
+            );
+
+            document.body.classList.remove(
+                'modal-open'
+            );
 
         }
 
