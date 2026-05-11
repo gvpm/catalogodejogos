@@ -1567,7 +1567,16 @@
                 return;
 
             }
+            if (count === 1) {
 
+                fingerStatus.innerText =
+                    'Adicione mais um dedo.';
+
+                resetFingerSelection();
+
+                return;
+
+            }
             fingerStatus.innerText =
                 `${count} dedo${count > 1 ? 's' : ''} reconhecido${count > 1 ? 's' : ''}`;
 
@@ -1866,7 +1875,7 @@
             fingerArea.innerHTML = '';
 
             resetFingerSelection();
-            
+
 
             fingerStatus.innerText =
                 'Coloque os dedos.';
