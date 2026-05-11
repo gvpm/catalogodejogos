@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta http-equiv="Expires" content="0">
 
     <title>Catálogo de Jogos</title>
 
@@ -1062,6 +1067,22 @@
     </div>
 
     <script>
+        const CACHE_BUSTER = Date.now();
+        if ('serviceWorker' in navigator) {
+
+            navigator.serviceWorker
+                .getRegistrations()
+                .then(registrations => {
+
+                    registrations.forEach(reg => {
+
+                        reg.unregister();
+
+                    });
+
+                });
+
+        }
 
         const container = document.getElementById('gamesContainer');
         const gamesCount =
@@ -1315,7 +1336,10 @@
                         ♥
                     </button>
 
-                    <img src="images/${game.image}" class="game-image">
+                    <img
+    src="images/${game.image}?v=${CACHE_BUSTER}"
+    class="game-image"
+>
 
                     <div class="game-info">
 
@@ -1337,7 +1361,8 @@
 
                 card.addEventListener('click', () => {
 
-                    modalImage.src = `images/${game.image}`;
+                    modalImage.src =
+                        `images/${game.image}?v=${CACHE_BUSTER}`;
 
                     modalTitle.innerText = game.title;
 
@@ -1378,7 +1403,12 @@
 
         }
 
-        fetch('./jogos.json')
+        fetch(
+            `./jogos.json?v=${CACHE_BUSTER}`,
+            {
+                cache: 'no-store'
+            }
+        )
             .then(response => response.json())
             .then(games => {
 
