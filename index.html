@@ -1502,6 +1502,7 @@
         let selectedFingerId = null;
         let resultTimeout = null;
         let fingerSelectionLocked = false;
+        let cooldownStarted = false;
 
         function resetFingerSelection() {
 
@@ -1749,10 +1750,11 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                if (fingerSelectionLocked) {
-
+                if (
+                    fingerSelectionLocked &&
+                    cooldownStarted
+                ) {
                     return;
-
                 }
 
                 for (const touch of e.changedTouches) {
@@ -1765,11 +1767,15 @@
 
                 if (selectedFingerId) {
 
+                    cooldownStarted = true;
+
                     fingerSelectionLocked = true;
 
                     clearTimeout(resultTimeout);
 
                     resultTimeout = setTimeout(() => {
+
+                        cooldownStarted = false;
 
                         fingerSelectionLocked = false;
 
@@ -1817,6 +1823,7 @@
                 selectedFingerId = null;
 
                 activeTouches.clear();
+                cooldownStarted = false;
 
                 fingerArea.innerHTML = '';
 
@@ -1852,12 +1859,14 @@
             fingerSelectionLocked = false;
 
             selectedFingerId = null;
+            cooldownStarted = false;
 
             activeTouches.clear();
 
             fingerArea.innerHTML = '';
 
             resetFingerSelection();
+            
 
             fingerStatus.innerText =
                 'Coloque os dedos.';
