@@ -761,6 +761,10 @@
             overflow: hidden;
 
             touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+
         }
 
         .finger-point {
@@ -1570,6 +1574,8 @@
                     selectedElement.classList.add(
                         'selected'
                     );
+                    fingerStatus.innerText =
+                        'Dedo selecionado!';
 
                 }
 
@@ -1628,6 +1634,7 @@
             (e) => {
 
                 e.preventDefault();
+                e.stopPropagation();
 
                 for (const touch of e.changedTouches) {
 
@@ -1663,6 +1670,7 @@
             (e) => {
 
                 e.preventDefault();
+                e.stopPropagation();
 
                 for (const touch of e.changedTouches) {
 
@@ -1696,6 +1704,7 @@
             (e) => {
 
                 e.preventDefault();
+                e.stopPropagation();
 
                 for (const touch of e.changedTouches) {
 
@@ -1716,7 +1725,9 @@
 
         fingerSelectorButton.addEventListener(
             'click',
-            () => {
+            (e) => {
+
+                e.stopPropagation();
 
                 fingerSelectorModal.classList.add(
                     'active'
@@ -1726,6 +1737,14 @@
                     'active'
                 );
 
+                filtersPanel.classList.remove(
+                    'active'
+                );
+
+                document.body.classList.add(
+                    'modal-open'
+                );
+
             }
         );
 
@@ -1733,6 +1752,10 @@
 
             fingerSelectorModal.classList.remove(
                 'active'
+            );
+
+            document.body.classList.remove(
+                'modal-open'
             );
 
             activeTouches.clear();
@@ -1759,9 +1782,11 @@
                     e.target === fingerSelectorModal
                 ) {
 
-                    closeFingerSelector();
+                    return;
 
                 }
+
+                e.stopPropagation();
 
             }
         );
