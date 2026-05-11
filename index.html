@@ -1489,6 +1489,7 @@
         let selectorTimeout = null;
 
         let selectedFingerId = null;
+        let resultTimeout = null;
 
         function resetFingerSelection() {
 
@@ -1518,6 +1519,29 @@
                 activeTouches.size;
 
             if (count <= 0) {
+
+                if (selectedFingerId) {
+
+                    clearTimeout(resultTimeout);
+
+                    resultTimeout = setTimeout(() => {
+
+                        if (activeTouches.size === 0) {
+
+                            fingerArea.innerHTML = '';
+
+                            fingerStatus.innerText =
+                                'Coloque os dedos.';
+
+                            resetFingerSelection();
+
+                        }
+
+                    }, 5000);
+
+                    return;
+
+                }
 
                 fingerStatus.innerText =
                     'Coloque os dedos.';
