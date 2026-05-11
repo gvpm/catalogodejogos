@@ -731,6 +731,113 @@
             }
 
         }
+
+        .finger-status {
+
+            text-align: center;
+
+            font-size: 1.15rem;
+
+            margin-top: 10px;
+
+            color: white;
+
+            min-height: 32px;
+        }
+
+        .finger-area {
+
+            position: relative;
+
+            width: 100%;
+            height: 340px;
+
+            margin-top: 20px;
+
+            border-radius: 18px;
+
+            background: #202020;
+
+            overflow: hidden;
+
+            touch-action: none;
+        }
+
+        .finger-point {
+
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, .08);
+
+            border: 2px solid rgba(255, 255, 255, .22);
+
+            transform: translate(-50%, -50%);
+
+            transition: .15s ease;
+        }
+
+        .finger-point.selected {
+
+            background: #ff4d6d;
+
+            animation: fingerBlink .8s infinite;
+        }
+
+        .finger-loading {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 2rem;
+
+            opacity: 0;
+
+            transition: .2s ease;
+        }
+
+        .finger-loading.active {
+
+            opacity: 1;
+
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes fingerBlink {
+
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+                opacity: .55;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
     </style>
 </head>
 
@@ -863,7 +970,40 @@
         </div>
 
     </div>
+    <div class="modal" id="fingerSelectorModal">
 
+        <div class="modal-content timer-content">
+
+            <button class="close-button" id="closeFingerSelectorButton">
+                ✕
+            </button>
+
+            <div class="timer-body">
+
+                <div class="timer-icon">
+                    ☝️
+                </div>
+
+                <div class="finger-status" id="fingerStatus">
+
+                    Coloque os dedos.
+
+                </div>
+
+                <div class="finger-area" id="fingerArea">
+                </div>
+
+                <div class="finger-loading" id="fingerLoading">
+
+                    ⟳
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
     <div class="floating-menu">
 
         <div class="menu-panel" id="menuPanel">
@@ -877,6 +1017,9 @@
 
             <button class="menu-option" id="diceButton">
                 🎲 Dado
+            </button>
+            <button class="menu-option" id="fingerSelectorButton">
+                ☝️ Seletor de dedo
             </button>
             <button class="menu-option" id="timerButton">
                 ⏱ Timer
@@ -954,6 +1097,35 @@
 
         const diceButton =
             document.getElementById('diceButton');
+        const fingerSelectorButton =
+            document.getElementById(
+                'fingerSelectorButton'
+            );
+
+        const fingerSelectorModal =
+            document.getElementById(
+                'fingerSelectorModal'
+            );
+
+        const closeFingerSelectorButton =
+            document.getElementById(
+                'closeFingerSelectorButton'
+            );
+
+        const fingerArea =
+            document.getElementById(
+                'fingerArea'
+            );
+
+        const fingerStatus =
+            document.getElementById(
+                'fingerStatus'
+            );
+
+        const fingerLoading =
+            document.getElementById(
+                'fingerLoading'
+            );
 
         const diceModal =
             document.getElementById('diceModal');
@@ -1309,6 +1481,290 @@
             renderGames();
 
         });
+
+        let activeTouches = new Map();
+
+        let selectorTimeout = null;
+
+        let selectedFingerId = null;
+
+        function resetFingerSelection() {
+
+            clearTimeout(selectorTimeout);
+
+            selectedFingerId = null;
+
+            fingerLoading.classList.remove(
+                'active'
+            );
+
+            document
+                .querySelectorAll('.finger-point')
+                .forEach(point => {
+
+                    point.classList.remove(
+                        'selected'
+                    );
+
+                });
+
+        }
+
+        function updateFingerStatus() {
+
+            const count =
+                activeTouches.size;
+
+            if (count <= 0) {
+
+                fingerStatus.innerText =
+                    'Coloque os dedos.';
+
+                resetFingerSelection();
+
+                return;
+
+            }
+
+            fingerStatus.innerText =
+                `${count} dedo${count > 1 ? 's' : ''} reconhecido${count > 1 ? 's' : ''}`;
+
+            resetFingerSelection();
+
+            fingerLoading.classList.add(
+                'active'
+            );
+
+            selectorTimeout = setTimeout(() => {
+
+                const keys =
+                    Array.from(
+                        activeTouches.keys()
+                    );
+
+                if (keys.length <= 0) {
+                    return;
+                }
+
+                const randomId =
+                    keys[
+                    Math.floor(
+                        Math.random() * keys.length
+                    )
+                    ];
+
+                selectedFingerId =
+                    randomId;
+
+                fingerLoading.classList.remove(
+                    'active'
+                );
+
+                const selectedElement =
+                    document.querySelector(
+                        `[data-touch-id="${randomId}"]`
+                    );
+
+                if (selectedElement) {
+
+                    selectedElement.classList.add(
+                        'selected'
+                    );
+
+                }
+
+            }, 3000);
+
+        }
+
+        function createFingerPoint(id, x, y) {
+
+            const point =
+                document.createElement('div');
+
+            point.className =
+                'finger-point';
+
+            point.dataset.touchId = id;
+
+            point.style.left = `${x}px`;
+            point.style.top = `${y}px`;
+
+            fingerArea.appendChild(point);
+
+        }
+
+        function moveFingerPoint(id, x, y) {
+
+            const point =
+                document.querySelector(
+                    `[data-touch-id="${id}"]`
+                );
+
+            if (!point) {
+                return;
+            }
+
+            point.style.left = `${x}px`;
+            point.style.top = `${y}px`;
+
+        }
+
+        function removeFingerPoint(id) {
+
+            const point =
+                document.querySelector(
+                    `[data-touch-id="${id}"]`
+                );
+
+            if (point) {
+                point.remove();
+            }
+
+        }
+
+        fingerArea.addEventListener(
+            'touchstart',
+            (e) => {
+
+                e.preventDefault();
+
+                for (const touch of e.changedTouches) {
+
+                    const rect =
+                        fingerArea.getBoundingClientRect();
+
+                    const x =
+                        touch.clientX - rect.left;
+
+                    const y =
+                        touch.clientY - rect.top;
+
+                    activeTouches.set(
+                        touch.identifier,
+                        { x, y }
+                    );
+
+                    createFingerPoint(
+                        touch.identifier,
+                        x,
+                        y
+                    );
+
+                }
+
+                updateFingerStatus();
+
+            }
+        );
+
+        fingerArea.addEventListener(
+            'touchmove',
+            (e) => {
+
+                e.preventDefault();
+
+                for (const touch of e.changedTouches) {
+
+                    const rect =
+                        fingerArea.getBoundingClientRect();
+
+                    const x =
+                        touch.clientX - rect.left;
+
+                    const y =
+                        touch.clientY - rect.top;
+
+                    activeTouches.set(
+                        touch.identifier,
+                        { x, y }
+                    );
+
+                    moveFingerPoint(
+                        touch.identifier,
+                        x,
+                        y
+                    );
+
+                }
+
+            }
+        );
+
+        fingerArea.addEventListener(
+            'touchend',
+            (e) => {
+
+                e.preventDefault();
+
+                for (const touch of e.changedTouches) {
+
+                    activeTouches.delete(
+                        touch.identifier
+                    );
+
+                    removeFingerPoint(
+                        touch.identifier
+                    );
+
+                }
+
+                updateFingerStatus();
+
+            }
+        );
+
+        fingerSelectorButton.addEventListener(
+            'click',
+            () => {
+
+                fingerSelectorModal.classList.add(
+                    'active'
+                );
+
+                menuPanel.classList.remove(
+                    'active'
+                );
+
+            }
+        );
+
+        function closeFingerSelector() {
+
+            fingerSelectorModal.classList.remove(
+                'active'
+            );
+
+            activeTouches.clear();
+
+            fingerArea.innerHTML = '';
+
+            resetFingerSelection();
+
+            fingerStatus.innerText =
+                'Coloque os dedos.';
+
+        }
+
+        closeFingerSelectorButton.addEventListener(
+            'click',
+            closeFingerSelector
+        );
+
+        fingerSelectorModal.addEventListener(
+            'click',
+            (e) => {
+
+                if (
+                    e.target === fingerSelectorModal
+                ) {
+
+                    closeFingerSelector();
+
+                }
+
+            }
+        );
         document.addEventListener('click', (e) => {
 
             const clickedInsideMenu =
