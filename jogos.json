@@ -243,5 +243,33 @@
     "image": "dutch_blitz.jpg",
     "minPlayers": 2,
     "maxPlayers": 4
-  }
+  },
+  {
+  "id": 35,
+  "title": "Taco Cat Goat Cheese Pizza",
+  "image": "taco_cat_goat_cheese_pizza.jpg",
+  "minPlayers": 2,
+  "maxPlayers": 8
+},
+{
+  "id": 36,
+  "title": "Splurt",
+  "image": "splurt.jpg",
+  "minPlayers": 2,
+  "maxPlayers": 8
+},
+{
+  "id": 37,
+  "title": "5211: Azul Special Edition",
+  "image": "5211.jpg",
+  "minPlayers": 2,
+  "maxPlayers": 5
+},
+{
+  "id": 38,
+  "title": "Cluedo Suspect",
+  "image": "cluedo_suspect.jpg",
+  "minPlayers": 3,
+  "maxPlayers": 4
+}
 ]
