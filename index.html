@@ -103,8 +103,7 @@
             position: absolute;
 
             top: 10px;
-            right: 10px;
-
+            left: 10px;
             width: 38px;
             height: 38px;
 
@@ -138,7 +137,7 @@
             position: absolute;
 
             top: 14px;
-            right: 14px;
+            left: 14px;
 
             width: 46px;
             height: 46px;
@@ -166,9 +165,10 @@
         }
 
         .modal-rulebook-button {
+
             position: absolute;
 
-            top: 70px;
+            bottom: 14px;
             right: 14px;
 
             width: 46px;
@@ -191,7 +191,7 @@
 
             z-index: 30;
 
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(3px);
 
             transition: .2s ease;
         }
@@ -241,8 +241,7 @@
 
             border-radius: 20px;
 
-            overflow: hidden;
-
+            overflow: visible;
             animation: zoom .2s ease;
         }
 
@@ -250,7 +249,7 @@
             position: absolute;
 
             top: 14px;
-            left: 14px;
+            right: 14px;
 
             width: 42px;
             height: 42px;
@@ -288,6 +287,12 @@
             object-fit: contain;
 
             background: #222;
+        }
+
+        .modal-image-wrapper {
+
+            position: relative;
+
         }
 
         .modal-body {
@@ -883,7 +888,7 @@
 
         .finger-point.selected {
 
-            background: #ff4d6d;
+            background: #4dffac;
 
             animation: fingerBlink .8s infinite;
         }
@@ -957,11 +962,17 @@
 
             <button class="modal-favorite-button" id="modalFavoriteButton">
                 <i class="fa-solid fa-heart"></i> </button>
-            <button class="modal-rulebook-button" id="modalRulebookButton">
-                <i class="fas fa-circle-info"></i>
-            </button>
-            <img id="modalImage" class="modal-image">
 
+            </button>
+            <div class="modal-image-wrapper">
+
+                <img id="modalImage" class="modal-image">
+
+                <button class="modal-rulebook-button" id="modalRulebookButton">
+                    <i class="fas fa-circle-info"></i>
+                </button>
+
+            </div>
             <div class="modal-body">
 
                 <div id="modalTitle" class="modal-title"></div>
