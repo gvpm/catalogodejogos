@@ -139,6 +139,41 @@
             transition: .2s ease;
         }
 
+        .modal-rulebook-button {
+            position: absolute;
+
+            top: 70px;
+            right: 14px;
+
+            width: 46px;
+            height: 46px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, .42);
+
+            color: white;
+
+            font-size: 1.3rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 30;
+
+            backdrop-filter: blur(1px);
+
+            transition: .2s ease;
+        }
+
+        .modal-rulebook-button:hover {
+            background: rgba(0, 0, 0, .95);
+        }
+
         .modal-favorite-button.active {
             color: #ff4d6d;
         }
@@ -839,6 +874,9 @@
             <button class="modal-favorite-button" id="modalFavoriteButton">
                 ♥
             </button>
+            <button class="modal-rulebook-button" id="modalRulebookButton">
+                ⬇
+            </button>
             <img id="modalImage" class="modal-image">
 
             <div class="modal-body">
@@ -1104,6 +1142,8 @@
 
         const modalFavoriteButton =
             document.getElementById('modalFavoriteButton');
+        const modalRulebookButton =
+            document.getElementById('modalRulebookButton');
 
         const menuButton =
             document.getElementById('menuButton');
@@ -1380,6 +1420,26 @@
                     modalTitle.innerText = game.title;
 
                     modalRules.innerHTML = game.rules ?? "";
+                    if (game.rulebook) {
+
+                        modalRulebookButton.style.display = 'flex';
+
+                        modalRulebookButton.onclick = (e) => {
+
+                            e.stopPropagation();
+
+                            window.open(
+                                `rulebooks/${game.rulebook}?v=${CACHE_BUSTER}`,
+                                '_blank'
+                            );
+
+                        };
+
+                    } else {
+
+                        modalRulebookButton.style.display = 'none';
+
+                    }
 
                     const favorites = getFavorites();
 
