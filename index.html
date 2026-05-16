@@ -28,12 +28,17 @@
         });
     </script>
     <!-- Fim Google Analytics -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        button i {
+            pointer-events: none;
         }
 
         body {
@@ -122,7 +127,7 @@
         }
 
         .favorite-button.active {
-            color: #ff4d6d;
+            color: #ff3b5c;
         }
 
         .modal-favorite-button {
@@ -189,7 +194,12 @@
 
 
         .modal-favorite-button.active {
-            color: #ff4d6d;
+            color: #ff3b5c;
+        }
+
+        .favorite-button i,
+        .modal-favorite-button i {
+            transform: translateY(1px);
         }
 
         .modal {
@@ -838,6 +848,9 @@
 
             opacity: 1;
 
+        }
+
+        .finger-loading i {
             animation: spin 1s linear infinite;
         }
 
@@ -883,13 +896,12 @@
 
         <div class="modal-content">
 
-            <button class="close-button" id="closeButton">✕</button>
+            <button class="close-button" id="closeButton"><i class="fa-solid fa-xmark"></i></button>
 
             <button class="modal-favorite-button" id="modalFavoriteButton">
-                ♥
-            </button>
+                <i class="fa-solid fa-heart"></i> </button>
             <button class="modal-rulebook-button" id="modalRulebookButton">
-                🧾
+                <i class="fas fa-circle-info"></i>
             </button>
             <img id="modalImage" class="modal-image">
 
@@ -909,11 +921,11 @@
         <div class="dice-content">
 
             <button class="close-button" id="diceCloseButton">
-                ✕
+                <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="dice-icon">
-                🎲
+                <i class="fa-solid fa-dice"></i>
             </div>
 
             <div class="dice-result" id="diceResult">
@@ -944,11 +956,11 @@
         <div class="dice-content">
 
             <button class="close-button" id="timerCloseButton">
-                ✕
+                <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="dice-icon">
-                ⏱
+                <i class="fa-solid fa-stopwatch"></i>
             </div>
 
             <div class="dice-result" id="timerDisplay">
@@ -1010,11 +1022,11 @@
     <div class="dice-modal filters-modal" id="filtersModal">
         <div class="dice-content" onclick="event.stopPropagation()">
             <button class="close-button" id="filtersCloseButton">
-                ✕
+                <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="dice-icon">
-                ⛃
+                <i class="fa-solid fa-filter"></i>
             </div>
 
             <div class="filters-title" style="
@@ -1063,7 +1075,7 @@
         <div class="dice-content">
 
             <button class="close-button" id="closeFingerSelectorButton">
-                ✕
+                <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="timer-body">
@@ -1081,7 +1093,7 @@
 
                 <div class="finger-loading" id="fingerLoading">
 
-                    ⟳
+                    <i class="fa-solid fa-spinner"></i>
 
                 </div>
 
@@ -1094,26 +1106,26 @@
 
         <div class="menu-panel" id="menuPanel">
             <button class="menu-option" id="catalogButton">
-                🏠 Catálogo
+                <i class="fa-solid fa-house"></i> Catálogo
             </button>
 
             <button class="menu-option" id="filtersButton">
-                ⛃ Filtros
+                <i class="fa-solid fa-filter"></i> Filtros
             </button>
 
             <button class="menu-option" id="diceButton">
-                🎲 Dado
+                <i class="fa-solid fa-dice"></i> Dado
             </button>
             <button class="menu-option" id="fingerSelectorButton">
-                ☝️ Seletor de dedo
+                <i class="fa-solid fa-hand-pointer"></i> Seletor de dedo
             </button>
             <button class="menu-option" id="timerButton">
-                ⏱ Timer
+                <i class="fa-solid fa-stopwatch"></i> Timer
             </button>
 
             <button class="menu-option clear-filters-button" id="clearFiltersButton">
 
-                🗑 Limpar filtros
+                <i class="fa-solid fa-trash"></i> Limpar filtros
 
             </button>
 
@@ -1121,7 +1133,8 @@
 
 
         <button class="menu-button" id="menuButton">
-            ☰
+            <i class="fa-solid fa-bars"></i>
+
         </button>
 
     </div>
@@ -1400,7 +1413,7 @@
                 card.innerHTML = `
 
                     <button class="favorite-button ${isFavorite ? 'active' : ''}">
-                        ♥
+                        <i class="fa-solid fa-heart"></i>
                     </button>
 
                     <img
