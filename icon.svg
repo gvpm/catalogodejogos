@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 512 512">
+
+    <!-- Fundo -->
+    <rect
+        width="512"
+        height="512"
+        rx="120"
+        fill="#121212"
+    />
+
+    <!-- Glow -->
+    <circle
+        cx="256"
+        cy="256"
+        r="185"
+        fill="#1f2937"
+        opacity=".28"
+    />
+
+    <!-- Livro -->
+
+    <!-- sombra -->
+    <rect
+        x="118"
+        y="118"
+        width="276"
+        height="296"
+        rx="42"
+        fill="#000"
+        opacity=".22"
+    />
+
+    <!-- corpo -->
+    <rect
+        x="106"
+        y="102"
+        width="276"
+        height="296"
+        rx="42"
+        fill="#5a3928"
+    />
+
+    <!-- capa -->
+    <rect
+        x="126"
+        y="122"
+        width="236"
+        height="256"
+        rx="28"
+        fill="#704733"
+    />
+
+    <!-- lombada -->
+    <rect
+        x="90"
+        y="120"
+        width="34"
+        height="260"
+        rx="16"
+        fill="#3c2418"
+    />
+
+    <!-- detalhes dourados -->
+    <rect
+        x="150"
+        y="145"
+        width="188"
+        height="5"
+        rx="3"
+        fill="#d8b26a"
+        opacity=".6"
+    />
+
+    <rect
+        x="150"
+        y="350"
+        width="188"
+        height="5"
+        rx="3"
+        fill="#d8b26a"
+        opacity=".6"
+    />
+
+    <!-- Cartas -->
+
+    <!-- azul -->
+    <rect
+        x="160"
+        y="198"
+        width="70"
+        height="96"
+        rx="12"
+        fill="#6FA8DC"
+        transform="rotate(-10 160 198)"
+    />
+
+    <!-- verde -->
+    <rect
+        x="221"
+        y="184"
+        width="70"
+        height="96"
+        rx="12"
+        fill="#4dffac"
+    />
+
+    <!-- vermelho -->
+    <rect
+        x="280"
+        y="198"
+        width="70"
+        height="96"
+        rx="12"
+        fill="#ff4d6d"
+        transform="rotate(10 280 198)"
+    />
+
+</svg>
