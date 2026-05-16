@@ -29,6 +29,11 @@
     </script>
     <!-- Fim Google Analytics -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -44,8 +49,7 @@
         body {
             background: #121212;
             color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
         }
 
         .games-container {
@@ -381,9 +385,8 @@
             right: 0;
             bottom: 74px;
 
-            width: 180px;
-
-            background: #1b1b1b;
+            width: 240px;
+            background: rgba(24, 24, 24, .88);
 
             border-radius: 18px;
 
@@ -395,6 +398,14 @@
             transform: translateY(10px);
 
             transition: .2s ease;
+            backdrop-filter: blur(12px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
         }
 
         .menu-panel.active {
@@ -404,23 +415,48 @@
         }
 
         .menu-option {
+
             width: 100%;
 
             border: none;
 
-            background: #262626;
+            background: rgba(255, 255, 255, .04);
 
             color: white;
 
-            padding: 14px;
+            padding: 14px 16px;
 
-            border-radius: 12px;
+            border-radius: 16px;
 
             cursor: pointer;
 
-            font-size: 1rem;
+            font-size: .97rem;
+
+            font-weight: 600;
+
+            letter-spacing: .2px;
 
             text-align: left;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            transition: .18s ease;
+
+            backdrop-filter: blur(3px);
+            white-space: nowrap;
+
+        }
+
+        .menu-option:hover {
+
+            background: rgba(255, 255, 255, .08);
+
+            transform: translateY(-1px);
+
         }
 
         .clear-filters-button {
@@ -739,6 +775,18 @@
                 font-size: 1.8rem !important;
             }
 
+            .modal-rulebook-button {
+
+                width: 52px !important;
+                height: 52px !important;
+
+                font-size: 1.8rem !important;
+            }
+
+            .modal-rulebook-button {
+                top: 76px !important;
+            }
+
             .close-button {
                 width: 52px !important;
                 height: 52px !important;
@@ -748,8 +796,7 @@
 
             .menu-panel {
 
-                width: 220px !important;
-
+                width: 250px !important;
                 bottom: 96px !important;
             }
 
@@ -758,6 +805,16 @@
                 padding: 20px !important;
 
                 font-size: 1.08rem !important;
+            }
+
+            .menu-option i {
+
+                width: 20px;
+
+                text-align: center;
+
+                opacity: .92;
+
             }
 
             .range-group input {
