@@ -400,6 +400,19 @@
             bottom: 20px;
 
             z-index: 9999;
+            transition:
+                opacity .22s ease,
+                transform .22s ease;
+        }
+
+        .floating-menu.hidden {
+
+            opacity: 0;
+
+            transform:
+                translateY(20px) scale(.92);
+            pointer-events: none;
+
         }
 
         .menu-button {
@@ -1982,7 +1995,39 @@
             }
 
         }
+        let scrollTimeout = null;
 
+        window.addEventListener(
+            'scroll',
+            () => {
+
+                if (
+                    modal.classList.contains('active') ||
+                    diceModal.classList.contains('active') ||
+                    timerModal.classList.contains('active') ||
+                    fingerSelectorModal.classList.contains('active') ||
+                    filtersModal.classList.contains('active')
+                ) {
+                    return;
+                }
+
+                document
+                    .querySelector('.floating-menu')
+                    .classList.add('hidden');
+
+                clearTimeout(scrollTimeout);
+
+                scrollTimeout = setTimeout(() => {
+
+                    document
+                        .querySelector('.floating-menu')
+                        .classList.remove('hidden');
+
+                }, 180);
+
+            },
+            { passive: true }
+        );
         fingerArea.addEventListener(
             'touchstart',
             (e) => {
