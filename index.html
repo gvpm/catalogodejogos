@@ -909,7 +909,7 @@
 
             border-radius: 18px;
 
-            background:  #262626;
+            background: #262626;
 
             overflow: hidden;
 
@@ -1406,6 +1406,7 @@
         const timerInputs =
             document.querySelector('.timer-inputs');
         let allGames = [];
+        let rulesData = [];
 
         let globalMinPlayers = 1;
         let globalMaxPlayers = 12;
@@ -1638,18 +1639,47 @@
 
 
         }
+        Promise.all([
 
-        fetch(
-            `./jogos.json?v=${CACHE_BUSTER}`,
-            {
-                cache: 'no-store'
-            }
-        )
-            .then(response => response.json())
-            .then(games => {
+            fetch(
+                `./jogos.json?v=${CACHE_BUSTER}`,
+                {
+                    cache: 'no-store'
+                }
+            ).then(r => r.json()),
 
-                allGames = games;
-                const validGames = games.filter(g => {
+            fetch(
+                `./rules.json?v=${CACHE_BUSTER}`,
+                {
+                    cache: 'no-store'
+                }
+            ).then(r => r.json())
+
+        ])
+
+            .then(([games, rules]) => {
+
+                rulesData = rules;
+
+                allGames = games.map(game => {
+
+                    const ruleMatch = rulesData.find(
+                        r => r.id === game.id
+                    );
+
+                    return {
+
+                        ...game,
+
+                        rules: ruleMatch
+                            ? ruleMatch.rules
+                            : ""
+
+                    };
+
+                });
+
+                const validGames = allGames.filter(g => {
 
                     return (
                         Number.isFinite(Number(g.minPlayers)) &&
@@ -1690,6 +1720,7 @@
 
                 playersLabel.innerText =
                     '? jogadores';
+
                 renderGames();
 
             });
