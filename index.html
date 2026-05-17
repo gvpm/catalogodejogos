@@ -143,6 +143,16 @@
 
         }
 
+        .meta-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+        }
+
         .favorite-button {
             position: absolute;
 
@@ -350,6 +360,36 @@
 
             font-size: 1.3rem;
             font-weight: bold;
+        }
+
+        .modal-meta {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-top: 12px;
+
+            color: rgba(255, 255, 255, .72);
+
+            font-size: .95rem;
+
+            font-weight: 500;
+
+        }
+
+        .modal-meta .meta-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
         }
 
         .modal-rules {
@@ -1033,6 +1073,8 @@
 
                 <div id="modalTitle" class="modal-title"></div>
 
+                <div id="modalMeta" class="modal-meta"></div>
+
                 <div id="modalRules" class="modal-rules"></div>
 
             </div>
@@ -1185,6 +1227,30 @@
                 </div>
 
             </div>
+            <div style="
+    background:#222;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+">
+
+                <div style="
+        text-align:center;
+        color:#aaa;
+        margin-bottom:12px;
+    ">
+                    Tempo médio
+                </div>
+
+                <div class="range-values">
+                    <span id="timeLabel"></span>
+                </div>
+
+                <div class="range-group">
+                    <input type="range" id="timeRange" step="5">
+                </div>
+
+            </div>
 
             <!--
             NOVOS FILTROS FUTUROS
@@ -1289,6 +1355,8 @@
 
         const modalImage = document.getElementById('modalImage');
         const modalTitle = document.getElementById('modalTitle');
+        const modalMeta =
+            document.getElementById('modalMeta');
         const modalRules = document.getElementById('modalRules');
 
         const modalFavoriteButton =
@@ -1312,6 +1380,11 @@
 
         const playersLabel =
             document.getElementById('playersLabel');
+        const timeRange =
+            document.getElementById('timeRange');
+
+        const timeLabel =
+            document.getElementById('timeLabel');
 
         const closeButton =
             document.getElementById('closeButton');
@@ -1411,7 +1484,11 @@
         let globalMinPlayers = 1;
         let globalMaxPlayers = 12;
 
+        let globalMinTime = 5;
+        let globalMaxTime = 120;
+
         let currentPlayers = null;
+        let currentTime = null;
 
 
         function getFavorites() {
@@ -1483,14 +1560,22 @@
                         return true;
                     }
 
-                    if (currentPlayers === null) {
-                        return true;
-                    }
+                    const playersMatch =
 
-                    return (
-                        currentPlayers >= game.minPlayers &&
-                        currentPlayers <= game.maxPlayers
-                    );
+                        currentPlayers === null ||
+
+                        (
+                            currentPlayers >= game.minPlayers &&
+                            currentPlayers <= game.maxPlayers
+                        );
+
+                    const timeMatch =
+
+                        currentTime === null ||
+
+                        game.time <= currentTime;
+
+                    return playersMatch && timeMatch;
 
                 })
                 .forEach(game => {
@@ -1552,7 +1637,9 @@
         ${game.title}
     </div>
 
-    <div class="game-meta">
+<div class="game-meta">
+
+    <div class="meta-item">
 
         <i class="fa-solid fa-user-group"></i>
 
@@ -1561,6 +1648,18 @@
         </span>
 
     </div>
+
+    <div class="meta-item">
+
+        <i class="fa-solid fa-stopwatch"></i>
+
+        <span>
+            ${game.time}m
+        </span>
+
+    </div>
+
+</div>
 
 </div>
                 `;
@@ -1582,6 +1681,30 @@
                         `images/${game.image}?v=${CACHE_BUSTER}`;
 
                     modalTitle.innerText = game.title;
+
+                    modalMeta.innerHTML = `
+
+    <div class="meta-item">
+
+        <i class="fa-solid fa-user-group"></i>
+
+        <span>
+            ${game.minPlayers}-${game.maxPlayers}
+        </span>
+
+    </div>
+
+    <div class="meta-item">
+
+        <i class="fa-solid fa-stopwatch"></i>
+
+        <span>
+            ${game.time}m
+        </span>
+
+    </div>
+
+`;
 
                     modalRules.innerHTML = game.rules ?? "";
                     if (game.rulebook) {
@@ -1703,11 +1826,24 @@
                             Number(g.maxPlayers)
                         )
                     );
+                    globalMinTime = Math.min(
+                        ...validGames.map(g =>
+                            Number(g.time || 0)
+                        )
+                    );
+
+                    globalMaxTime = Math.max(
+                        ...validGames.map(g =>
+                            Number(g.time || 0)
+                        )
+                    );
 
                 } else {
 
                     globalMinPlayers = 1;
                     globalMaxPlayers = 12;
+                    globalMinTime = 5;
+                    globalMaxTime = 120;
 
                 }
 
@@ -1717,9 +1853,17 @@
                 playersRange.max = globalMaxPlayers;
 
                 playersRange.value = globalMinPlayers;
+                timeRange.min = globalMinTime;
+
+                timeRange.max = globalMaxTime;
+
+                timeRange.value = globalMaxTime;
 
                 playersLabel.innerText =
                     '? jogadores';
+
+                timeLabel.innerText =
+                    '? min';
 
                 renderGames();
 
@@ -1824,6 +1968,23 @@
 
                 playersLabel.innerText =
                     `${currentPlayers} jogadores`;
+
+                renderGames();
+
+            }
+        );
+
+        timeRange.addEventListener(
+            'input',
+            (e) => {
+
+                e.stopPropagation();
+
+                currentTime =
+                    Number(timeRange.value);
+
+                timeLabel.innerText =
+                    `${currentTime} min`;
 
                 renderGames();
 
@@ -2287,10 +2448,16 @@
             e.stopPropagation();
 
             currentPlayers = null;
-            playersRange.value = currentPlayers;
+            currentTime = null;
+
+            playersRange.value = globalMinPlayers;
+
+            timeRange.value = globalMaxTime;
 
             playersLabel.innerText =
                 '? jogadores';
+            timeLabel.innerText =
+                '? min';
 
             renderGames();
 
