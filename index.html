@@ -1532,7 +1532,8 @@
         function updateFiltersUI() {
 
             const hasFilter =
-                currentPlayers !== null;
+                currentPlayers !== null ||
+                currentTime !== null;
 
             clearFiltersButton.classList.toggle(
                 'active',
