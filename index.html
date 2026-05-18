@@ -382,6 +382,30 @@
 
         }
 
+        .modal-meta {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .modal-meta-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 18px;
+
+        }
+
         .modal-meta .meta-item {
 
             display: flex;
@@ -393,7 +417,7 @@
         }
 
         .modal-rules {
-            margin-top: 20px;
+            margin-top: 8px;
 
             line-height: 1.7;
 
@@ -822,6 +846,89 @@
             flex-direction: column;
 
             gap: 12px;
+
+        }
+
+        .mechanics-inline {
+            width: 100%;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            flex-wrap: wrap;
+
+            margin-top: 8px;
+
+            color: rgba(255, 255, 255, .72);
+
+            font-size: .95rem;
+
+            font-weight: 500;
+
+        }
+
+        .mechanics-inline i {
+
+            font-size: .92rem;
+
+            color: rgba(255, 255, 255, .82);
+
+        }
+
+        .mechanics-inline-list {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+        }
+
+        .mechanic-inline-tag {
+
+            color: rgba(255, 255, 255, .62);
+
+            text-decoration: none;
+
+            font-size: .72rem;
+
+            line-height: 1;
+
+            transition: .15s ease;
+
+        }
+
+        .mechanic-inline-tag::after {
+
+            content: ",";
+
+            margin-right: 5px;
+
+            opacity: .45;
+
+        }
+
+        .mechanic-inline-tag:last-child::after {
+
+            display: none;
+
+        }
+
+        .mechanic-inline-tag:hover {
+
+            color: white;
+
+        }
+
+        .mechanic-inline-tag:visited,
+        .mechanic-inline-tag:active {
+
+            color: rgba(255, 255, 255, .62);
 
         }
 
@@ -1480,6 +1587,7 @@
             document.querySelector('.timer-inputs');
         let allGames = [];
         let rulesData = [];
+        let mechanicsData = [];
 
         let globalMinPlayers = 1;
         let globalMaxPlayers = 12;
@@ -1540,6 +1648,48 @@
                 hasFilter
             );
 
+        }
+        function getMechanicsHTML(game) {
+
+            if (!game.mechanics || !game.mechanics.length) {
+                return '';
+            }
+
+            const mechanics = game.mechanics
+                .map(id =>
+                    mechanicsData.find(m => m.id === id)
+                )
+                .filter(Boolean);
+
+            if (!mechanics.length) {
+                return '';
+            }
+
+            return `
+
+    <div class="mechanics-inline">
+
+        <i class="fa-solid fa-gears"></i>
+
+        <div class="mechanics-inline-list">
+
+            ${mechanics.map(mechanic => `
+
+                <a
+                    href="${mechanic.url}"
+                    target="_blank"
+                    class="mechanic-inline-tag"
+                >
+                    ${mechanic.name}
+                </a>
+
+            `).join('')}
+
+        </div>
+
+    </div>
+
+`;
         }
 
         function renderGames() {
@@ -1707,6 +1857,36 @@
 
 `;
 
+                    modalMeta.innerHTML = `
+
+    <div class="modal-meta-top">
+
+        <div class="meta-item">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            <span>
+                ${game.minPlayers}-${game.maxPlayers}
+            </span>
+
+        </div>
+
+        <div class="meta-item">
+
+            <i class="fa-solid fa-stopwatch"></i>
+
+            <span>
+                ${game.time}m
+            </span>
+
+        </div>
+
+    </div>
+
+    ${getMechanicsHTML(game)}
+
+`;
+
                     modalRules.innerHTML = game.rules ?? "";
                     if (game.rulebook) {
 
@@ -1777,13 +1957,21 @@
                 {
                     cache: 'no-store'
                 }
+            ).then(r => r.json()),
+
+            fetch(
+                `./mechanics.json?v=${CACHE_BUSTER}`,
+                {
+                    cache: 'no-store'
+                }
             ).then(r => r.json())
 
         ])
 
-            .then(([games, rules]) => {
+            .then(([games, rules, mechanics]) => {
 
                 rulesData = rules;
+                mechanicsData = mechanics;
 
                 allGames = games.map(game => {
 
