@@ -932,6 +932,82 @@
 
         }
 
+        .mechanics-filters-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            max-height: 320px;
+
+            overflow-y: auto;
+
+            padding-right: 4px;
+
+        }
+
+        .mechanics-filter-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            color: rgba(255, 255, 255, .82);
+
+            font-size: .9rem;
+
+        }
+
+        .mechanics-filter-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .mechanics-filter-count {
+
+            color: rgba(255, 255, 255, .4);
+
+            font-size: .82rem;
+
+        }
+
+        .mechanics-action-button {
+
+            border: none;
+
+            background: rgba(255, 255, 255, .06);
+
+            color: rgba(255, 255, 255, .82);
+
+            border-radius: 10px;
+
+            padding: 6px 10px;
+
+            cursor: pointer;
+
+            font-size: .78rem;
+
+            transition: .15s ease;
+
+        }
+
+        .mechanics-action-button:hover {
+
+            background: rgba(255, 255, 255, .12);
+
+        }
+
         @media (max-width:700px) {
 
             body {
@@ -1358,7 +1434,47 @@
                 </div>
 
             </div>
+            <div style="
+    background:#222;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+">
 
+                <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:14px;
+    ">
+
+                    <div style="
+            color:#aaa;
+            font-weight:600;
+        ">
+                        Mecânicas
+                    </div>
+
+                    <div style="
+            display:flex;
+            gap:10px;
+        ">
+
+                        <button id="checkAllMechanics" class="mechanics-action-button">
+                            Todas
+                        </button>
+
+                        <button id="uncheckAllMechanics" class="mechanics-action-button">
+                            Limpar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="mechanicsFiltersList" class="mechanics-filters-list"></div>
+
+            </div>
             <!--
             NOVOS FILTROS FUTUROS
             podem ser adicionados aqui
@@ -1476,6 +1592,20 @@
 
         const filtersModal =
             document.getElementById('filtersModal');
+        const mechanicsFiltersList =
+            document.getElementById(
+                'mechanicsFiltersList'
+            );
+
+        const checkAllMechanics =
+            document.getElementById(
+                'checkAllMechanics'
+            );
+
+        const uncheckAllMechanics =
+            document.getElementById(
+                'uncheckAllMechanics'
+            );
 
         const filtersCloseButton =
             document.getElementById(
@@ -1598,6 +1728,8 @@
         let currentPlayers = null;
         let currentTime = null;
 
+        let selectedMechanics = [];
+
 
         function getFavorites() {
 
@@ -1641,11 +1773,13 @@
 
             const hasFilter =
                 currentPlayers !== null ||
-                currentTime !== null;
+                currentTime !== null ||
+                selectedMechanics.length > 0;
 
             clearFiltersButton.classList.toggle(
                 'active',
-                hasFilter
+                hasFilter,
+
             );
 
         }
@@ -1692,6 +1826,145 @@
 `;
         }
 
+
+        function renderMechanicsFilters() {
+
+            mechanicsFiltersList.innerHTML = '';
+
+            const usedMechanicIds = [
+
+                ...new Set(
+
+                    allGames.flatMap(
+                        game => game.mechanics || []
+                    )
+
+                )
+
+            ];
+
+            mechanicsData
+
+                .filter(mechanic =>
+                    usedMechanicIds.includes(mechanic.id)
+                )
+
+                .sort((a, b) =>
+                    a.name.localeCompare(
+                        b.name,
+                        'pt-BR',
+                        { sensitivity: 'base' }
+                    )
+                )
+
+                .forEach(mechanic => {
+
+                    const gamesCount = allGames.filter(game => {
+
+                        if (
+                            currentPlayers !== null &&
+                            (
+                                currentPlayers < game.minPlayers ||
+                                currentPlayers > game.maxPlayers
+                            )
+                        ) {
+                            return false;
+                        }
+
+                        if (
+                            currentTime !== null &&
+                            game.time > currentTime
+                        ) {
+                            return false;
+                        }
+
+                        const otherSelectedMechanics =
+                            selectedMechanics.filter(
+                                id => id !== mechanic.id
+                            );
+
+                        if (
+                            !otherSelectedMechanics.every(id =>
+                                game.mechanics?.includes(id)
+                            )
+                        ) {
+                            return false;
+                        }
+
+                        return game.mechanics?.includes(mechanic.id);
+
+                    }).length;
+
+                    const item =
+                        document.createElement('label');
+
+                    item.className =
+                        'mechanics-filter-item';
+
+                    item.innerHTML = `
+
+                <div class="mechanics-filter-left">
+
+                    <input
+                        type="checkbox"
+                        value="${mechanic.id}"
+                        ${selectedMechanics.includes(mechanic.id)
+                            ? 'checked'
+                            : ''
+                        }
+                    >
+
+                    <span>
+                        ${mechanic.name}
+                    </span>
+
+                </div>
+
+                <span class="mechanics-filter-count">
+                    (${gamesCount})
+                </span>
+
+            `;
+
+                    const checkbox =
+                        item.querySelector('input');
+
+                    checkbox.addEventListener(
+                        'change',
+                        () => {
+
+                            const id =
+                                Number(checkbox.value);
+
+                            if (checkbox.checked) {
+
+                                if (
+                                    !selectedMechanics.includes(id)
+                                ) {
+
+                                    selectedMechanics.push(id);
+
+                                }
+
+                            } else {
+
+                                selectedMechanics =
+                                    selectedMechanics.filter(
+                                        m => m !== id
+                                    );
+
+                            }
+
+                            renderGames();
+
+                        }
+                    );
+
+                    mechanicsFiltersList.appendChild(item);
+
+                });
+
+        }
         function renderGames() {
 
             container.innerHTML = '';
@@ -1726,7 +1999,19 @@
 
                         game.time <= currentTime;
 
-                    return playersMatch && timeMatch;
+                    const mechanicsMatch =
+
+                        selectedMechanics.length === 0 ||
+
+                        selectedMechanics.every(mechanicId =>
+                            game.mechanics?.includes(mechanicId)
+                        );
+
+                    return (
+                        playersMatch &&
+                        timeMatch &&
+                        mechanicsMatch
+                    );
 
                 })
                 .forEach(game => {
@@ -1939,6 +2224,8 @@
                 container.appendChild(card);
 
             });
+            renderMechanicsFilters();
+
             updateFiltersUI();
 
 
@@ -2637,7 +2924,10 @@
             e.stopPropagation();
 
             currentPlayers = null;
+
             currentTime = null;
+
+            selectedMechanics = [];
 
             playersRange.value = globalMinPlayers;
 
@@ -2645,10 +2935,15 @@
 
             playersLabel.innerText =
                 '? jogadores';
+
             timeLabel.innerText =
                 '? min';
 
             renderGames();
+
+            renderMechanicsFilters();
+
+            updateFiltersUI();
 
         });
 
@@ -2731,6 +3026,32 @@
             }, 1000);
 
         });
+        checkAllMechanics.addEventListener(
+            'click',
+            () => {
+
+                selectedMechanics =
+                    mechanicsData.map(m => m.id);
+
+                renderMechanicsFilters();
+
+                renderGames();
+
+            }
+        );
+
+        uncheckAllMechanics.addEventListener(
+            'click',
+            () => {
+
+                selectedMechanics = [];
+
+                renderMechanicsFilters();
+
+                renderGames();
+
+            }
+        );
 
         let timerInterval = null;
 
