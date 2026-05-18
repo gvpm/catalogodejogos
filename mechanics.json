@@ -1,0 +1,967 @@
+[
+  {
+    "id": 1,
+    "name": "Atuação/Mímica",
+    "url": "https://ludopedia.com.br/mecanica/1"
+  },
+  {
+    "id": 2,
+    "name": "Seleção de Ação Simultânea",
+    "url": "https://ludopedia.com.br/mecanica/2"
+  },
+  {
+    "id": 3,
+    "name": "Gerenciamento de Mãos",
+    "url": "https://ludopedia.com.br/mecanica/3"
+  },
+  {
+    "id": 4,
+    "name": "Pegar e Entregar",
+    "url": "https://ludopedia.com.br/mecanica/4"
+  },
+  {
+    "id": 5,
+    "name": "Bingo",
+    "url": "https://ludopedia.com.br/mecanica/5"
+  },
+  {
+    "id": 6,
+    "name": "Vazas/Truques",
+    "url": "https://ludopedia.com.br/mecanica/6"
+  },
+  {
+    "id": 7,
+    "name": "Campanha / Batalhas Dirigidas por Cartas",
+    "url": "https://ludopedia.com.br/mecanica/7"
+  },
+  {
+    "id": 8,
+    "name": "Cantar",
+    "url": "https://ludopedia.com.br/mecanica/8"
+  },
+  {
+    "id": 9,
+    "name": "Cerco de Área",
+    "url": "https://ludopedia.com.br/mecanica/9"
+  },
+  {
+    "id": 11,
+    "name": "Colecionar Conjuntos",
+    "url": "https://ludopedia.com.br/mecanica/11"
+  },
+  {
+    "id": 12,
+    "name": "Colocação de Peças",
+    "url": "https://ludopedia.com.br/mecanica/12"
+  },
+  {
+    "id": 13,
+    "name": "Alocação de Trabalhadores",
+    "url": "https://ludopedia.com.br/mecanica/13"
+  },
+  {
+    "id": 14,
+    "name": "Negociação",
+    "url": "https://ludopedia.com.br/mecanica/14"
+  },
+  {
+    "id": 15,
+    "name": "Compra Fechada",
+    "url": "https://ludopedia.com.br/mecanica/15"
+  },
+  {
+    "id": 16,
+    "name": "Construção a partir de Modelo",
+    "url": "https://ludopedia.com.br/mecanica/16"
+  },
+  {
+    "id": 17,
+    "name": "Construção de Baralho, Bolsas e Peças",
+    "url": "https://ludopedia.com.br/mecanica/17"
+  },
+  {
+    "id": 18,
+    "name": "Construção de Redes e Rotas",
+    "url": "https://ludopedia.com.br/mecanica/18"
+  },
+  {
+    "id": 20,
+    "name": "Cooperativo",
+    "url": "https://ludopedia.com.br/mecanica/20"
+  },
+  {
+    "id": 21,
+    "name": "Desenhar",
+    "url": "https://ludopedia.com.br/mecanica/21"
+  },
+  {
+    "id": 22,
+    "name": "Pontos de Ação",
+    "url": "https://ludopedia.com.br/mecanica/22"
+  },
+  {
+    "id": 23,
+    "name": "Especulação de Commodities",
+    "url": "https://ludopedia.com.br/mecanica/23"
+  },
+  {
+    "id": 25,
+    "name": "Grade Hexagonal",
+    "url": "https://ludopedia.com.br/mecanica/25"
+  },
+  {
+    "id": 26,
+    "name": "Reconhecimento de Padrões",
+    "url": "https://ludopedia.com.br/mecanica/26"
+  },
+  {
+    "id": 27,
+    "name": "Jogadores com Diferentes Habilidades",
+    "url": "https://ludopedia.com.br/mecanica/27"
+  },
+  {
+    "id": 28,
+    "name": "Leilão / Lances",
+    "url": "https://ludopedia.com.br/mecanica/28"
+  },
+  {
+    "id": 29,
+    "name": "Memória",
+    "url": "https://ludopedia.com.br/mecanica/29"
+  },
+  {
+    "id": 30,
+    "name": "Mercado de Ações",
+    "url": "https://ludopedia.com.br/mecanica/30"
+  },
+  {
+    "id": 31,
+    "name": "Movimento de Área",
+    "url": "https://ludopedia.com.br/mecanica/31"
+  },
+  {
+    "id": 32,
+    "name": "Movimento Ponto-a-Ponto",
+    "url": "https://ludopedia.com.br/mecanica/32"
+  },
+  {
+    "id": 33,
+    "name": "Narração de Histórias",
+    "url": "https://ludopedia.com.br/mecanica/33"
+  },
+  {
+    "id": 35,
+    "name": "Ordem de Fases Variável",
+    "url": "https://ludopedia.com.br/mecanica/35"
+  },
+  {
+    "id": 36,
+    "name": "Papel e Caneta",
+    "url": "https://ludopedia.com.br/mecanica/36"
+  },
+  {
+    "id": 37,
+    "name": "Jogo em Equipe",
+    "url": "https://ludopedia.com.br/mecanica/37"
+  },
+  {
+    "id": 38,
+    "name": "Toma Essa",
+    "url": "https://ludopedia.com.br/mecanica/38"
+  },
+  {
+    "id": 39,
+    "name": "Posicionamento Secreto",
+    "url": "https://ludopedia.com.br/mecanica/39"
+  },
+  {
+    "id": 40,
+    "name": "Rolagem de Dados",
+    "url": "https://ludopedia.com.br/mecanica/40"
+  },
+  {
+    "id": 41,
+    "name": "Rolar / Girar e Mover",
+    "url": "https://ludopedia.com.br/mecanica/41"
+  },
+  {
+    "id": 42,
+    "name": "RPG",
+    "url": "https://ludopedia.com.br/mecanica/42"
+  },
+  {
+    "id": 44,
+    "name": "Sistema de Sorteio de Fichas",
+    "url": "https://ludopedia.com.br/mecanica/44"
+  },
+  {
+    "id": 45,
+    "name": "Force sua sorte",
+    "url": "https://ludopedia.com.br/mecanica/45"
+  },
+  {
+    "id": 47,
+    "name": "Tabuleiro Modular",
+    "url": "https://ludopedia.com.br/mecanica/47"
+  },
+  {
+    "id": 48,
+    "name": "Ordem do Turno: Trilha do Tempo",
+    "url": "https://ludopedia.com.br/mecanica/48"
+  },
+  {
+    "id": 49,
+    "name": "Votação",
+    "url": "https://ludopedia.com.br/mecanica/49"
+  },
+  {
+    "id": 50,
+    "name": "Eliminação de Jogadores",
+    "url": "https://ludopedia.com.br/mecanica/50"
+  },
+  {
+    "id": 51,
+    "name": "Simulação",
+    "url": "https://ludopedia.com.br/mecanica/51"
+  },
+  {
+    "id": 52,
+    "name": "Influência / Maioria na Área",
+    "url": "https://ludopedia.com.br/mecanica/52"
+  },
+  {
+    "id": 53,
+    "name": "Pedra, Papel e Tesoura",
+    "url": "https://ludopedia.com.br/mecanica/53"
+  },
+  {
+    "id": 55,
+    "name": "Movimento Programado",
+    "url": "https://ludopedia.com.br/mecanica/55"
+  },
+  {
+    "id": 56,
+    "name": "Impulso de Área",
+    "url": "https://ludopedia.com.br/mecanica/56"
+  },
+  {
+    "id": 57,
+    "name": "Desenhar Rota com Pincel Atômico",
+    "url": "https://ludopedia.com.br/mecanica/57"
+  },
+  {
+    "id": 58,
+    "name": "Movimento em Grades",
+    "url": "https://ludopedia.com.br/mecanica/58"
+  },
+  {
+    "id": 59,
+    "name": "Apostas e Blefes",
+    "url": "https://ludopedia.com.br/mecanica/59"
+  },
+  {
+    "id": 60,
+    "name": "Dedução",
+    "url": "https://ludopedia.com.br/mecanica/60"
+  },
+  {
+    "id": 61,
+    "name": "Tempo Real",
+    "url": "https://ludopedia.com.br/mecanica/61"
+  },
+  {
+    "id": 62,
+    "name": "Peteleco",
+    "url": "https://ludopedia.com.br/mecanica/62"
+  },
+  {
+    "id": 63,
+    "name": "Alianças",
+    "url": "https://ludopedia.com.br/mecanica/63"
+  },
+  {
+    "id": 64,
+    "name": "Compra Aberta",
+    "url": "https://ludopedia.com.br/mecanica/64"
+  },
+  {
+    "id": 65,
+    "name": "Seleção de Ação",
+    "url": "https://ludopedia.com.br/mecanica/65"
+  },
+  {
+    "id": 66,
+    "name": "Fila de Ações",
+    "url": "https://ludopedia.com.br/mecanica/66"
+  },
+  {
+    "id": 67,
+    "name": "Recuperação de Ação",
+    "url": "https://ludopedia.com.br/mecanica/67"
+  },
+  {
+    "id": 68,
+    "name": "Ação Cronometrada",
+    "url": "https://ludopedia.com.br/mecanica/68"
+  },
+  {
+    "id": 69,
+    "name": "Ação / Evento",
+    "url": "https://ludopedia.com.br/mecanica/69"
+  },
+  {
+    "id": 70,
+    "name": "Ficha de Vantagem",
+    "url": "https://ludopedia.com.br/mecanica/70"
+  },
+  {
+    "id": 71,
+    "name": "Leilão: Compensação",
+    "url": "https://ludopedia.com.br/mecanica/71"
+  },
+  {
+    "id": 72,
+    "name": "Leilão: Destreza",
+    "url": "https://ludopedia.com.br/mecanica/72"
+  },
+  {
+    "id": 73,
+    "name": "Leilão: Lance Único",
+    "url": "https://ludopedia.com.br/mecanica/73"
+  },
+  {
+    "id": 74,
+    "name": "Leilão: Prioritário em Lote",
+    "url": "https://ludopedia.com.br/mecanica/74"
+  },
+  {
+    "id": 75,
+    "name": "Leilão: Lances Livres",
+    "url": "https://ludopedia.com.br/mecanica/75"
+  },
+  {
+    "id": 76,
+    "name": "Leilão: Colocação Fixa",
+    "url": "https://ludopedia.com.br/mecanica/76"
+  },
+  {
+    "id": 77,
+    "name": "Leilão: 1 Rodada",
+    "url": "https://ludopedia.com.br/mecanica/77"
+  },
+  {
+    "id": 78,
+    "name": "Leilão: Lance Selado",
+    "url": "https://ludopedia.com.br/mecanica/78"
+  },
+  {
+    "id": 79,
+    "name": "Leilão: Ordem do Turno até Passar",
+    "url": "https://ludopedia.com.br/mecanica/79"
+  },
+  {
+    "id": 80,
+    "name": "Crescimento Automático de Recursos",
+    "url": "https://ludopedia.com.br/mecanica/80"
+  },
+  {
+    "id": 81,
+    "name": "Movimento Direcionado",
+    "url": "https://ludopedia.com.br/mecanica/81"
+  },
+  {
+    "id": 82,
+    "name": "Apostas em Metas",
+    "url": "https://ludopedia.com.br/mecanica/82"
+  },
+  {
+    "id": 83,
+    "name": "Suborno",
+    "url": "https://ludopedia.com.br/mecanica/83"
+  },
+  {
+    "id": 84,
+    "name": "Resolução de Conflitos por Cartas",
+    "url": "https://ludopedia.com.br/mecanica/84"
+  },
+  {
+    "id": 85,
+    "name": "Pegue o Líder",
+    "url": "https://ludopedia.com.br/mecanica/85"
+  },
+  {
+    "id": 86,
+    "name": "Encadeamento",
+    "url": "https://ludopedia.com.br/mecanica/86"
+  },
+  {
+    "id": 87,
+    "name": "Leilão: Economia Fechada",
+    "url": "https://ludopedia.com.br/mecanica/87"
+  },
+  {
+    "id": 88,
+    "name": "Cartas de Comando",
+    "url": "https://ludopedia.com.br/mecanica/88"
+  },
+  {
+    "id": 89,
+    "name": "Comunicação Limitada",
+    "url": "https://ludopedia.com.br/mecanica/89"
+  },
+  {
+    "id": 90,
+    "name": "Conexões",
+    "url": "https://ludopedia.com.br/mecanica/90"
+  },
+  {
+    "id": 91,
+    "name": "Leilão: Lances Restritos",
+    "url": "https://ludopedia.com.br/mecanica/91"
+  },
+  {
+    "id": 92,
+    "name": "Contratos",
+    "url": "https://ludopedia.com.br/mecanica/92"
+  },
+  {
+    "id": 93,
+    "name": "Acertos e Falhas Críticas",
+    "url": "https://ludopedia.com.br/mecanica/93"
+  },
+  {
+    "id": 94,
+    "name": "Torre de Cubos",
+    "url": "https://ludopedia.com.br/mecanica/94"
+  },
+  {
+    "id": 95,
+    "name": "Criação de Baralho",
+    "url": "https://ludopedia.com.br/mecanica/95"
+  },
+  {
+    "id": 96,
+    "name": "Compra Futura",
+    "url": "https://ludopedia.com.br/mecanica/96"
+  },
+  {
+    "id": 97,
+    "name": "Resolução por Símbolos nos Dados",
+    "url": "https://ludopedia.com.br/mecanica/97"
+  },
+  {
+    "id": 98,
+    "name": "Movimento com Diferentes Dados",
+    "url": "https://ludopedia.com.br/mecanica/98"
+  },
+  {
+    "id": 99,
+    "name": "Partida Cronometrada",
+    "url": "https://ludopedia.com.br/mecanica/99"
+  },
+  {
+    "id": 100,
+    "name": "Bônus de Fim de Jogo",
+    "url": "https://ludopedia.com.br/mecanica/100"
+  },
+  {
+    "id": 101,
+    "name": "Eventos",
+    "url": "https://ludopedia.com.br/mecanica/101"
+  },
+  {
+    "id": 102,
+    "name": "Minijogo no Final",
+    "url": "https://ludopedia.com.br/mecanica/102"
+  },
+  {
+    "id": 103,
+    "name": "Seguir Ação",
+    "url": "https://ludopedia.com.br/mecanica/103"
+  },
+  {
+    "id": 104,
+    "name": "Comprometer Forças",
+    "url": "https://ludopedia.com.br/mecanica/104"
+  },
+  {
+    "id": 105,
+    "name": "Cobertura de Grade",
+    "url": "https://ludopedia.com.br/mecanica/105"
+  },
+  {
+    "id": 106,
+    "name": "Movimento Oculto",
+    "url": "https://ludopedia.com.br/mecanica/106"
+  },
+  {
+    "id": 107,
+    "name": "Papéis Ocultos",
+    "url": "https://ludopedia.com.br/mecanica/107"
+  },
+  {
+    "id": 108,
+    "name": "Pontos de Vitória Ocultos",
+    "url": "https://ludopedia.com.br/mecanica/108"
+  },
+  {
+    "id": 109,
+    "name": "Maior Pontuação Baixa",
+    "url": "https://ludopedia.com.br/mecanica/109"
+  },
+  {
+    "id": 110,
+    "name": "Batata Quente",
+    "url": "https://ludopedia.com.br/mecanica/110"
+  },
+  {
+    "id": 111,
+    "name": "Eu Corto, Você Escolhe",
+    "url": "https://ludopedia.com.br/mecanica/111"
+  },
+  {
+    "id": 112,
+    "name": "Movimento por Impulso",
+    "url": "https://ludopedia.com.br/mecanica/112"
+  },
+  {
+    "id": 113,
+    "name": "Rendimentos",
+    "url": "https://ludopedia.com.br/mecanica/113"
+  },
+  {
+    "id": 114,
+    "name": "Acordos",
+    "url": "https://ludopedia.com.br/mecanica/114"
+  },
+  {
+    "id": 115,
+    "name": "Mercado",
+    "url": "https://ludopedia.com.br/mecanica/115"
+  },
+  {
+    "id": 116,
+    "name": "Corrida",
+    "url": "https://ludopedia.com.br/mecanica/116"
+  },
+  {
+    "id": 117,
+    "name": "Rondel",
+    "url": "https://ludopedia.com.br/mecanica/117"
+  },
+  {
+    "id": 118,
+    "name": "Semi-Cooperativo",
+    "url": "https://ludopedia.com.br/mecanica/118"
+  },
+  {
+    "id": 119,
+    "name": "Traidor",
+    "url": "https://ludopedia.com.br/mecanica/119"
+  },
+  {
+    "id": 120,
+    "name": "Zona de Controle",
+    "url": "https://ludopedia.com.br/mecanica/120"
+  },
+  {
+    "id": 121,
+    "name": "Árvores / Trilhas de Tecnologia",
+    "url": "https://ludopedia.com.br/mecanica/121"
+  },
+  {
+    "id": 122,
+    "name": "Mancala",
+    "url": "https://ludopedia.com.br/mecanica/122"
+  },
+  {
+    "id": 123,
+    "name": "Valorização dos Recursos Não Escolhidos",
+    "url": "https://ludopedia.com.br/mecanica/123"
+  },
+  {
+    "id": 124,
+    "name": "Pontos de Movimento",
+    "url": "https://ludopedia.com.br/mecanica/124"
+  },
+  {
+    "id": 125,
+    "name": "Movimento com Modelo",
+    "url": "https://ludopedia.com.br/mecanica/125"
+  },
+  {
+    "id": 126,
+    "name": "Linha de Visão",
+    "url": "https://ludopedia.com.br/mecanica/126"
+  },
+  {
+    "id": 127,
+    "name": "Perder a Vez",
+    "url": "https://ludopedia.com.br/mecanica/127"
+  },
+  {
+    "id": 128,
+    "name": "Investimento",
+    "url": "https://ludopedia.com.br/mecanica/128"
+  },
+  {
+    "id": 129,
+    "name": "Desenho de Linhas",
+    "url": "https://ludopedia.com.br/mecanica/129"
+  },
+  {
+    "id": 130,
+    "name": "Alocação de Trabalhadores com Dados",
+    "url": "https://ludopedia.com.br/mecanica/130"
+  },
+  {
+    "id": 131,
+    "name": "Alocação de Diferentes Tipos de Trabalhadores",
+    "url": "https://ludopedia.com.br/mecanica/131"
+  },
+  {
+    "id": 132,
+    "name": "Preparação Variável",
+    "url": "https://ludopedia.com.br/mecanica/132"
+  },
+  {
+    "id": 133,
+    "name": "Pontos de Vitória como Recurso",
+    "url": "https://ludopedia.com.br/mecanica/133"
+  },
+  {
+    "id": 134,
+    "name": "Movimento Tridimensional",
+    "url": "https://ludopedia.com.br/mecanica/134"
+  },
+  {
+    "id": 135,
+    "name": "Indução",
+    "url": "https://ludopedia.com.br/mecanica/135"
+  },
+  {
+    "id": 136,
+    "name": "Empréstimos",
+    "url": "https://ludopedia.com.br/mecanica/136"
+  },
+  {
+    "id": 137,
+    "name": "Movimento Medido",
+    "url": "https://ludopedia.com.br/mecanica/137"
+  },
+  {
+    "id": 138,
+    "name": "Combinação",
+    "url": "https://ludopedia.com.br/mecanica/138"
+  },
+  {
+    "id": 139,
+    "name": "Ordem de Turno: Interrupções",
+    "url": "https://ludopedia.com.br/mecanica/139"
+  },
+  {
+    "id": 140,
+    "name": "Suporte sem Recompensa",
+    "url": "https://ludopedia.com.br/mecanica/140"
+  },
+  {
+    "id": 141,
+    "name": "Rei da Colina",
+    "url": "https://ludopedia.com.br/mecanica/141"
+  },
+  {
+    "id": 142,
+    "name": "Escalada",
+    "url": "https://ludopedia.com.br/mecanica/142"
+  },
+  {
+    "id": 143,
+    "name": "Camadas de Componentes",
+    "url": "https://ludopedia.com.br/mecanica/143"
+  },
+  {
+    "id": 144,
+    "name": "Mapa: Adição",
+    "url": "https://ludopedia.com.br/mecanica/144"
+  },
+  {
+    "id": 145,
+    "name": "Mapa: Modificação",
+    "url": "https://ludopedia.com.br/mecanica/145"
+  },
+  {
+    "id": 146,
+    "name": "Mapa: Redução",
+    "url": "https://ludopedia.com.br/mecanica/146"
+  },
+  {
+    "id": 147,
+    "name": "Fundir e Espalhar",
+    "url": "https://ludopedia.com.br/mecanica/147"
+  },
+  {
+    "id": 148,
+    "name": "Resolução em Tabuleiro Separado",
+    "url": "https://ludopedia.com.br/mecanica/148"
+  },
+  {
+    "id": 149,
+    "name": "Mover-se pelo Baralho",
+    "url": "https://ludopedia.com.br/mecanica/149"
+  },
+  {
+    "id": 150,
+    "name": "Mover Várias Unidades",
+    "url": "https://ludopedia.com.br/mecanica/150"
+  },
+  {
+    "id": 151,
+    "name": "Cartas Multiuso",
+    "url": "https://ludopedia.com.br/mecanica/151"
+  },
+  {
+    "id": 152,
+    "name": "Múltiplos Mapas",
+    "url": "https://ludopedia.com.br/mecanica/152"
+  },
+  {
+    "id": 153,
+    "name": "Leilão: Vários Lotes",
+    "url": "https://ludopedia.com.br/mecanica/153"
+  },
+  {
+    "id": 154,
+    "name": "Escolha Narrativa",
+    "url": "https://ludopedia.com.br/mecanica/154"
+  },
+  {
+    "id": 155,
+    "name": "Compartilhamento entre Vizinhos",
+    "url": "https://ludopedia.com.br/mecanica/155"
+  },
+  {
+    "id": 156,
+    "name": "Habilidades 1 vez por Partida",
+    "url": "https://ludopedia.com.br/mecanica/156"
+  },
+  {
+    "id": 157,
+    "name": "Marcadores de Ordens",
+    "url": "https://ludopedia.com.br/mecanica/157"
+  },
+  {
+    "id": 158,
+    "name": "Ordenação",
+    "url": "https://ludopedia.com.br/mecanica/158"
+  },
+  {
+    "id": 159,
+    "name": "Propriedade",
+    "url": "https://ludopedia.com.br/mecanica/159"
+  },
+  {
+    "id": 160,
+    "name": "Passar Ficha de Ação",
+    "url": "https://ludopedia.com.br/mecanica/160"
+  },
+  {
+    "id": 161,
+    "name": "Movimento em Trilha",
+    "url": "https://ludopedia.com.br/mecanica/161"
+  },
+  {
+    "id": 162,
+    "name": "Pistas Direcionadas",
+    "url": "https://ludopedia.com.br/mecanica/162"
+  },
+  {
+    "id": 163,
+    "name": "Marcas",
+    "url": "https://ludopedia.com.br/mecanica/163"
+  },
+  {
+    "id": 164,
+    "name": "Fim por Morte Súbita",
+    "url": "https://ludopedia.com.br/mecanica/164"
+  },
+  {
+    "id": 165,
+    "name": "Cabo-de-Guerra",
+    "url": "https://ludopedia.com.br/mecanica/165"
+  },
+  {
+    "id": 166,
+    "name": "Pontuar e Reiniciar",
+    "url": "https://ludopedia.com.br/mecanica/166"
+  },
+  {
+    "id": 167,
+    "name": "Movimento Padrão",
+    "url": "https://ludopedia.com.br/mecanica/167"
+  },
+  {
+    "id": 168,
+    "name": "Remoção Física",
+    "url": "https://ludopedia.com.br/mecanica/168"
+  },
+  {
+    "id": 169,
+    "name": "Peças como Mapa",
+    "url": "https://ludopedia.com.br/mecanica/169"
+  },
+  {
+    "id": 170,
+    "name": "Jogador Juiz",
+    "url": "https://ludopedia.com.br/mecanica/170"
+  },
+  {
+    "id": 171,
+    "name": "Previsão de Lance",
+    "url": "https://ludopedia.com.br/mecanica/171"
+  },
+  {
+    "id": 172,
+    "name": "Dilema do Prisioneiro",
+    "url": "https://ludopedia.com.br/mecanica/172"
+  },
+  {
+    "id": 173,
+    "name": "Perguntas e Respostas",
+    "url": "https://ludopedia.com.br/mecanica/173"
+  },
+  {
+    "id": 174,
+    "name": "Produção Aleatória",
+    "url": "https://ludopedia.com.br/mecanica/174"
+  },
+  {
+    "id": 175,
+    "name": "Tabela de Proporção para Combate",
+    "url": "https://ludopedia.com.br/mecanica/175"
+  },
+  {
+    "id": 176,
+    "name": "Rolar Novamente e Bloqueio",
+    "url": "https://ludopedia.com.br/mecanica/176"
+  },
+  {
+    "id": 177,
+    "name": "Movimento Relativo",
+    "url": "https://ludopedia.com.br/mecanica/177"
+  },
+  {
+    "id": 178,
+    "name": "Fila de Recursos",
+    "url": "https://ludopedia.com.br/mecanica/178"
+  },
+  {
+    "id": 179,
+    "name": "Recurso para Mover",
+    "url": "https://ludopedia.com.br/mecanica/179"
+  },
+  {
+    "id": 180,
+    "name": "Papéis com Informações Assimétricas",
+    "url": "https://ludopedia.com.br/mecanica/180"
+  },
+  {
+    "id": 181,
+    "name": "Lance para Ordem de Seleção",
+    "url": "https://ludopedia.com.br/mecanica/181"
+  },
+  {
+    "id": 182,
+    "name": "Perdedor Único",
+    "url": "https://ludopedia.com.br/mecanica/182"
+  },
+  {
+    "id": 183,
+    "name": "Deslizar / Empurrar",
+    "url": "https://ludopedia.com.br/mecanica/183"
+  },
+  {
+    "id": 184,
+    "name": "Correspondência Rápida",
+    "url": "https://ludopedia.com.br/mecanica/184"
+  },
+  {
+    "id": 185,
+    "name": "Grade com Quadrados",
+    "url": "https://ludopedia.com.br/mecanica/185"
+  },
+  {
+    "id": 186,
+    "name": "Empilhar e Equilibrar",
+    "url": "https://ludopedia.com.br/mecanica/186"
+  },
+  {
+    "id": 187,
+    "name": "Resolução com Testes de Estatísticas",
+    "url": "https://ludopedia.com.br/mecanica/187"
+  },
+  {
+    "id": 188,
+    "name": "Captura de Peças",
+    "url": "https://ludopedia.com.br/mecanica/188"
+  },
+  {
+    "id": 189,
+    "name": "Ordem do Turno: Leilão",
+    "url": "https://ludopedia.com.br/mecanica/189"
+  },
+  {
+    "id": 190,
+    "name": "Ordem do Turno: Ação de Reivindicação",
+    "url": "https://ludopedia.com.br/mecanica/190"
+  },
+  {
+    "id": 191,
+    "name": "Ordem do Turno: Ordem de Passe",
+    "url": "https://ludopedia.com.br/mecanica/191"
+  },
+  {
+    "id": 192,
+    "name": "Ordem do Turno: Progressivo",
+    "url": "https://ludopedia.com.br/mecanica/192"
+  },
+  {
+    "id": 193,
+    "name": "Ordem do Turno: Aleatório",
+    "url": "https://ludopedia.com.br/mecanica/193"
+  },
+  {
+    "id": 194,
+    "name": "Ordem do Turno: Papel ou Tipo de Ação",
+    "url": "https://ludopedia.com.br/mecanica/194"
+  },
+  {
+    "id": 195,
+    "name": "Ordem de Turno: Baseado em Estatísticas",
+    "url": "https://ludopedia.com.br/mecanica/195"
+  },
+  {
+    "id": 196,
+    "name": "Legado",
+    "url": "https://ludopedia.com.br/mecanica/196"
+  },
+  {
+    "id": 197,
+    "name": "Cenário / Missão / Campanha",
+    "url": "https://ludopedia.com.br/mecanica/197"
+  },
+  {
+    "id": 198,
+    "name": "Solo / Solitário",
+    "url": "https://ludopedia.com.br/mecanica/198"
+  },
+  {
+    "id": 199,
+    "name": "Leilão: Lote Múltiplo",
+    "url": "https://ludopedia.com.br/mecanica/199"
+  },
+  {
+    "id": 200,
+    "name": "Ortografia",
+    "url": "https://ludopedia.com.br/mecanica/200"
+  }
+]

@@ -6,7 +6,14 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 15,
-    "rulebook": "agent_avenue.pdf"
+    "rulebook": "agent_avenue.pdf",
+    "url": "https://ludopedia.com.br/jogo/agent-avenue",
+    "mechanics": [
+      11,
+      116,
+      3,
+      161
+    ]
   },
   {
     "id": 2,
@@ -15,7 +22,13 @@
     "minPlayers": 1,
     "maxPlayers": 4,
     "time": 15,
-    "rulebook": "bandido.pdf"
+    "rulebook": "bandido.pdf",
+    "url": "https://ludopedia.com.br/jogo/bandido",
+    "mechanics": [
+      20,
+      8,
+      18
+    ]
   },
   {
     "id": 3,
@@ -24,7 +37,13 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 30,
-    "rulebook": "cabo.pdf"
+    "rulebook": "cabo.pdf",
+    "url": "https://ludopedia.com.br/jogo/cabo",
+    "mechanics": [
+      11,
+      3,
+      29
+    ]
   },
   {
     "id": 4,
@@ -33,7 +52,12 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 10,
-    "rulebook": "cards_vs_gravity.pdf"
+    "rulebook": "cards_vs_gravity.pdf",
+    "url": "https://ludopedia.com.br/jogo/cards-vs-gravity-pro",
+    "mechanics": [
+      186,
+      12
+    ]
   },
   {
     "id": 5,
@@ -42,7 +66,11 @@
     "minPlayers": 3,
     "maxPlayers": 5,
     "time": 25,
-    "rulebook": "cheating_moth.pdf"
+    "rulebook": "cheating_moth.pdf",
+    "url": "https://ludopedia.com.br/jogo/mogel-motte-cheating-moth",
+    "mechanics": [
+      3
+    ]
   },
   {
     "id": 6,
@@ -51,7 +79,12 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 20,
-    "rulebook": "confusing_lands.pdf"
+    "rulebook": "confusing_lands.pdf",
+    "url": "https://ludopedia.com.br/jogo/confusing-lands",
+    "mechanics": [
+      143,
+      16
+    ]
   },
   {
     "id": 7,
@@ -60,7 +93,16 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 15,
-    "rulebook": "coup.pdf"
+    "rulebook": "coup.pdf",
+    "url": "https://ludopedia.com.br/jogo/coup-the-resistance-universe",
+    "mechanics": [
+      59,
+      60,
+      50,
+      27,
+      29,
+      38
+    ]
   },
   {
     "id": 8,
@@ -69,7 +111,19 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 30,
-    "rulebook": "deep_sea_adventure.pdf"
+    "rulebook": "deep_sea_adventure.pdf",
+    "url": "https://ludopedia.com.br/jogo/deep-sea-adventure",
+    "mechanics": [
+      45,
+      4,
+      40,
+      41,
+      11,
+      12,
+      32,
+      39,
+      47
+    ]
   },
   {
     "id": 9,
@@ -78,7 +132,14 @@
     "minPlayers": 3,
     "maxPlayers": 12,
     "time": 30,
-    "rulebook": "dixit.pdf"
+    "rulebook": "dixit.pdf",
+    "url": "https://ludopedia.com.br/jogo/dixit-odyssey",
+    "mechanics": [
+      33,
+      49,
+      162,
+      116
+    ]
   },
   {
     "id": 10,
@@ -87,7 +148,14 @@
     "minPlayers": 2,
     "maxPlayers": 8,
     "time": 15,
-    "rulebook": "dobble.pdf"
+    "rulebook": "dobble.pdf",
+    "url": "https://ludopedia.com.br/jogo/dobble-spot-it",
+    "mechanics": [
+      26,
+      61,
+      110,
+      184
+    ]
   },
   {
     "id": 11,
@@ -96,7 +164,11 @@
     "minPlayers": 3,
     "maxPlayers": 6,
     "time": 20,
-    "rulebook": "doppelganger_tricks.pdf"
+    "rulebook": "doppelganger_tricks.pdf",
+    "url": "https://ludopedia.com.br/jogo/doppelganger-tricks",
+    "mechanics": [
+      6
+    ]
   },
   {
     "id": 12,
@@ -105,7 +177,12 @@
     "minPlayers": 2,
     "maxPlayers": 8,
     "time": 20,
-    "rulebook": "duvidae.pdf"
+    "rulebook": "duvidae.pdf",
+    "url": "https://ludopedia.com.br/jogo/duvidae",
+    "mechanics": [
+      59,
+      142
+    ]
   },
   {
     "id": 13,
@@ -114,7 +191,19 @@
     "minPlayers": 2,
     "maxPlayers": 12,
     "time": 30,
-    "rulebook": "empathos.pdf"
+    "rulebook": "empathos.pdf",
+    "url": "https://ludopedia.com.br/jogo/empathos",
+    "mechanics": [
+      20,
+      68,
+      1,
+      89,
+      60,
+      156,
+      163,
+      161,
+      173
+    ]
   },
   {
     "id": 14,
@@ -123,7 +212,12 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 30,
-    "rulebook": "entre_linhas.pdf"
+    "rulebook": "entre_linhas.pdf",
+    "url": "https://ludopedia.com.br/jogo/entre-linhas-cross-clues",
+    "mechanics": [
+      20,
+      60
+    ]
   },
   {
     "id": 15,
@@ -132,7 +226,16 @@
     "minPlayers": 2,
     "maxPlayers": 5,
     "time": 15,
-    "rulebook": "exploding_kittens.pdf"
+    "rulebook": "exploding_kittens.pdf",
+    "url": "https://ludopedia.com.br/jogo/exploding-kittens",
+    "mechanics": [
+      45,
+      11,
+      50,
+      3,
+      38,
+      110
+    ]
   },
   {
     "id": 16,
@@ -141,7 +244,13 @@
     "minPlayers": 2,
     "maxPlayers": 8,
     "time": 20,
-    "rulebook": "ghost_blitz.pdf"
+    "rulebook": "ghost_blitz.pdf",
+    "url": "https://ludopedia.com.br/jogo/ghost-blitz",
+    "mechanics": [
+      26,
+      61,
+      184
+    ]
   },
   {
     "id": 17,
@@ -150,7 +259,11 @@
     "minPlayers": 2,
     "maxPlayers": 5,
     "time": 20,
-    "rulebook": "good_face_bad_face.pdf"
+    "rulebook": "good_face_bad_face.pdf",
+    "url": "https://ludopedia.com.br/jogo/good-face-bad-face",
+    "mechanics": [
+      45
+    ]
   },
   {
     "id": 18,
@@ -159,7 +272,15 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 15,
-    "rulebook": "kariba.pdf"
+    "rulebook": "kariba.pdf",
+    "url": "https://ludopedia.com.br/jogo/kariba",
+    "mechanics": [
+      11,
+      3,
+      12,
+      53,
+      38
+    ]
   },
   {
     "id": 19,
@@ -168,7 +289,13 @@
     "minPlayers": 2,
     "maxPlayers": 5,
     "time": 15,
-    "rulebook": "nana.pdf"
+    "rulebook": "nana.pdf",
+    "url": "https://ludopedia.com.br/jogo/nana",
+    "mechanics": [
+      11,
+      60,
+      29
+    ]
   },
   {
     "id": 20,
@@ -177,7 +304,15 @@
     "minPlayers": 3,
     "maxPlayers": 7,
     "time": 20,
-    "rulebook": "no_thanks.pdf"
+    "rulebook": "no_thanks.pdf",
+    "url": "https://ludopedia.com.br/jogo/no-thanks",
+    "mechanics": [
+      11,
+      28,
+      45,
+      87,
+      123
+    ]
   },
   {
     "id": 21,
@@ -186,7 +321,12 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 15,
-    "rulebook": "odin.pdf"
+    "rulebook": "odin.pdf",
+    "url": "https://ludopedia.com.br/jogo/odin",
+    "mechanics": [
+      142,
+      3
+    ]
   },
   {
     "id": 22,
@@ -195,7 +335,11 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 20,
-    "rulebook": "panda_panda.pdf"
+    "rulebook": "panda_panda.pdf",
+    "url": "https://ludopedia.com.br/jogo/panda-panda",
+    "mechanics": [
+      3
+    ]
   },
   {
     "id": 23,
@@ -204,7 +348,11 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 15,
-    "rulebook": "poop.pdf"
+    "rulebook": "poop.pdf",
+    "url": "https://ludopedia.com.br/jogo/poop-the-game",
+    "mechanics": [
+      3
+    ]
   },
   {
     "id": 24,
@@ -213,7 +361,19 @@
     "minPlayers": 3,
     "maxPlayers": 10,
     "time": 30,
-    "rulebook": "saboteur.pdf"
+    "rulebook": "saboteur.pdf",
+    "url": "https://ludopedia.com.br/jogo/saboteur",
+    "mechanics": [
+      3,
+      18,
+      37,
+      38,
+      59,
+      107,
+      144,
+      119,
+      108
+    ]
   },
   {
     "id": 25,
@@ -222,7 +382,14 @@
     "minPlayers": 2,
     "maxPlayers": 5,
     "time": 20,
-    "rulebook": "scout.pdf"
+    "rulebook": "scout.pdf",
+    "url": "https://ludopedia.com.br/jogo/scout",
+    "mechanics": [
+      192,
+      166,
+      3,
+      142
+    ]
   },
   {
     "id": 26,
@@ -231,7 +398,20 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 30,
-    "rulebook": "sea_salt_and_paper.pdf"
+    "rulebook": "sea_salt_and_paper.pdf",
+    "url": "https://ludopedia.com.br/jogo/sea-salt-paper",
+    "mechanics": [
+      3,
+      11,
+      147,
+      45,
+      138,
+      64,
+      15,
+      100,
+      192,
+      38
+    ]
   },
   {
     "id": 27,
@@ -240,7 +420,13 @@
     "minPlayers": 2,
     "maxPlayers": 6,
     "time": 15,
-    "rulebook": "slapburger.pdf"
+    "rulebook": "slapburger.pdf",
+    "url": "https://ludopedia.com.br/jogo/slapburger",
+    "mechanics": [
+      26,
+      61,
+      3
+    ]
   },
   {
     "id": 28,
@@ -249,7 +435,13 @@
     "minPlayers": 2,
     "maxPlayers": 5,
     "time": 20,
-    "rulebook": "sushi_go.pdf"
+    "rulebook": "sushi_go.pdf",
+    "url": "https://ludopedia.com.br/jogo/sushi-go",
+    "mechanics": [
+      11,
+      2,
+      3
+    ]
   },
   {
     "id": 29,
@@ -258,7 +450,13 @@
     "minPlayers": 3,
     "maxPlayers": 8,
     "time": 15,
-    "rulebook": "thats_not_a_hat.pdf"
+    "rulebook": "thats_not_a_hat.pdf",
+    "url": "https://ludopedia.com.br/jogo/that-s-not-a-hat",
+    "mechanics": [
+      60,
+      59,
+      29
+    ]
   },
   {
     "id": 30,
@@ -267,7 +465,15 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 20,
-    "rulebook": "the_mind.pdf"
+    "rulebook": "the_mind.pdf",
+    "url": "https://ludopedia.com.br/jogo/the-mind",
+    "mechanics": [
+      20,
+      3,
+      45,
+      89,
+      60
+    ]
   },
   {
     "id": 31,
@@ -276,7 +482,13 @@
     "minPlayers": 3,
     "maxPlayers": 6,
     "time": 15,
-    "rulebook": "trio.pdf"
+    "rulebook": "trio.pdf",
+    "url": "https://ludopedia.com.br/jogo/trio",
+    "mechanics": [
+      29,
+      11,
+      60
+    ]
   },
   {
     "id": 32,
@@ -285,7 +497,11 @@
     "minPlayers": 2,
     "maxPlayers": 4,
     "time": 20,
-    "rulebook": "tucano.pdf"
+    "rulebook": "tucano.pdf",
+    "url": "https://ludopedia.com.br/jogo/tucano",
+    "mechanics": [
+      11
+    ]
   },
   {
     "id": 33,
@@ -294,6 +510,15 @@
     "minPlayers": 8,
     "maxPlayers": 18,
     "time": 30,
-    "rulebook": "werewolves_of_millers_hollow.pdf"
+    "rulebook": "werewolves_of_millers_hollow.pdf",
+    "url": "https://ludopedia.com.br/jogo/the-werewolves-of-miller-s-hollow",
+    "mechanics": [
+      27,
+      37,
+      42,
+      49,
+      59,
+      60
+    ]
   }
 ]
