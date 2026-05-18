@@ -2346,6 +2346,18 @@
                 renderGames();
 
             });
+        function openOverlay(modalElement) {
+
+            modalElement.classList.add('active');
+
+            document.body.classList.add('modal-open');
+
+            history.pushState(
+                { overlay: true },
+                ""
+            );
+
+        }
 
         function closeModal() {
 
@@ -2375,6 +2387,40 @@
 
             }
 
+            if (
+                filtersModal.classList.contains('active')
+            ) {
+
+                closeFiltersModal();
+
+            }
+
+            if (
+                diceModal.classList.contains('active')
+            ) {
+
+                closeDiceModal();
+
+            }
+
+            if (
+                timerModal.classList.contains('active')
+            ) {
+
+                closeTimerModal();
+
+            }
+
+            if (
+                fingerSelectorModal.classList.contains(
+                    'active'
+                )
+            ) {
+
+                closeFingerSelector();
+
+            }
+
         });
 
         menuButton.addEventListener('click', (e) => {
@@ -2398,11 +2444,7 @@
 
             e.stopPropagation();
 
-            filtersModal.classList.add('active');
-
-            document.body.classList.add(
-                'modal-open'
-            );
+            openOverlay(filtersModal);
 
         });
 
@@ -2829,9 +2871,7 @@
                 fingerStatus.innerText =
                     'Coloque os dedos.';
 
-                fingerSelectorModal.classList.add(
-                    'active'
-                );
+                openOverlay(fingerSelectorModal);
 
                 menuPanel.classList.remove(
                     'active'
@@ -2839,10 +2879,6 @@
 
                 filtersPanel.classList.remove(
                     'active'
-                );
-
-                document.body.classList.add(
-                    'modal-open'
                 );
 
             }
@@ -2959,9 +2995,7 @@
 
             e.stopPropagation();
 
-            diceModal.classList.add('active');
-
-            document.body.classList.add('modal-open');
+            openOverlay(diceModal);
 
         });
 
@@ -3150,9 +3184,7 @@
 
         timerButton.addEventListener('click', () => {
 
-            timerModal.classList.add('active');
-
-            document.body.classList.add('modal-open');
+            openOverlay(timerModal);
 
         });
 
