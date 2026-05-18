@@ -9,111 +9,102 @@ viewBox="0 0 512 512">
         fill="#121212"
     />
 
-    <!-- Glow -->
-    <circle
-        cx="256"
-        cy="256"
-        r="185"
-        fill="#1f2937"
-        opacity=".28"
-    />
-
     <!-- Livro -->
 
     <!-- sombra -->
     <rect
-        x="118"
-        y="118"
-        width="276"
-        height="296"
-        rx="42"
+        x="34"
+        y="28"
+        width="438"
+        height="456"
+        rx="58"
         fill="#000"
-        opacity=".22"
+        opacity=".14"
     />
 
     <!-- corpo -->
     <rect
-        x="106"
-        y="102"
-        width="276"
-        height="296"
-        rx="42"
+        x="24"
+        y="18"
+        width="438"
+        height="456"
+        rx="58"
         fill="#5a3928"
     />
 
     <!-- capa -->
     <rect
-        x="126"
-        y="122"
-        width="236"
-        height="256"
-        rx="28"
+        x="64"
+        y="58"
+        width="366"
+        height="378"
+        rx="42"
         fill="#704733"
     />
 
     <!-- lombada -->
     <rect
-        x="90"
-        y="120"
-        width="34"
-        height="260"
-        rx="16"
+        x="2"
+        y="52"
+        width="58"
+        height="390"
+        rx="24"
         fill="#3c2418"
     />
 
     <!-- detalhes dourados -->
     <rect
-        x="150"
-        y="145"
-        width="188"
-        height="5"
-        rx="3"
+        x="112"
+        y="96"
+        width="270"
+        height="8"
+        rx="4"
         fill="#d8b26a"
-        opacity=".6"
+        opacity=".52"
     />
 
     <rect
-        x="150"
-        y="350"
-        width="188"
-        height="5"
-        rx="3"
+        x="112"
+        y="392"
+        width="270"
+        height="8"
+        rx="4"
         fill="#d8b26a"
-        opacity=".6"
+        opacity=".52"
     />
 
     <!-- Cartas -->
 
     <!-- azul -->
     <rect
-        x="160"
-        y="198"
-        width="70"
-        height="96"
-        rx="12"
+        x="104"
+        y="188"
+        width="108"
+        height="146"
+        rx="18"
         fill="#6FA8DC"
-        transform="rotate(-10 160 198)"
+        transform="rotate(-11 104 188)"
     />
 
     <!-- verde -->
     <rect
-        x="221"
-        y="184"
-        width="70"
-        height="96"
-        rx="12"
+        x="202"
+        y="154"
+        width="108"
+        height="146"
+        rx="18"
         fill="#4dffac"
     />
 
     <!-- vermelho -->
     <rect
-        x="280"
-        y="198"
-        width="70"
-        height="96"
-        rx="12"
+        x="300"
+        y="188"
+        width="108"
+        height="146"
+        rx="18"
         fill="#ff4d6d"
-        transform="rotate(10 280 198)"
+        transform="rotate(11 300 188)"
     />
 
 </svg>
