@@ -295,50 +295,5 @@
     "maxPlayers": 18,
     "time": 30,
     "rulebook": "werewolves_of_millers_hollow.pdf"
-  },
-  {
-    "id": 34,
-    "title": "Dutch Blitz",
-    "image": "dutch_blitz.jpg",
-    "minPlayers": 2,
-    "maxPlayers": 4,
-    "time": 15,
-    "rulebook": "dutch_blitz.pdf"
-  },
-  {
-    "id": 35,
-    "title": "Taco Cat Goat Cheese Pizza",
-    "image": "taco_cat_goat_cheese_pizza.jpg",
-    "minPlayers": 2,
-    "maxPlayers": 8,
-    "time": 10,
-    "rulebook": "taco_cat_goat_cheese_pizza.pdf"
-  },
-  {
-    "id": 36,
-    "title": "Splurt",
-    "image": "splurt.jpg",
-    "minPlayers": 2,
-    "maxPlayers": 8,
-    "time": 15,
-    "rulebook": "splurt.pdf"
-  },
-  {
-    "id": 37,
-    "title": "5211: Azul Special Edition",
-    "image": "5211.jpg",
-    "minPlayers": 2,
-    "maxPlayers": 5,
-    "time": 20,
-    "rulebook": "5211.pdf"
-  },
-  {
-    "id": 38,
-    "title": "Cluedo Suspect",
-    "image": "cluedo_suspect.jpg",
-    "minPlayers": 3,
-    "maxPlayers": 4,
-    "time": 20,
-    "rulebook": "cluedo_suspect.pdf"
   }
 ]
