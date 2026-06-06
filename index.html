@@ -250,6 +250,32 @@
             transition: .2s ease;
         }
 
+        .modal-tools-button {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .42);
+            color: white;
+            font-size: 1.25rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            backdrop-filter: blur(3px);
+            transition: .2s ease;
+        }
+
+        .modal-tools-button:hover,
+        .modal-rulebook-button:hover {
+            background: rgba(0, 0, 0, .82);
+            transform: translateY(-1px);
+        }
+
 
         .modal-favorite-button.active {
             color: #ff3b5c;
@@ -1075,6 +1101,12 @@
                 font-size: 1.8rem !important;
             }
 
+            .modal-tools-button {
+                width: 52px !important;
+                height: 52px !important;
+                font-size: 1.6rem !important;
+            }
+
 
             .close-button {
                 width: 52px !important;
@@ -1232,6 +1264,253 @@
             }
 
         }
+
+        .game-tools-content {
+            max-width: 680px;
+            padding: 30px 22px 24px;
+        }
+
+        .game-tools-header {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .game-tools-header i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .game-tools-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .game-tools-subtitle {
+            margin-top: 5px;
+            color: #aaa;
+            font-size: .92rem;
+        }
+
+        .game-tools-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .tool-section {
+            background: #232323;
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .tool-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .tool-section-title {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .tool-icon-button {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 13px;
+            background: #343434;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .tool-icon-button:hover {
+            background: #414141;
+        }
+
+        .points-counters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .point-counter {
+            --counter-color: #4f8cff;
+            position: relative;
+            overflow: hidden;
+            background: #191919;
+            border: 1px solid color-mix(in srgb, var(--counter-color) 55%, transparent);
+            border-radius: 18px;
+            padding: 14px;
+        }
+
+        .point-counter::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                color-mix(in srgb, var(--counter-color) 20%, transparent),
+                transparent 60%
+            );
+            pointer-events: none;
+        }
+
+        .point-counter-controls {
+            position: relative;
+            display: grid;
+            grid-template-columns: 48px 1fr 48px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .point-counter-button {
+            height: 48px;
+            border: none;
+            border-radius: 14px;
+            background: color-mix(in srgb, var(--counter-color) 28%, #222);
+            color: white;
+            font-size: 1.35rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .point-counter-input {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            outline: none;
+            appearance: textfield;
+        }
+
+        .point-counter-input::-webkit-inner-spin-button,
+        .point-counter-input::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+
+        .pick-card-display {
+            min-height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 18px;
+            border-radius: 18px;
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, .08), transparent 55%),
+                #171717;
+            border: 1px solid rgba(255, 255, 255, .08);
+            text-align: center;
+            white-space: pre-line;
+            font-size: clamp(1.2rem, 4vw, 1.75rem);
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .pick-card-display.empty {
+            color: #888;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .pick-card-counts {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 14px 0;
+            color: #bbb;
+            font-size: .9rem;
+        }
+
+        .pick-card-actions {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+        }
+
+        .pick-card-draw {
+            border: none;
+            border-radius: 16px;
+            background: #f1f1f1;
+            color: #151515;
+            min-height: 52px;
+            padding: 0 18px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .pick-card-draw:disabled {
+            opacity: .45;
+            cursor: default;
+        }
+
+        .discard-list {
+            display: none;
+            margin-top: 14px;
+            max-height: 280px;
+            overflow-y: auto;
+            border-radius: 15px;
+            background: #191919;
+            padding: 10px;
+        }
+
+        .discard-list.active {
+            display: block;
+        }
+
+        .discard-list-empty {
+            padding: 16px;
+            color: #888;
+            text-align: center;
+        }
+
+        .discard-card {
+            padding: 12px;
+            white-space: pre-line;
+            line-height: 1.45;
+            color: #ddd;
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .discard-card:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 520px) {
+            .game-tools-content {
+                padding: 28px 14px 16px;
+            }
+
+            .tool-section {
+                padding: 14px;
+            }
+
+            .points-counters {
+                grid-template-columns: 1fr;
+            }
+
+            .pick-card-actions {
+                grid-template-columns: 1fr 52px;
+            }
+
+            .pick-card-counts {
+                gap: 12px;
+                font-size: .82rem;
+            }
+        }
     </style>
 </head>
 
@@ -1258,6 +1537,10 @@
                     <i class="fas fa-circle-info"></i>
                 </button>
 
+                <button class="modal-tools-button" id="modalToolsButton" aria-label="Abrir ferramentas do jogo">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </button>
+
             </div>
             <div class="modal-body">
 
@@ -1271,6 +1554,21 @@
 
         </div>
 
+    </div>
+    <div class="dice-modal" id="gameToolsModal">
+        <div class="dice-content game-tools-content" onclick="event.stopPropagation()">
+            <button class="close-button" id="gameToolsCloseButton" aria-label="Fechar ferramentas">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="game-tools-header">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <div class="game-tools-title" id="gameToolsTitle">Ferramentas</div>
+                <div class="game-tools-subtitle">O progresso fica salvo neste dispositivo</div>
+            </div>
+
+            <div class="game-tools-sections" id="gameToolsSections"></div>
+        </div>
     </div>
     <div class="dice-modal" id="diceModal">
 
@@ -1591,6 +1889,16 @@
             document.getElementById('modalFavoriteButton');
         const modalRulebookButton =
             document.getElementById('modalRulebookButton');
+        const modalToolsButton =
+            document.getElementById('modalToolsButton');
+        const gameToolsModal =
+            document.getElementById('gameToolsModal');
+        const gameToolsCloseButton =
+            document.getElementById('gameToolsCloseButton');
+        const gameToolsTitle =
+            document.getElementById('gameToolsTitle');
+        const gameToolsSections =
+            document.getElementById('gameToolsSections');
 
         const menuButton =
             document.getElementById('menuButton');
@@ -1720,6 +2028,8 @@
         let allGames = [];
         let rulesData = [];
         let mechanicsData = [];
+        let toolsData = [];
+        let currentGameWithTools = null;
 
         let globalMinPlayers = 1;
         let globalMaxPlayers = 12;
@@ -1771,6 +2081,669 @@
             renderGames();
 
         }
+
+        const pointCounterColors = [
+            '#4f8cff',
+            '#ff5c7a',
+            '#35c98b',
+            '#f5a524',
+            '#a970ff',
+            '#28b9d8',
+            '#ef6c35',
+            '#d8c53a'
+        ];
+
+        function getToolsConfig(gameId) {
+
+            return toolsData.find(
+                item => item.id === gameId
+            ) || null;
+
+        }
+
+        function getToolsStorageKey(gameId) {
+
+            return `gameToolsState:v1:${gameId}`;
+
+        }
+
+        function createPointColors(count) {
+
+            const shuffled = [...pointCounterColors]
+                .sort(() => Math.random() - .5);
+
+            return Array.from(
+                { length: count },
+                (_, index) =>
+                    shuffled[index % shuffled.length]
+            );
+
+        }
+
+        function createDefaultToolsState(tools) {
+
+            const state = {};
+
+            const cardTool = tools.find(
+                tool => tool.type === 'pick_a_card'
+            );
+
+            if (cardTool) {
+
+                state.pick_a_card = {
+                    remaining: cardTool.cards.map(
+                        (_, index) => index
+                    ),
+                    discarded: [],
+                    current: null
+                };
+
+            }
+
+            const pointsTool = tools.find(
+                tool => tool.type === 'points_counter'
+            );
+
+            if (pointsTool) {
+
+                const count = Math.max(
+                    0,
+                    Number(pointsTool.count) || 0
+                );
+
+                state.points_counter = {
+                    values: Array(count).fill(0),
+                    colors: createPointColors(count)
+                };
+
+            }
+
+            return state;
+
+        }
+
+        function normalizeToolsState(tools, savedState) {
+
+            const state = createDefaultToolsState(tools);
+
+            const cardTool = tools.find(
+                tool => tool.type === 'pick_a_card'
+            );
+
+            if (
+                cardTool &&
+                savedState &&
+                savedState.pick_a_card
+            ) {
+
+                const cardCount = cardTool.cards.length;
+                const validIndices = new Set(
+                    Array.from(
+                        { length: cardCount },
+                        (_, index) => index
+                    )
+                );
+
+                const discarded = Array.isArray(
+                    savedState.pick_a_card.discarded
+                )
+                    ? savedState.pick_a_card.discarded
+                        .filter(index =>
+                            Number.isInteger(index) &&
+                            validIndices.has(index)
+                        )
+                    : [];
+
+                const discardedSet = new Set(discarded);
+                const remaining = Array.isArray(
+                    savedState.pick_a_card.remaining
+                )
+                    ? savedState.pick_a_card.remaining
+                        .filter(index =>
+                            Number.isInteger(index) &&
+                            validIndices.has(index) &&
+                            !discardedSet.has(index)
+                        )
+                    : [];
+
+                const used = new Set([
+                    ...discarded,
+                    ...remaining
+                ]);
+
+                for (
+                    let index = 0;
+                    index < cardCount;
+                    index++
+                ) {
+
+                    if (!used.has(index)) {
+                        remaining.push(index);
+                    }
+
+                }
+
+                const current =
+                    Number.isInteger(
+                        savedState.pick_a_card.current
+                    ) &&
+                    validIndices.has(
+                        savedState.pick_a_card.current
+                    )
+                        ? savedState.pick_a_card.current
+                        : null;
+
+                state.pick_a_card = {
+                    remaining: [...new Set(remaining)],
+                    discarded: [...new Set(discarded)],
+                    current
+                };
+
+            }
+
+            const pointsTool = tools.find(
+                tool => tool.type === 'points_counter'
+            );
+
+            if (
+                pointsTool &&
+                savedState &&
+                savedState.points_counter
+            ) {
+
+                const count = Math.max(
+                    0,
+                    Number(pointsTool.count) || 0
+                );
+                const savedValues = Array.isArray(
+                    savedState.points_counter.values
+                )
+                    ? savedState.points_counter.values
+                    : [];
+                const savedColors = Array.isArray(
+                    savedState.points_counter.colors
+                )
+                    ? savedState.points_counter.colors
+                    : [];
+
+                state.points_counter.values =
+                    Array.from(
+                        { length: count },
+                        (_, index) => {
+
+                            const value =
+                                Number(savedValues[index]);
+
+                            return Number.isFinite(value)
+                                ? value
+                                : 0;
+
+                        }
+                    );
+
+                state.points_counter.colors =
+                    Array.from(
+                        { length: count },
+                        (_, index) =>
+                            savedColors[index] ||
+                            state.points_counter.colors[index]
+                    );
+
+            }
+
+            return state;
+
+        }
+
+        function loadToolsState(gameId, tools) {
+
+            let savedState = null;
+
+            try {
+
+                savedState = JSON.parse(
+                    localStorage.getItem(
+                        getToolsStorageKey(gameId)
+                    ) || 'null'
+                );
+
+            } catch (error) {
+
+                savedState = null;
+
+            }
+
+            return normalizeToolsState(
+                tools,
+                savedState
+            );
+
+        }
+
+        function saveToolsState(gameId, state) {
+
+            localStorage.setItem(
+                getToolsStorageKey(gameId),
+                JSON.stringify(state)
+            );
+
+        }
+
+        function renderPointsTool(
+            section,
+            game,
+            tools,
+            state,
+            pointsTool
+        ) {
+
+            const header =
+                document.createElement('div');
+            header.className = 'tool-section-header';
+            header.innerHTML = `
+                <div class="tool-section-title">
+                    <i class="fa-solid fa-trophy"></i>
+                    Pontos
+                </div>
+            `;
+
+            const resetButton =
+                document.createElement('button');
+            resetButton.className = 'tool-icon-button';
+            resetButton.type = 'button';
+            resetButton.title = 'Zerar todos os pontos';
+            resetButton.setAttribute(
+                'aria-label',
+                'Zerar todos os pontos'
+            );
+            resetButton.innerHTML =
+                '<i class="fa-solid fa-rotate-left"></i>';
+
+            resetButton.addEventListener('click', () => {
+
+                state.points_counter.values.fill(0);
+                saveToolsState(game.id, state);
+                renderGameTools(game);
+
+            });
+
+            header.appendChild(resetButton);
+            section.appendChild(header);
+
+            const counters =
+                document.createElement('div');
+            counters.className = 'points-counters';
+
+            state.points_counter.values.forEach(
+                (value, index) => {
+
+                    const counter =
+                        document.createElement('div');
+                    counter.className = 'point-counter';
+                    counter.style.setProperty(
+                        '--counter-color',
+                        state.points_counter.colors[index]
+                    );
+
+                    const controls =
+                        document.createElement('div');
+                    controls.className =
+                        'point-counter-controls';
+
+                    const minusButton =
+                        document.createElement('button');
+                    minusButton.className =
+                        'point-counter-button';
+                    minusButton.type = 'button';
+                    minusButton.innerText = '−';
+                    minusButton.setAttribute(
+                        'aria-label',
+                        `Diminuir placar ${index + 1}`
+                    );
+
+                    const input =
+                        document.createElement('input');
+                    input.className =
+                        'point-counter-input';
+                    input.type = 'number';
+                    input.step = '1';
+                    input.value = value;
+                    input.setAttribute(
+                        'aria-label',
+                        `Placar ${index + 1}`
+                    );
+
+                    const plusButton =
+                        document.createElement('button');
+                    plusButton.className =
+                        'point-counter-button';
+                    plusButton.type = 'button';
+                    plusButton.innerText = '+';
+                    plusButton.setAttribute(
+                        'aria-label',
+                        `Aumentar placar ${index + 1}`
+                    );
+
+                    function setPointValue(newValue) {
+
+                        const normalized =
+                            Number(newValue);
+
+                        state.points_counter.values[index] =
+                            Number.isFinite(normalized)
+                                ? normalized
+                                : 0;
+
+                        input.value =
+                            state.points_counter.values[index];
+
+                        saveToolsState(game.id, state);
+
+                    }
+
+                    minusButton.addEventListener(
+                        'click',
+                        () => setPointValue(
+                            state.points_counter
+                                .values[index] - 1
+                        )
+                    );
+
+                    plusButton.addEventListener(
+                        'click',
+                        () => setPointValue(
+                            state.points_counter
+                                .values[index] + 1
+                        )
+                    );
+
+                    input.addEventListener(
+                        'change',
+                        () => setPointValue(input.value)
+                    );
+
+                    controls.append(
+                        minusButton,
+                        input,
+                        plusButton
+                    );
+                    counter.appendChild(controls);
+                    counters.appendChild(counter);
+
+                }
+            );
+
+            section.appendChild(counters);
+
+        }
+
+        function renderPickCardTool(
+            section,
+            game,
+            tools,
+            state,
+            cardTool
+        ) {
+
+            const header =
+                document.createElement('div');
+            header.className = 'tool-section-header';
+            header.innerHTML = `
+                <div class="tool-section-title">
+                    <i class="fa-solid fa-hand"></i>
+                    Comprar carta
+                </div>
+            `;
+
+            const resetButton =
+                document.createElement('button');
+            resetButton.className = 'tool-icon-button';
+            resetButton.type = 'button';
+            resetButton.title =
+                'Embaralhar todas as cartas';
+            resetButton.setAttribute(
+                'aria-label',
+                'Embaralhar todas as cartas'
+            );
+            resetButton.innerHTML =
+                '<i class="fa-solid fa-shuffle"></i>';
+
+            resetButton.addEventListener('click', () => {
+
+                state.pick_a_card = {
+                    remaining: cardTool.cards.map(
+                        (_, index) => index
+                    ),
+                    discarded: [],
+                    current: null
+                };
+
+                saveToolsState(game.id, state);
+                renderGameTools(game);
+
+            });
+
+            header.appendChild(resetButton);
+            section.appendChild(header);
+
+            const cardDisplay =
+                document.createElement('div');
+            cardDisplay.className = 'pick-card-display';
+
+            if (state.pick_a_card.current === null) {
+
+                cardDisplay.classList.add('empty');
+                cardDisplay.innerText =
+                    'Compre uma carta para começar';
+
+            } else {
+
+                cardDisplay.innerText =
+                    cardTool.cards[
+                        state.pick_a_card.current
+                    ];
+
+            }
+
+            const counts =
+                document.createElement('div');
+            counts.className = 'pick-card-counts';
+            counts.innerHTML = `
+                <span>
+                    <i class="fa-solid fa-layer-group"></i>
+                    Monte:
+                    <strong>${state.pick_a_card.remaining.length}</strong>
+                </span>
+                <span>
+                    <i class="fa-solid fa-box-archive"></i>
+                    Descartes:
+                    <strong>${state.pick_a_card.discarded.length}</strong>
+                </span>
+            `;
+
+            const actions =
+                document.createElement('div');
+            actions.className = 'pick-card-actions';
+
+            const drawButton =
+                document.createElement('button');
+            drawButton.className = 'pick-card-draw';
+            drawButton.type = 'button';
+            drawButton.disabled =
+                state.pick_a_card.remaining.length === 0;
+            drawButton.innerHTML =
+                '<i class="fa-solid fa-hand"></i> Comprar nova carta';
+
+            const discardButton =
+                document.createElement('button');
+            discardButton.className = 'tool-icon-button';
+            discardButton.type = 'button';
+            discardButton.title = 'Ver descartes';
+            discardButton.setAttribute(
+                'aria-label',
+                'Ver descartes'
+            );
+            discardButton.innerHTML =
+                '<i class="fa-solid fa-list"></i>';
+
+            const discardList =
+                document.createElement('div');
+            discardList.className = 'discard-list';
+
+            if (
+                state.pick_a_card.discarded.length === 0
+            ) {
+
+                const empty =
+                    document.createElement('div');
+                empty.className = 'discard-list-empty';
+                empty.innerText =
+                    'Nenhuma carta descartada';
+                discardList.appendChild(empty);
+
+            } else {
+
+                [...state.pick_a_card.discarded]
+                    .reverse()
+                    .forEach((cardIndex, index) => {
+
+                        const discardedCard =
+                            document.createElement('div');
+                        discardedCard.className =
+                            'discard-card';
+                        discardedCard.innerText =
+                            `${state.pick_a_card.discarded.length - index}. ${cardTool.cards[cardIndex]}`;
+                        discardList.appendChild(
+                            discardedCard
+                        );
+
+                    });
+
+            }
+
+            drawButton.addEventListener('click', () => {
+
+                const randomPosition = Math.floor(
+                    Math.random() *
+                    state.pick_a_card.remaining.length
+                );
+                const [cardIndex] =
+                    state.pick_a_card.remaining.splice(
+                        randomPosition,
+                        1
+                    );
+
+                state.pick_a_card.current = cardIndex;
+                state.pick_a_card.discarded.push(
+                    cardIndex
+                );
+
+                saveToolsState(game.id, state);
+                renderGameTools(game);
+
+            });
+
+            discardButton.addEventListener(
+                'click',
+                () => {
+
+                    discardList.classList.toggle(
+                        'active'
+                    );
+
+                }
+            );
+
+            actions.append(
+                drawButton,
+                discardButton
+            );
+            section.append(
+                cardDisplay,
+                counts,
+                actions,
+                discardList
+            );
+
+        }
+
+        function renderGameTools(game) {
+
+            const config = getToolsConfig(game.id);
+
+            if (!config || !config.tools.length) {
+                return;
+            }
+
+            currentGameWithTools = game;
+            gameToolsTitle.innerText =
+                `${game.title} · Ferramentas`;
+            gameToolsSections.innerHTML = '';
+
+            const state = loadToolsState(
+                game.id,
+                config.tools
+            );
+
+            saveToolsState(game.id, state);
+
+            const orderedTools = [...config.tools]
+                .sort((a, b) => {
+
+                    if (a.type === 'points_counter') {
+                        return -1;
+                    }
+
+                    if (b.type === 'points_counter') {
+                        return 1;
+                    }
+
+                    return 0;
+
+                });
+
+            orderedTools.forEach(tool => {
+
+                const section =
+                    document.createElement('section');
+                section.className = 'tool-section';
+
+                if (tool.type === 'points_counter') {
+
+                    renderPointsTool(
+                        section,
+                        game,
+                        config.tools,
+                        state,
+                        tool
+                    );
+
+                }
+
+                if (tool.type === 'pick_a_card') {
+
+                    renderPickCardTool(
+                        section,
+                        game,
+                        config.tools,
+                        state,
+                        tool
+                    );
+
+                }
+
+                if (section.children.length > 0) {
+
+                    gameToolsSections.appendChild(
+                        section
+                    );
+
+                }
+
+            });
+
+        }
+
         function updateFiltersUI() {
 
             const hasFilter =
@@ -2196,6 +3169,30 @@
 
                     }
 
+                    const toolsConfig =
+                        getToolsConfig(game.id);
+
+                    if (
+                        toolsConfig &&
+                        toolsConfig.tools.length > 0
+                    ) {
+
+                        modalToolsButton.style.display = 'flex';
+                        modalToolsButton.onclick = (e) => {
+
+                            e.stopPropagation();
+                            renderGameTools(game);
+                            openOverlay(gameToolsModal);
+
+                        };
+
+                    } else {
+
+                        modalToolsButton.style.display = 'none';
+                        modalToolsButton.onclick = null;
+
+                    }
+
                     const favorites = getFavorites();
 
                     modalFavoriteButton.classList.toggle(
@@ -2253,14 +3250,22 @@
                 {
                     cache: 'no-store'
                 }
+            ).then(r => r.json()),
+
+            fetch(
+                `./tools.json?v=${CACHE_BUSTER}`,
+                {
+                    cache: 'no-store'
+                }
             ).then(r => r.json())
 
         ])
 
-            .then(([games, rules, mechanics]) => {
+            .then(([games, rules, mechanics, tools]) => {
 
                 rulesData = rules;
                 mechanicsData = mechanics;
+                toolsData = tools;
 
                 allGames = games.map(game => {
 
@@ -2367,7 +3372,36 @@
 
         }
 
+        function closeGameToolsModal() {
+
+            gameToolsModal.classList.remove('active');
+
+            if (!modal.classList.contains('active')) {
+
+                document.body.classList.remove(
+                    'modal-open'
+                );
+
+            }
+
+        }
+
         closeButton.addEventListener('click', closeModal);
+
+        gameToolsCloseButton.addEventListener(
+            'click',
+            closeGameToolsModal
+        );
+
+        gameToolsModal.addEventListener('click', (e) => {
+
+            if (e.target === gameToolsModal) {
+
+                closeGameToolsModal();
+
+            }
+
+        });
 
         modal.addEventListener('click', (e) => {
 
@@ -2380,6 +3414,15 @@
         });
 
         window.addEventListener('popstate', () => {
+
+            if (
+                gameToolsModal.classList.contains('active')
+            ) {
+
+                closeGameToolsModal();
+                return;
+
+            }
 
             if (modal.classList.contains('active')) {
 
@@ -2721,6 +3764,7 @@
 
                 if (
                     modal.classList.contains('active') ||
+                    gameToolsModal.classList.contains('active') ||
                     diceModal.classList.contains('active') ||
                     timerModal.classList.contains('active') ||
                     fingerSelectorModal.classList.contains('active') ||
