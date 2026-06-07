@@ -529,6 +529,27 @@
             box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
         }
 
+        .random-game-button {
+            position: absolute;
+            right: 74px;
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(12px) scale(.88);
+            transition: .2s ease;
+        }
+
+        .menu-panel.active ~ .random-game-button {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(0) scale(1);
+        }
+
+        .random-game-button:hover {
+            background: rgba(48, 48, 48, .95);
+            transform: translateX(0) scale(1.05);
+        }
+
 
 
         .menu-panel {
@@ -1077,6 +1098,10 @@
                 font-size: 2rem !important;
             }
 
+            .random-game-button {
+                right: 100px;
+            }
+
             .favorite-button {
 
                 width: 42px !important;
@@ -1516,6 +1541,101 @@
             color: #ffaaaa;
         }
 
+        .search-content {
+            max-width: 620px;
+            padding: 30px 22px 24px;
+        }
+
+        .game-search-wrapper {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .game-search-wrapper > i {
+            position: absolute;
+            top: 50%;
+            left: 18px;
+            color: #888;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .game-search-input {
+            width: 100%;
+            padding: 16px 18px 16px 48px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 16px;
+            background: #252525;
+            color: white;
+            font-size: 1.05rem;
+            outline: none;
+        }
+
+        .game-search-input:focus {
+            border-color: rgba(255, 255, 255, .22);
+            background: #292929;
+        }
+
+        .game-search-results {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: min(58vh, 520px);
+            overflow-y: auto;
+        }
+
+        .game-search-result {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            align-items: center;
+            gap: 14px;
+            padding: 9px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 16px;
+            background: #232323;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            transition: .18s ease;
+        }
+
+        .game-search-result:hover {
+            background: #2c2c2c;
+            transform: translateY(-1px);
+        }
+
+        .game-search-result img {
+            width: 72px;
+            height: 86px;
+            border-radius: 11px;
+            object-fit: cover;
+            background: #303030;
+        }
+
+        .game-search-result-title {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .game-search-result-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 8px;
+            color: #aaa;
+            font-size: .82rem;
+        }
+
+        .game-search-empty {
+            padding: 34px 18px;
+            border-radius: 16px;
+            background: #222;
+            color: #888;
+            text-align: center;
+        }
+
         .pick-card-display {
             min-height: 190px;
             display: flex;
@@ -1707,6 +1827,27 @@
             </div>
 
             <div id="globalPointsBody"></div>
+        </div>
+    </div>
+    <div class="dice-modal" id="searchModal">
+        <div class="dice-content search-content" onclick="event.stopPropagation()">
+            <button class="close-button" id="searchCloseButton" aria-label="Fechar busca">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="game-tools-header">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="game-tools-title">Buscar jogos</div>
+                <div class="game-tools-subtitle">Encontre um jogo pelo nome</div>
+            </div>
+
+            <div class="game-search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="game-search-input" id="gameSearchInput" type="search"
+                    placeholder="Digite o nome do jogo..." autocomplete="off">
+            </div>
+
+            <div class="game-search-results" id="gameSearchResults"></div>
         </div>
     </div>
     <div class="dice-modal" id="diceModal">
@@ -1964,6 +2105,10 @@
                 <i class="fa-solid fa-house"></i> Catálogo
             </button>
 
+            <button class="menu-option" id="searchButton">
+                <i class="fa-solid fa-magnifying-glass"></i> Busca
+            </button>
+
             <button class="menu-option" id="filtersButton">
                 <i class="fa-solid fa-filter"></i> Filtros
             </button>
@@ -1989,6 +2134,10 @@
 
         </div>
 
+        <button class="menu-button random-game-button" id="randomGameButton"
+            aria-label="Escolher jogo aleatório" title="Escolher jogo aleatório">
+            <i class="fa-solid fa-shuffle"></i>
+        </button>
 
         <button class="menu-button" id="menuButton">
             <i class="fa-solid fa-bars"></i>
@@ -2044,6 +2193,9 @@
 
         const menuButton =
             document.getElementById('menuButton');
+
+        const randomGameButton =
+            document.getElementById('randomGameButton');
 
         const filtersModal =
             document.getElementById('filtersModal');
@@ -2138,6 +2290,21 @@
         const catalogButton =
             document.getElementById('catalogButton');
 
+        const searchButton =
+            document.getElementById('searchButton');
+
+        const searchModal =
+            document.getElementById('searchModal');
+
+        const searchCloseButton =
+            document.getElementById('searchCloseButton');
+
+        const gameSearchInput =
+            document.getElementById('gameSearchInput');
+
+        const gameSearchResults =
+            document.getElementById('gameSearchResults');
+
         const timerButton =
             document.getElementById('timerButton');
 
@@ -2189,6 +2356,7 @@
         let rulesData = [];
         let mechanicsData = [];
         let toolsData = [];
+        let displayedGames = [];
         let currentGameWithTools = null;
 
         let globalMinPlayers = 1;
@@ -3550,6 +3718,185 @@
                 });
 
         }
+        function openGameModal(game) {
+
+            modalImage.src =
+                `images/${game.image}?v=${CACHE_BUSTER}`;
+
+            modalTitle.innerText = game.title;
+
+            modalMeta.innerHTML = `
+                <div class="modal-meta-top">
+                    <div class="meta-item">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>
+                            ${game.minPlayers}-${game.maxPlayers}
+                        </span>
+                    </div>
+
+                    <div class="meta-item">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <span>
+                            ${game.time}m
+                        </span>
+                    </div>
+                </div>
+
+                ${getMechanicsHTML(game)}
+            `;
+
+            modalRules.innerHTML = game.rules ?? "";
+
+            if (game.rulebook) {
+
+                modalRulebookButton.style.display = 'flex';
+                modalRulebookButton.onclick = (e) => {
+
+                    e.stopPropagation();
+
+                    window.open(
+                        `rulebooks/${game.rulebook}?v=${CACHE_BUSTER}`,
+                        '_blank'
+                    );
+
+                };
+
+            } else {
+
+                modalRulebookButton.style.display = 'none';
+
+            }
+
+            const toolsConfig =
+                getToolsConfig(game.id);
+
+            if (
+                toolsConfig &&
+                toolsConfig.tools.length > 0
+            ) {
+
+                modalToolsButton.style.display = 'flex';
+                modalToolsButton.onclick = (e) => {
+
+                    e.stopPropagation();
+                    renderGameTools(game);
+                    openOverlay(gameToolsModal);
+
+                };
+
+            } else {
+
+                modalToolsButton.style.display = 'none';
+                modalToolsButton.onclick = null;
+
+            }
+
+            const favorites = getFavorites();
+
+            modalFavoriteButton.classList.toggle(
+                'active',
+                favorites.includes(game.title)
+            );
+
+            modalFavoriteButton.onclick = (e) => {
+
+                e.stopPropagation();
+                toggleFavorite(game.title);
+                modalFavoriteButton.classList.toggle(
+                    'active'
+                );
+
+            };
+
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+            history.pushState({ modal: true }, "");
+
+        }
+
+        function normalizeSearchText(value) {
+
+            return String(value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLocaleLowerCase('pt-BR')
+                .trim();
+
+        }
+
+        function renderGameSearchResults() {
+
+            const query =
+                normalizeSearchText(gameSearchInput.value);
+
+            const matchingGames = [...allGames]
+                .filter(game =>
+                    normalizeSearchText(game.title)
+                        .includes(query)
+                )
+                .sort((a, b) =>
+                    a.title.localeCompare(
+                        b.title,
+                        'pt-BR',
+                        { sensitivity: 'base' }
+                    )
+                );
+
+            gameSearchResults.innerHTML = '';
+
+            if (matchingGames.length === 0) {
+
+                const empty =
+                    document.createElement('div');
+                empty.className = 'game-search-empty';
+                empty.innerText =
+                    'Nenhum jogo encontrado';
+                gameSearchResults.appendChild(empty);
+                return;
+
+            }
+
+            matchingGames.forEach(game => {
+
+                const result =
+                    document.createElement('button');
+                result.className = 'game-search-result';
+                result.type = 'button';
+                result.innerHTML = `
+                    <img
+                        src="images/${game.image}?v=${CACHE_BUSTER}"
+                        alt=""
+                    >
+                    <div>
+                        <div class="game-search-result-title">
+                            ${game.title}
+                        </div>
+                        <div class="game-search-result-meta">
+                            <span>
+                                <i class="fa-solid fa-user-group"></i>
+                                ${game.minPlayers}-${game.maxPlayers}
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-stopwatch"></i>
+                                ${game.time}m
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                result.addEventListener('click', () => {
+
+                    closeSearchModal();
+                    openGameModal(game);
+
+                });
+
+                gameSearchResults.appendChild(result);
+
+            });
+
+        }
+
         function renderGames() {
 
             container.innerHTML = '';
@@ -3629,6 +3976,7 @@
                 ...favoriteGames,
                 ...normalGames
             ];
+            displayedGames = orderedGames;
             gamesCount.innerText =
                 `${orderedGames.length} Jogos`;
 
@@ -3696,139 +4044,10 @@
 
                 });
 
-                card.addEventListener('click', () => {
-
-                    modalImage.src =
-                        `images/${game.image}?v=${CACHE_BUSTER}`;
-
-                    modalTitle.innerText = game.title;
-
-                    modalMeta.innerHTML = `
-
-    <div class="meta-item">
-
-        <i class="fa-solid fa-user-group"></i>
-
-        <span>
-            ${game.minPlayers}-${game.maxPlayers}
-        </span>
-
-    </div>
-
-    <div class="meta-item">
-
-        <i class="fa-solid fa-stopwatch"></i>
-
-        <span>
-            ${game.time}m
-        </span>
-
-    </div>
-
-`;
-
-                    modalMeta.innerHTML = `
-
-    <div class="modal-meta-top">
-
-        <div class="meta-item">
-
-            <i class="fa-solid fa-user-group"></i>
-
-            <span>
-                ${game.minPlayers}-${game.maxPlayers}
-            </span>
-
-        </div>
-
-        <div class="meta-item">
-
-            <i class="fa-solid fa-stopwatch"></i>
-
-            <span>
-                ${game.time}m
-            </span>
-
-        </div>
-
-    </div>
-
-    ${getMechanicsHTML(game)}
-
-`;
-
-                    modalRules.innerHTML = game.rules ?? "";
-                    if (game.rulebook) {
-
-                        modalRulebookButton.style.display = 'flex';
-
-                        modalRulebookButton.onclick = (e) => {
-
-                            e.stopPropagation();
-
-                            window.open(
-                                `rulebooks/${game.rulebook}?v=${CACHE_BUSTER}`,
-                                '_blank'
-                            );
-
-                        };
-
-                    } else {
-
-                        modalRulebookButton.style.display = 'none';
-
-                    }
-
-                    const toolsConfig =
-                        getToolsConfig(game.id);
-
-                    if (
-                        toolsConfig &&
-                        toolsConfig.tools.length > 0
-                    ) {
-
-                        modalToolsButton.style.display = 'flex';
-                        modalToolsButton.onclick = (e) => {
-
-                            e.stopPropagation();
-                            renderGameTools(game);
-                            openOverlay(gameToolsModal);
-
-                        };
-
-                    } else {
-
-                        modalToolsButton.style.display = 'none';
-                        modalToolsButton.onclick = null;
-
-                    }
-
-                    const favorites = getFavorites();
-
-                    modalFavoriteButton.classList.toggle(
-                        'active',
-                        favorites.includes(game.title)
-                    );
-
-                    modalFavoriteButton.onclick = (e) => {
-
-                        e.stopPropagation();
-
-                        toggleFavorite(game.title);
-
-                        modalFavoriteButton.classList.toggle(
-                            'active'
-                        );
-
-                    };
-
-                    modal.classList.add('active');
-
-                    document.body.classList.add('modal-open');
-
-                    history.pushState({ modal: true }, "");
-
-                });
+                card.addEventListener(
+                    'click',
+                    () => openGameModal(game)
+                );
 
                 container.appendChild(card);
 
@@ -4049,6 +4268,14 @@
             }
 
             if (
+                searchModal.classList.contains('active')
+            ) {
+
+                closeSearchModal();
+
+            }
+
+            if (
                 diceModal.classList.contains('active')
             ) {
 
@@ -4100,6 +4327,25 @@
             menuPanel.classList.toggle('active');
 
             filtersModal.classList.remove('active');
+
+        });
+
+        randomGameButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            if (displayedGames.length === 0) {
+                return;
+            }
+
+            const randomIndex = Math.floor(
+                Math.random() * displayedGames.length
+            );
+            const selectedGame =
+                displayedGames[randomIndex];
+
+            menuPanel.classList.remove('active');
+            openGameModal(selectedGame);
 
         });
 
@@ -4388,6 +4634,7 @@
                     diceModal.classList.contains('active') ||
                     timerModal.classList.contains('active') ||
                     globalPointsModal.classList.contains('active') ||
+                    searchModal.classList.contains('active') ||
                     fingerSelectorModal.classList.contains('active') ||
                     filtersModal.classList.contains('active')
                 ) {
@@ -4655,6 +4902,46 @@
             location.reload();
 
         });
+
+        searchButton.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+            gameSearchInput.value = '';
+            renderGameSearchResults();
+            openOverlay(searchModal);
+            menuPanel.classList.remove('active');
+
+            setTimeout(
+                () => gameSearchInput.focus(),
+                50
+            );
+
+        });
+
+        function closeSearchModal() {
+
+            searchModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+
+        }
+
+        searchCloseButton.addEventListener(
+            'click',
+            closeSearchModal
+        );
+
+        searchModal.addEventListener('click', (e) => {
+
+            if (e.target === searchModal) {
+                closeSearchModal();
+            }
+
+        });
+
+        gameSearchInput.addEventListener(
+            'input',
+            renderGameSearchResults
+        );
 
         diceButton.addEventListener('click', (e) => {
 
