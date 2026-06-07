@@ -1401,6 +1401,121 @@
             margin: 0;
         }
 
+        .global-points-content {
+            max-width: 680px;
+            padding: 30px 22px 24px;
+        }
+
+        .global-points-settings-button {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 30;
+        }
+
+        .global-point-name {
+            position: relative;
+            min-height: 22px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, .82);
+            font-size: .9rem;
+            font-weight: 700;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .global-points-config {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .global-points-count-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px;
+            border-radius: 16px;
+            background: #232323;
+        }
+
+        .global-points-count-row label {
+            color: #ddd;
+            font-weight: 700;
+        }
+
+        .global-points-count-input {
+            width: 92px;
+            padding: 11px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            background: #191919;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            outline: none;
+        }
+
+        .global-points-config-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .global-point-config-row {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 16px;
+            background: #232323;
+        }
+
+        .global-point-color-label {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            border: 3px solid rgba(255, 255, 255, .16);
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .global-point-color-input {
+            position: absolute;
+            inset: -12px;
+            width: 66px;
+            height: 66px;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .global-point-name-input {
+            width: 100%;
+            min-width: 0;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            background: #191919;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .global-points-config-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .global-points-config-actions .secondary {
+            background: #3a2525;
+            color: #ffaaaa;
+        }
+
         .pick-card-display {
             min-height: 190px;
             display: flex;
@@ -1502,6 +1617,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .global-points-config-actions {
+                grid-template-columns: 1fr;
+            }
+
             .pick-card-actions {
                 grid-template-columns: 1fr 52px;
             }
@@ -1568,6 +1687,26 @@
             </div>
 
             <div class="game-tools-sections" id="gameToolsSections"></div>
+        </div>
+    </div>
+    <div class="dice-modal" id="globalPointsModal">
+        <div class="dice-content global-points-content" onclick="event.stopPropagation()">
+            <button class="tool-icon-button global-points-settings-button" id="globalPointsSettingsButton"
+                aria-label="Configurar pontos" title="Configurar pontos">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+
+            <button class="close-button" id="globalPointsCloseButton" aria-label="Fechar pontos">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="game-tools-header">
+                <i class="fa-solid fa-trophy"></i>
+                <div class="game-tools-title" id="globalPointsTitle">Pontos</div>
+                <div class="game-tools-subtitle">O progresso fica salvo durante esta sessao</div>
+            </div>
+
+            <div id="globalPointsBody"></div>
         </div>
     </div>
     <div class="dice-modal" id="diceModal">
@@ -1838,6 +1977,9 @@
             <button class="menu-option" id="timerButton">
                 <i class="fa-solid fa-stopwatch"></i> Timer
             </button>
+            <button class="menu-option" id="globalPointsButton">
+                <i class="fa-solid fa-trophy"></i> Pontos
+            </button>
 
             <button class="menu-option clear-filters-button" id="clearFiltersButton">
 
@@ -1999,6 +2141,24 @@
         const timerButton =
             document.getElementById('timerButton');
 
+        const globalPointsButton =
+            document.getElementById('globalPointsButton');
+
+        const globalPointsModal =
+            document.getElementById('globalPointsModal');
+
+        const globalPointsCloseButton =
+            document.getElementById('globalPointsCloseButton');
+
+        const globalPointsSettingsButton =
+            document.getElementById('globalPointsSettingsButton');
+
+        const globalPointsTitle =
+            document.getElementById('globalPointsTitle');
+
+        const globalPointsBody =
+            document.getElementById('globalPointsBody');
+
         const timerModal =
             document.getElementById('timerModal');
 
@@ -2092,6 +2252,456 @@
             '#ef6c35',
             '#d8c53a'
         ];
+
+        const GLOBAL_POINTS_STORAGE_KEY =
+            'globalPointsState:v1';
+
+        function createDefaultGlobalPointsState() {
+
+            return {
+                counters: ['#4f8cff', '#35c98b'].map(
+                    color => ({
+                        value: 0,
+                        color,
+                        name: ''
+                    })
+                )
+            };
+
+        }
+
+        function normalizeGlobalPointsState(savedState) {
+
+            if (
+                !savedState ||
+                !Array.isArray(savedState.counters) ||
+                savedState.counters.length < 1
+            ) {
+                return createDefaultGlobalPointsState();
+            }
+
+            return {
+                counters: savedState.counters.map(
+                    (counter, index) => {
+
+                        const value = Number(counter.value);
+
+                        return {
+                            value: Number.isFinite(value)
+                                ? value
+                                : 0,
+                            color:
+                                typeof counter.color === 'string' &&
+                                /^#[0-9a-f]{6}$/i.test(
+                                    counter.color
+                                )
+                                    ? counter.color
+                                    : pointCounterColors[
+                                        index %
+                                        pointCounterColors.length
+                                    ],
+                            name:
+                                typeof counter.name === 'string'
+                                    ? counter.name
+                                    : ''
+                        };
+
+                    }
+                )
+            };
+
+        }
+
+        function loadGlobalPointsState() {
+
+            try {
+
+                return normalizeGlobalPointsState(
+                    JSON.parse(
+                        sessionStorage.getItem(
+                            GLOBAL_POINTS_STORAGE_KEY
+                        ) || 'null'
+                    )
+                );
+
+            } catch (error) {
+
+                return createDefaultGlobalPointsState();
+
+            }
+
+        }
+
+        function saveGlobalPointsState(state) {
+
+            sessionStorage.setItem(
+                GLOBAL_POINTS_STORAGE_KEY,
+                JSON.stringify(state)
+            );
+
+        }
+
+        let globalPointsState =
+            loadGlobalPointsState();
+        let globalPointsConfigOpen = false;
+
+        function resizeGlobalPoints(count) {
+
+            const normalizedCount = Math.max(
+                1,
+                Math.min(20, Number(count) || 1)
+            );
+            const newColors = createPointColors(
+                normalizedCount
+            );
+
+            globalPointsState.counters =
+                Array.from(
+                    { length: normalizedCount },
+                    (_, index) =>
+                        globalPointsState.counters[index] ||
+                        {
+                            value: 0,
+                            color: newColors[index],
+                            name: ''
+                        }
+                );
+
+            saveGlobalPointsState(globalPointsState);
+
+        }
+
+        function renderGlobalPoints() {
+
+            globalPointsTitle.innerText =
+                globalPointsConfigOpen
+                    ? 'Configurar pontos'
+                    : 'Pontos';
+            globalPointsSettingsButton.innerHTML =
+                globalPointsConfigOpen
+                    ? '<i class="fa-solid fa-arrow-left"></i>'
+                    : '<i class="fa-solid fa-gear"></i>';
+            globalPointsSettingsButton.title =
+                globalPointsConfigOpen
+                    ? 'Voltar aos pontos'
+                    : 'Configurar pontos';
+            globalPointsSettingsButton.setAttribute(
+                'aria-label',
+                globalPointsSettingsButton.title
+            );
+
+            globalPointsBody.innerHTML = '';
+
+            if (globalPointsConfigOpen) {
+
+                renderGlobalPointsConfig();
+                return;
+
+            }
+
+            const section =
+                document.createElement('section');
+            section.className = 'tool-section';
+
+            const header =
+                document.createElement('div');
+            header.className = 'tool-section-header';
+            header.innerHTML = `
+                <div class="tool-section-title">
+                    <i class="fa-solid fa-trophy"></i>
+                    Pontos
+                </div>
+            `;
+
+            const resetButton =
+                document.createElement('button');
+            resetButton.className = 'tool-icon-button';
+            resetButton.type = 'button';
+            resetButton.title = 'Zerar todos os pontos';
+            resetButton.setAttribute(
+                'aria-label',
+                'Zerar todos os pontos'
+            );
+            resetButton.innerHTML =
+                '<i class="fa-solid fa-rotate-left"></i>';
+            resetButton.addEventListener('click', () => {
+
+                globalPointsState.counters.forEach(
+                    counter => {
+                        counter.value = 0;
+                    }
+                );
+                saveGlobalPointsState(globalPointsState);
+                renderGlobalPoints();
+
+            });
+
+            header.appendChild(resetButton);
+            section.appendChild(header);
+
+            const counters =
+                document.createElement('div');
+            counters.className = 'points-counters';
+
+            globalPointsState.counters.forEach(
+                (counterState, index) => {
+
+                    const counter =
+                        document.createElement('div');
+                    counter.className = 'point-counter';
+                    counter.style.setProperty(
+                        '--counter-color',
+                        counterState.color
+                    );
+
+                    const name =
+                        document.createElement('div');
+                    name.className = 'global-point-name';
+                    name.innerText = counterState.name;
+
+                    const controls =
+                        document.createElement('div');
+                    controls.className =
+                        'point-counter-controls';
+
+                    const minusButton =
+                        document.createElement('button');
+                    minusButton.className =
+                        'point-counter-button';
+                    minusButton.type = 'button';
+                    minusButton.innerText = '\u2212';
+
+                    const input =
+                        document.createElement('input');
+                    input.className =
+                        'point-counter-input';
+                    input.type = 'number';
+                    input.step = '1';
+                    input.value = counterState.value;
+
+                    const plusButton =
+                        document.createElement('button');
+                    plusButton.className =
+                        'point-counter-button';
+                    plusButton.type = 'button';
+                    plusButton.innerText = '+';
+
+                    function setValue(newValue) {
+
+                        const normalized =
+                            Number(newValue);
+                        counterState.value =
+                            Number.isFinite(normalized)
+                                ? normalized
+                                : 0;
+                        input.value = counterState.value;
+                        saveGlobalPointsState(
+                            globalPointsState
+                        );
+
+                    }
+
+                    minusButton.setAttribute(
+                        'aria-label',
+                        `Diminuir placar ${index + 1}`
+                    );
+                    plusButton.setAttribute(
+                        'aria-label',
+                        `Aumentar placar ${index + 1}`
+                    );
+                    input.setAttribute(
+                        'aria-label',
+                        counterState.name ||
+                        `Placar ${index + 1}`
+                    );
+
+                    minusButton.addEventListener(
+                        'click',
+                        () => setValue(
+                            counterState.value - 1
+                        )
+                    );
+                    plusButton.addEventListener(
+                        'click',
+                        () => setValue(
+                            counterState.value + 1
+                        )
+                    );
+                    input.addEventListener(
+                        'change',
+                        () => setValue(input.value)
+                    );
+
+                    controls.append(
+                        minusButton,
+                        input,
+                        plusButton
+                    );
+                    counter.append(name, controls);
+                    counters.appendChild(counter);
+
+                }
+            );
+
+            section.appendChild(counters);
+            globalPointsBody.appendChild(section);
+
+        }
+
+        function renderGlobalPointsConfig() {
+
+            const config =
+                document.createElement('div');
+            config.className = 'global-points-config';
+
+            const countRow =
+                document.createElement('div');
+            countRow.className =
+                'global-points-count-row';
+
+            const countLabel =
+                document.createElement('label');
+            countLabel.htmlFor =
+                'globalPointsCountInput';
+            countLabel.innerText =
+                'Quantidade de contadores';
+
+            const countInput =
+                document.createElement('input');
+            countInput.id = 'globalPointsCountInput';
+            countInput.className =
+                'global-points-count-input';
+            countInput.type = 'number';
+            countInput.min = '1';
+            countInput.max = '20';
+            countInput.value =
+                globalPointsState.counters.length;
+            countInput.addEventListener('change', () => {
+
+                resizeGlobalPoints(countInput.value);
+                renderGlobalPoints();
+
+            });
+
+            countRow.append(countLabel, countInput);
+
+            const list =
+                document.createElement('div');
+            list.className =
+                'global-points-config-list';
+
+            globalPointsState.counters.forEach(
+                (counterState, index) => {
+
+                    const row =
+                        document.createElement('div');
+                    row.className =
+                        'global-point-config-row';
+
+                    const colorLabel =
+                        document.createElement('label');
+                    colorLabel.className =
+                        'global-point-color-label';
+                    colorLabel.style.background =
+                        counterState.color;
+                    colorLabel.title =
+                        `Cor do placar ${index + 1}`;
+
+                    const colorInput =
+                        document.createElement('input');
+                    colorInput.className =
+                        'global-point-color-input';
+                    colorInput.type = 'color';
+                    colorInput.value =
+                        counterState.color;
+                    colorInput.setAttribute(
+                        'aria-label',
+                        `Cor do placar ${index + 1}`
+                    );
+                    colorInput.addEventListener(
+                        'input',
+                        () => {
+
+                            counterState.color =
+                                colorInput.value;
+                            colorLabel.style.background =
+                                counterState.color;
+                            saveGlobalPointsState(
+                                globalPointsState
+                            );
+
+                        }
+                    );
+
+                    const nameInput =
+                        document.createElement('input');
+                    nameInput.className =
+                        'global-point-name-input';
+                    nameInput.type = 'text';
+                    nameInput.maxLength = 40;
+                    nameInput.value =
+                        counterState.name;
+                    nameInput.placeholder =
+                        `Nome do placar ${index + 1}`;
+                    nameInput.addEventListener(
+                        'input',
+                        () => {
+
+                            counterState.name =
+                                nameInput.value;
+                            saveGlobalPointsState(
+                                globalPointsState
+                            );
+
+                        }
+                    );
+
+                    colorLabel.appendChild(colorInput);
+                    row.append(colorLabel, nameInput);
+                    list.appendChild(row);
+
+                }
+            );
+
+            const actions =
+                document.createElement('div');
+            actions.className =
+                'global-points-config-actions';
+
+            const resetButton =
+                document.createElement('button');
+            resetButton.className =
+                'dice-roll-button secondary';
+            resetButton.type = 'button';
+            resetButton.innerHTML =
+                '<i class="fa-solid fa-rotate-left"></i> Restaurar padrao';
+            resetButton.addEventListener('click', () => {
+
+                globalPointsState =
+                    createDefaultGlobalPointsState();
+                saveGlobalPointsState(globalPointsState);
+                renderGlobalPoints();
+
+            });
+
+            const doneButton =
+                document.createElement('button');
+            doneButton.className =
+                'dice-roll-button';
+            doneButton.type = 'button';
+            doneButton.innerText = 'Concluir';
+            doneButton.addEventListener('click', () => {
+
+                globalPointsConfigOpen = false;
+                renderGlobalPoints();
+
+            });
+
+            actions.append(resetButton, doneButton);
+            config.append(countRow, list, actions);
+            globalPointsBody.appendChild(config);
+
+        }
 
         function getToolsConfig(gameId) {
 
@@ -3455,6 +4065,16 @@
             }
 
             if (
+                globalPointsModal.classList.contains(
+                    'active'
+                )
+            ) {
+
+                closeGlobalPointsModal();
+
+            }
+
+            if (
                 fingerSelectorModal.classList.contains(
                     'active'
                 )
@@ -3767,6 +4387,7 @@
                     gameToolsModal.classList.contains('active') ||
                     diceModal.classList.contains('active') ||
                     timerModal.classList.contains('active') ||
+                    globalPointsModal.classList.contains('active') ||
                     fingerSelectorModal.classList.contains('active') ||
                     filtersModal.classList.contains('active')
                 ) {
@@ -4042,6 +4663,53 @@
             openOverlay(diceModal);
 
         });
+
+        globalPointsButton.addEventListener(
+            'click',
+            (e) => {
+
+                e.stopPropagation();
+                globalPointsConfigOpen = false;
+                renderGlobalPoints();
+                openOverlay(globalPointsModal);
+                menuPanel.classList.remove('active');
+
+            }
+        );
+
+        function closeGlobalPointsModal() {
+
+            globalPointsModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+
+        }
+
+        globalPointsCloseButton.addEventListener(
+            'click',
+            closeGlobalPointsModal
+        );
+
+        globalPointsModal.addEventListener(
+            'click',
+            (e) => {
+
+                if (e.target === globalPointsModal) {
+                    closeGlobalPointsModal();
+                }
+
+            }
+        );
+
+        globalPointsSettingsButton.addEventListener(
+            'click',
+            () => {
+
+                globalPointsConfigOpen =
+                    !globalPointsConfigOpen;
+                renderGlobalPoints();
+
+            }
+        );
 
         function closeDiceModal() {
 
