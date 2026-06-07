@@ -584,7 +584,7 @@
     "title": "CARD GOL",
     "image": "card_gol.jpg",
     "minPlayers": 2,
-    "maxPlayers": 6,
+    "maxPlayers": 4,
     "time": 30,
     "rulebook": "card_gol.pdf",
     "url": "",
