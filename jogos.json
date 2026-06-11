@@ -606,5 +606,48 @@
       162,
       116
     ]
+  },
+   {
+    "id": 39,
+    "title": "Taco Loco",
+    "image": "taco_loco.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "time": 15,
+    "rulebook": "taco_loco.pdf",
+    "url": "https://ludopedia.com.br/jogo/taco-loco",
+    "mechanics": [
+      3
+    ]
+  },
+  {
+    "id": 40,
+    "title": "In Front of the Elevators",
+    "image": "in_front_of_the_elevators.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "time": 40,
+    "rulebook": "in_front_of_the_elevators.pdf",
+    "url": "https://ludopedia.com.br/jogo/in-front-of-the-elevators",
+    "mechanics": [
+      52,
+      3
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Bottle Imp",
+    "image": "bottle_imp.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "time": 30,
+    "rulebook": "bottle_imp.pdf",
+    "url": "https://ludopedia.com.br/jogo/bottle-imp",
+    "mechanics": [
+      110,
+      37,
+      166,
+      6
+    ]
   }
 ]
