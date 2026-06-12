@@ -593,21 +593,6 @@
     ]
   },
   {
-    "id": 43,
-    "title": "Wavelength",
-    "image": "wavelength.JPG",
-    "minPlayers": 2,
-    "maxPlayers": 20,
-    "time": 45,
-    "rulebook": "wavelength.pdf",
-    "url": "https://ludopedia.com.br/jogo/wavelength",
-    "mechanics": [
-      37,
-      162,
-      116
-    ]
-  },
-   {
     "id": 39,
     "title": "Taco Loco",
     "image": "taco_loco.jpg",
@@ -648,6 +633,23 @@
       37,
       166,
       6
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Azul",
+    "image": "azul.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "time": 45,
+    "rulebook": "azul.pdf",
+    "url": "https://ludopedia.com.br/jogo/azul",
+    "mechanics": [
+      12,
+      16,
+      100,
+      64,
+      190
     ]
   }
 ]
