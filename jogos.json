@@ -651,5 +651,33 @@
       64,
       190
     ]
+  },
+  {
+    "id": 45,
+    "title": "DNUP",
+    "image": "dnup.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "time": 15,
+    "rulebook": "dnup.pdf",
+    "url": "https://ludopedia.com.br/jogo/dnup",
+    "mechanics": [
+      142,
+      3
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Dropolter",
+    "image": "dropolter.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "time": 15,
+    "rulebook": "dropolter.pdf",
+    "url": "https://ludopedia.com.br/jogo/dropolter",
+    "mechanics": [
+      26,
+      61
+    ]
   }
 ]
