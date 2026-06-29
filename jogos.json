@@ -679,5 +679,20 @@
       26,
       61
     ]
+  },
+  {
+    "id": 43,
+    "title": "Wavelength",
+    "image": "wavelength.JPG",
+    "minPlayers": 2,
+    "maxPlayers": 20,
+    "time": 45,
+    "rulebook": "wavelength.pdf",
+    "url": "https://ludopedia.com.br/jogo/wavelength",
+    "mechanics": [
+      37,
+      162,
+      116
+    ]
   }
 ]
