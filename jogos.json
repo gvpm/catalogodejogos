@@ -694,5 +694,22 @@
       162,
       116
     ]
+  },
+    {
+    "id": 34,
+    "title": "Dutch Blitz",
+    "image": "dutch_blitz.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "time": 15,
+    "rulebook": "dutch_blitz.pdf",
+    "url": "https://ludopedia.com.br/jogo/dutch-blitz",
+    "mechanics": [
+      16,
+      61,
+      184,
+      166,
+      116
+    ]
   }
 ]
