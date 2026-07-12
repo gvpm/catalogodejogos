@@ -712,4 +712,57 @@
       116
     ]
   }
+,
+  {
+    "id": 47,
+    "title": "Entrelaços",
+    "image": "entrelaços.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 12,
+    "time": 15,
+    "rulebook": "entrelaços.pdf",
+    "url": "https://ludopedia.com.br/jogo/entrelacos",
+    "mechanics": [
+      89,
+      20,
+      60,
+      90,
+      37,
+      162
+    ]
+  }
+,
+  {
+    "id": 48,
+    "title": "ET de Varginha",
+    "image": "et_de_varginha.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "time": 45,
+    "rulebook": "",
+    "url": "https://ludopedia.com.br/jogo/et-de-varginha",
+    "mechanics": [
+      60,
+      29,
+      58,
+      106,
+      180,
+      47
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Nimbo!",
+    "image": "nimbo.png",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "time": 20,
+    "rulebook": "nimbo.pdf",
+    "url": "",
+    "mechanics": [
+      29,
+      60,
+      59
+    ]
+  }
 ]
