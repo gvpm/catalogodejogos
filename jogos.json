@@ -719,7 +719,7 @@
     "image": "entrelaços.jpg",
     "minPlayers": 2,
     "maxPlayers": 12,
-    "time": 15,
+    "time": 24,
     "rulebook": "entrelaços.pdf",
     "url": "https://ludopedia.com.br/jogo/entrelacos",
     "mechanics": [
