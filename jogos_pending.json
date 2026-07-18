@@ -1,3 +1,31 @@
 [
 
+  {
+    "id": 38,
+    "title": "Cluedo Suspect",
+    "image": "cluedo_suspect.jpg",
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "time": 20,
+    "rulebook": "cluedo_suspect.pdf",
+    "url": "https://ludopedia.com.br/jogo/clue-the-card-game",
+    "mechanics": [
+      60
+ 
+    ]
+  }  ,
+   {
+    "id": 6,
+    "title": "Confusing Lands",
+    "image": "confusing_lands.jpg",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "time": 20,
+    "rulebook": "confusing_lands.pdf",
+    "url": "https://ludopedia.com.br/jogo/confusing-lands",
+    "mechanics": [
+      143,
+      16
+    ]
+  }
 ]
